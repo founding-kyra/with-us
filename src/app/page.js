@@ -93,9 +93,6 @@ export default function Index() {
       <section className="about">
         <div className="container">
           <div className="about-copy">
-            <Copy type="flicker">
-              <p>BUILT FOR THOSE WHO WERE OVERLOOKED, UNDERESTIMATED, AND NEVER INVITED INTO THE ROOM.</p>
-            </Copy>
             <Copy>
               <h3>BUILT FOR THOSE WHO WERE OVERLOOKED OR UNDERESTIMATED</h3>
             </Copy>
