@@ -7,7 +7,7 @@ const ContactForm = () => {
     <section className="contact-form">
       <div className="contact-parallax-image-wrapper">
         <h1>WITHUS</h1>
-        <img src="/contact-form/95464EFA-157F-422D-8297-FA639B3024E3.webp" alt="" />
+        <img src="/contact-form/group-shot_withus_footer.png" alt="" />
       </div>
       <div className="contact-form-container">
         <div className="cf-header">
