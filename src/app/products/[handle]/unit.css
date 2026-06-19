@@ -4,6 +4,7 @@
   height: 100svh;
   display: flex;
   overflow: hidden;
+  padding-top: 120px;
 }
 
 .product-hero-col {
@@ -17,7 +18,7 @@
 .product-meta-container {
   width: 100%;
   height: 100%;
-  padding: 12rem 4rem 4rem 4rem;
+  padding: 4.5rem 4rem 4rem 4rem;
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -280,7 +281,6 @@
   .product-hero {
     flex-direction: column;
     height: 150svh;
-    padding-top: 100px;
   }
 
   .product-meta-container {
