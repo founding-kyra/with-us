@@ -57,6 +57,7 @@ footer .footer-logo {
   width: auto;
   display: block;
   margin-bottom: 0.5rem;
+  margin-left: -0.85rem; /* Offset built-in whitespace in the PNG */
 }
 
 footer .footer-row:nth-child(2) .footer-copyright p:nth-child(2) {
