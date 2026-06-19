@@ -276,10 +276,11 @@
   .product-hero {
     flex-direction: column;
     height: 150svh;
+    padding-top: 100px;
   }
 
   .product-meta-container {
-    padding: 3rem 1.5rem;
+    padding: 3rem 1.5rem 6rem;
     justify-content: center;
   }
 
@@ -319,6 +320,17 @@
 }
 
 @media (max-width: 480px) {
+  .product-meta-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .product-meta-header h3:first-child,
+  .product-meta-header h3:last-child {
+    font-size: clamp(2rem, 8vw, 3rem);
+    white-space: normal;
+  }
+
   .related-products-container .container {
     grid-template-columns: 1fr;
   }

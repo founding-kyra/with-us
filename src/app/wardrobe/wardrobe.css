@@ -114,6 +114,12 @@
 
   .products-header h1 {
     width: 100%;
+    word-break: break-word;
+    font-size: clamp(3rem, 10vw, 5rem);
+  }
+
+  .product-list {
+    padding-bottom: 6rem;
   }
 
   .product-list .container {

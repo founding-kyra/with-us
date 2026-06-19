@@ -199,7 +199,13 @@ export default function Unit({ params }) {
             </div>
             <div className="product-meta-header-divider"></div>
             <div className="product-color-container">
-              <p className="md">Chroma</p>
+              <p className="md" style={{ textTransform: 'capitalize' }}>
+                {
+                  currentProduct?.options?.find(opt => opt.name === 'Color' || opt.name === 'Colour')?.values[0] 
+                  || currentProduct?.title?.replace(/^The\s+/i, '')?.split(' ')[0] 
+                  || 'Chroma'
+                }
+              </p>
               <div className="product-colors">
                 <div className="product-color">
                   <span></span>

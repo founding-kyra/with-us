@@ -60,6 +60,10 @@ export async function getProduct(handle) {
             currencyCode
           }
         }
+        options {
+          name
+          values
+        }
         images(first: 10) {
           edges {
             node {
