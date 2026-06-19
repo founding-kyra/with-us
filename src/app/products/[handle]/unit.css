@@ -38,6 +38,10 @@
   will-change: transform;
 }
 
+.product-snapshots .product-snapshot img {
+  object-position: top center;
+}
+
 .product-spotlight {
   position: relative;
   width: 100%;

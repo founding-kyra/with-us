@@ -198,20 +198,6 @@ export default function Unit({ params }) {
               <h3>${currentProduct?.priceRange?.minVariantPrice?.amount || currentProduct?.price}</h3>
             </div>
             <div className="product-meta-header-divider"></div>
-            <div className="product-color-container">
-              <p className="md" style={{ textTransform: 'capitalize' }}>
-                {
-                  currentProduct?.options?.find(opt => opt.name === 'Color' || opt.name === 'Colour')?.values[0] 
-                  || currentProduct?.title?.replace(/^The\s+/i, '')?.split(' ')[0] 
-                  || 'Chroma'
-                }
-              </p>
-              <div className="product-colors">
-                <div className="product-color">
-                  <span></span>
-                </div>
-              </div>
-            </div>
             <div className="product-sizes-container">
               <p className="md">Form Size</p>
               <div className="product-sizes">
