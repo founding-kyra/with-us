@@ -39,7 +39,7 @@ const Footer = () => {
           </div>
           <div className="footer-row">
             <div className="footer-copyright">
-              <img src="/logo/logo-with-us-text-dark.svg" alt="WITHUS" className="footer-logo" />
+              <img src="/logo/logo-with-us-text-dark.png" alt="WITHUS" className="footer-logo" />
               <p className="bodyCopy">&copy;2026 All modules reserved.</p>
               <p className="bodyCopy" id="copyright-text">
                 Creative Direction by Kyra Aulani
