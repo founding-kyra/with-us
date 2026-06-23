@@ -75,7 +75,7 @@ export default function Touchpoint() {
                   <p className="bodyCopy">External Comms Protocol</p>
                 </Copy>
                 <Copy animateOnScroll={false} delay={1}>
-                  <h4>echo@nrmlss.co</h4>
+                  <h4>hello@withus.world</h4>
                 </Copy>
               </div>
               <div className="contact-meta-block">
@@ -83,7 +83,7 @@ export default function Touchpoint() {
                   <p className="bodyCopy">Dispatch Inquiry System</p>
                 </Copy>
                 <Copy animateOnScroll={false} delay={1.2}>
-                  <h4>dispatch@nrmlss.co</h4>
+                  <h4>hello@withus.world</h4>
                 </Copy>
               </div>
             </div>
