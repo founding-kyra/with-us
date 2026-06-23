@@ -161,9 +161,9 @@ export default function Genesis() {
           </div>
           <div className="genesis-about-copy">
             <Copy>
-              <h4>
+              <h2>
                 MADE IN LOS ANGELES
-              </h4>
+              </h2>
             </Copy>
             <Copy>
               <h4 delay={0.2}>
