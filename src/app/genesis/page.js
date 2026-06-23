@@ -162,19 +162,22 @@ export default function Genesis() {
           <div className="genesis-about-copy">
             <Copy>
               <h4>
-                WITHUS is built on the belief that clothing should operate like
-                a system. Every piece is engineered with intention, shaped by
-                visual logic and designed for a new kind of uniform. We define
-                motion, structure in silence, presence without noise.
+                MADE IN LOS ANGELES
               </h4>
             </Copy>
             <Copy>
-              <h4 delay={0.5}>
-                Our aesthetic roots lie in the future, not the past. We create
-                garments that behave like interfaces: minimal, intelligent,
-                quietly expressive. Function and form are synchronized, tailored
-                for those who move through digital and physical layers with
-                equal precision. WITHUS is not fashion. It is a transmission.
+              <h4 delay={0.2}>
+                We build locally. The craft stays close, the standards stay high, and the people behind the product are part of the collective.
+              </h4>
+            </Copy>
+            <Copy>
+              <h4 delay={0.4}>
+                Every piece is produced close to home, allowing us to stay connected to the process, protect the quality, and support the community that helped shape the brand from day one.
+              </h4>
+            </Copy>
+            <Copy>
+              <h4 delay={0.6}>
+                We believe great products come from great relationships. That’s why we focus on people, craftsmanship, and doing things the right way.
               </h4>
             </Copy>
           </div>
