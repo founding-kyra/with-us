@@ -59,8 +59,8 @@ const MarqueeBanner = () => {
           <img src="/marquee-banner/2 (3).png" alt="" />
           <Annotation 
             mode="light"
-            top="33%" left="50%"
-            lineEndX={-35} lineEndY={-15} horizontalLength={25}
+            top="16%" left="55%"
+            lineEndX={-30} lineEndY={30} horizontalLength={25}
             textAlign="right" textOffsetX={-5}
             title="DOUBLE COLLAR"
             subtitle="MADE TO HOLD SHAPE"
@@ -75,11 +75,19 @@ const MarqueeBanner = () => {
           />
           <Annotation 
             mode="light"
-            top="48%" left="57%"
-            lineEndX={55} lineEndY={-10} horizontalLength={35}
+            top="54%" left="66%"
+            lineEndX={50} lineEndY={-15} horizontalLength={35}
             textAlign="left" textOffsetX={5}
             title="460 GSM COTTON"
             subtitle="OVERSIZED FIT"
+          />
+          <Annotation 
+            mode="light"
+            top="47%" left="62%"
+            lineEndX={45} lineEndY={25} horizontalLength={30}
+            textAlign="left" textOffsetX={5}
+            title="VENTED DETAILING"
+            subtitle="PERFORATED BACK PANEL"
           />
         </div>
         <div className="banner-logo">
