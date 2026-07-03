@@ -128,7 +128,7 @@ const PeelReveal = () => {
           />
           <Annotation 
             mode="dark"
-            top="55%" left="38%"
+            top="50%" left="38%"
             lineEndX={-50} lineEndY={20} horizontalLength={60}
             textAlign="right" textOffsetX={-10}
             title="OVERSIZED FIT"
@@ -145,19 +145,11 @@ const PeelReveal = () => {
           
           <Annotation 
             mode="dark"
-            top="30%" left="55%"
+            top="25%" left="52%"
             lineEndX={60} lineEndY={-60} horizontalLength={40}
             textAlign="left" textOffsetX={10}
             title="THICK RIBBING"
             subtitle="MOCK NECK"
-          />
-          <Annotation 
-            mode="dark"
-            top="45%" left="52%"
-            lineEndX={90} lineEndY={-10} horizontalLength={40}
-            textAlign="left" textOffsetX={10}
-            title="W LOGO"
-            subtitle="VENTILATION HOLES"
           />
           <Annotation 
             mode="dark"
