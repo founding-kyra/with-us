@@ -27,7 +27,7 @@ const Footer = () => {
               </div>
               <div className="footer-col-links">
                 <a
-                  href="https://www.instagram.com/razalweb/"
+                  href="https://www.instagram.com/with_us_world?igsh=MTFzN3h5b29yeHVmMg=="
                   target="_blank"
                   rel="noopener noreferrer"
                 >
