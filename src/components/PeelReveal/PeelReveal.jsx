@@ -145,7 +145,7 @@ const PeelReveal = () => {
           
           <Annotation 
             mode="dark"
-            top="25%" left="52%"
+            top="25%" left="54%"
             lineEndX={60} lineEndY={-60} horizontalLength={40}
             textAlign="left" textOffsetX={10}
             title="THICK RIBBING"
