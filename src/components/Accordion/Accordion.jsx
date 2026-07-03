@@ -6,6 +6,7 @@ const Accordion = ({ items }) => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleAccordion = (index) => {
+    console.log("Toggling accordion index:", index);
     setOpenIndex(openIndex === index ? null : index);
   };
 
@@ -16,6 +17,7 @@ const Accordion = ({ items }) => {
         return (
           <div className={`accordion-item ${isOpen ? "open" : ""}`} key={index}>
             <button
+              type="button"
               className="accordion-header"
               onClick={() => toggleAccordion(index)}
               aria-expanded={isOpen}
