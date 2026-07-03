@@ -267,19 +267,12 @@ export default function Unit({ params }) {
             <div className="section-body">
               <Copy>
                 <p className="bodyCopy lg">
-                  All orders are processed within 5 business days and shipped via
-                  tracked courier service. Estimated delivery times vary by
-                  region, but most domestic shipments arrive within 7 business
-                  days. You’ll receive a tracking link once your order is
-                  dispatched.
+                  All orders are processed within 5 business days and shipped via tracked courier service. Estimated delivery times vary by region, but most domestic shipments arrive within 7 business days. You’ll receive a tracking link once your order is dispatched.
                 </p>
               </Copy>
               <Copy>
                 <p className="bodyCopy lg">
-                  We accept returns on unworn items within 30 days of delivery. To
-                  initiate a return, please email hello@withusworld.com for a return label
-                  with your order number. Refunds are issued to the original payment method
-                  once the item is received and inspected.
+                  We accept returns on unworn items within 30 days of delivery. To initiate a return, please email hello@withusworld.com for a return label with your order number. Refunds are issued to the original payment method once the item is received and inspected.
                 </p>
               </Copy>
             </div>
