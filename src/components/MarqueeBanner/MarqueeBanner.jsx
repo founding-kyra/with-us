@@ -89,14 +89,6 @@ const MarqueeBanner = () => {
             title="MID WEIGHT FABRIC"
             subtitle="OVERSIZED FIT"
           />
-          <Annotation 
-            mode="light"
-            top="78%" left="35%"
-            lineEndX={-35} lineEndY={15} horizontalLength={25}
-            textAlign="right" textOffsetX={-5}
-            title="RAW HEM"
-            subtitle="DISTRESSED EDGE"
-          />
         </div>
         <div className="banner-logo">
           <h5>WITHUS</h5>
