@@ -80,7 +80,8 @@ export default function Index() {
           <div className="hero-header" ref={heroHeaderRef}>
             <Copy animateOnScroll={false} delay={isInitialLoad ? 5.5 : 0.65}>
               <h1>
-                You&apos;re <br /> W/US
+                <span className="hero-text-top">You&apos;re</span> <br /> 
+                <span className="hero-text-bottom">W/US</span>
               </h1>
             </Copy>
           </div>

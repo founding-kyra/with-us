@@ -21,6 +21,10 @@
   color: #afa69c;
 }
 
+.hero .hero-header h1 .hero-text-top {
+  font-size: 0.85em; /* Approximately 15% reduction to optically align with W/US */
+}
+
 .hero .hero-img {
   position: absolute;
   top: 35svh;
