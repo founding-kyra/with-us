@@ -123,7 +123,7 @@ const PeelReveal = () => {
             top="32%" left="42%"
             lineEndX={-60} lineEndY={-50} horizontalLength={40}
             textAlign="right" textOffsetX={-10}
-            title="ACID WASH FINISH"
+            title="MINERAL WASH"
             subtitle="GARMENT DYED FOR UNIQUE FADE"
           />
           <Annotation 
@@ -131,7 +131,7 @@ const PeelReveal = () => {
             top="55%" left="38%"
             lineEndX={-50} lineEndY={20} horizontalLength={60}
             textAlign="right" textOffsetX={-10}
-            title="OVERSIZED SILHOUETTE"
+            title="OVERSIZED FIT"
             subtitle="DESIGNED FOR DAILY MOVEMENT"
           />
           <Annotation 
@@ -139,7 +139,7 @@ const PeelReveal = () => {
             top="75%" left="42%"
             lineEndX={-40} lineEndY={30} horizontalLength={50}
             textAlign="right" textOffsetX={-10}
-            title="HEAVYWEIGHT COTTON"
+            title="MID WEIGHT FABRIC"
             subtitle="SOFT HAND FEEL. BUILT TO LAST."
           />
           
@@ -148,34 +148,25 @@ const PeelReveal = () => {
             top="30%" left="55%"
             lineEndX={60} lineEndY={-60} horizontalLength={40}
             textAlign="left" textOffsetX={10}
-            title="RIBBED COLLAR"
-            subtitle="STRUCTURED. DURABLE. MADE TO HOLD SHAPE."
+            title="THICK RIBBING"
+            subtitle="MOCK NECK"
           />
           <Annotation 
             mode="dark"
             top="45%" left="52%"
             lineEndX={90} lineEndY={-10} horizontalLength={40}
             textAlign="left" textOffsetX={10}
-            title="SIGNATURE BRANDING"
-            subtitle="MINIMAL. RECOGNIZABLE."
+            title="W LOGO"
+            subtitle="VENTILATION HOLES"
           />
           <Annotation 
             mode="dark"
             top="60%" left="62%"
             lineEndX={60} lineEndY={10} horizontalLength={50}
             textAlign="left" textOffsetX={10}
-            title="DOUBLE STITCHING"
-            subtitle="REINFORCED SEAMS. BUILT FOR LONGEVITY."
+            title="RAW HEM"
+            subtitle="DISTRESSED EDGE"
           />
-          <Annotation 
-            mode="dark"
-            top="85%" left="58%"
-            lineEndX={50} lineEndY={20} horizontalLength={50}
-            textAlign="left" textOffsetX={10}
-            title="PRE SHRUNK FABRIC"
-            subtitle="MAINTAINS FIT OVER TIME"
-          />
-          
           <div className="corner-markers">
             <div className="cm-top-left">
               <span className="cm-cross">+</span>
