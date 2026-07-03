@@ -34,14 +34,12 @@
 
 .accordion-title {
   font-weight: 500;
-  pointer-events: none;
 }
 
 .accordion-icon {
   font-size: 1.25rem;
   font-weight: 300;
   transition: transform 0.3s ease;
-  pointer-events: none;
 }
 
 .accordion-content {
