@@ -62,15 +62,15 @@ const MarqueeBanner = () => {
             top="31%" left="50%"
             lineEndX={-30} lineEndY={-15} horizontalLength={20}
             textAlign="right" textOffsetX={-5}
-            title="DOUBLE COLLAR"
-            subtitle="MADE TO HOLD SHAPE"
+            title="THICK RIBBING"
+            subtitle="MOCK NECK"
           />
           <Annotation 
             mode="light"
             top="50%" left="43%"
             lineEndX={-45} lineEndY={10} horizontalLength={25}
             textAlign="right" textOffsetX={-5}
-            title="ACID WASH FINISH"
+            title="MINERAL WASH"
             subtitle="GARMENT DYED"
           />
           <Annotation 
@@ -78,16 +78,24 @@ const MarqueeBanner = () => {
             top="48%" left="67%"
             lineEndX={35} lineEndY={-10} horizontalLength={20}
             textAlign="left" textOffsetX={5}
-            title="VENTED DETAILING"
-            subtitle="PERFORATED BACK PANEL"
+            title="W LOGO"
+            subtitle="VENTILATION HOLES"
           />
           <Annotation 
             mode="light"
             top="72%" left="68%"
             lineEndX={35} lineEndY={15} horizontalLength={20}
             textAlign="left" textOffsetX={5}
-            title="460 GSM COTTON"
+            title="MID WEIGHT FABRIC"
             subtitle="OVERSIZED FIT"
+          />
+          <Annotation 
+            mode="light"
+            top="78%" left="35%"
+            lineEndX={-35} lineEndY={15} horizontalLength={25}
+            textAlign="right" textOffsetX={-5}
+            title="RAW HEM"
+            subtitle="DISTRESSED EDGE"
           />
         </div>
         <div className="banner-logo">
