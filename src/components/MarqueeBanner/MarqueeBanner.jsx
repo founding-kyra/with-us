@@ -83,7 +83,7 @@ const MarqueeBanner = () => {
           />
           <Annotation 
             mode="light"
-            top="68%" left="65%"
+            top="72%" left="68%"
             lineEndX={35} lineEndY={15} horizontalLength={20}
             textAlign="left" textOffsetX={5}
             title="460 GSM COTTON"
