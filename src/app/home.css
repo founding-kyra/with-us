@@ -20,6 +20,9 @@
   flex-direction: column;
   align-items: center;
   margin: 0;
+  font-size: clamp(5rem, 16vw, 18rem);
+  white-space: nowrap;
+  color: #afa69c;
 }
 
 .hero-top {
