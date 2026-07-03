@@ -1,11 +1,7 @@
+"use client";
 import "./client-services.css";
 import Copy from "@/components/Copy/Copy";
 import Accordion from "@/components/Accordion/Accordion";
-
-export const metadata = {
-  title: "Client Services | WITHUS",
-  description: "Customer service and FAQ for WITHUS.",
-};
 
 const faqData = [
   {
