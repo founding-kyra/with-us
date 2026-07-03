@@ -10,9 +10,14 @@
   top: 20svh;
   left: 50%;
   transform: translateX(-50%);
-  width: 70%;
+  width: 90%;
   text-align: center;
   will-change: transform;
+}
+
+.hero .hero-header h1 {
+  font-size: clamp(5rem, 16vw, 18rem);
+  white-space: nowrap;
 }
 
 .hero .hero-img {
