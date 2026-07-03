@@ -5,8 +5,7 @@ import "./Accordion.css";
 const Accordion = ({ items }) => {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const toggleAccordion = (index, e) => {
-    e.stopPropagation();
+  const toggleAccordion = (index) => {
     setOpenIndex((prev) => (prev === index ? null : index));
   };
 
@@ -16,15 +15,22 @@ const Accordion = ({ items }) => {
         const isOpen = openIndex === index;
         return (
           <div className={`accordion-item ${isOpen ? "open" : ""}`} key={index}>
-            <button
-              type="button"
+            <div
               className="accordion-header"
-              onClick={(e) => toggleAccordion(index, e)}
+              onClick={() => toggleAccordion(index)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  toggleAccordion(index);
+                }
+              }}
+              role="button"
+              tabIndex={0}
               aria-expanded={isOpen}
             >
               <span className="accordion-title">{item.question}</span>
               <span className="accordion-icon">{isOpen ? "—" : "+"}</span>
-            </button>
+            </div>
             <div
               className="accordion-content"
               style={{
