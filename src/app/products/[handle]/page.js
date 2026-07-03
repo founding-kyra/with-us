@@ -276,9 +276,9 @@ export default function Unit({ params }) {
               </Copy>
               <Copy>
                 <p className="bodyCopy lg">
-                  We accept returns on unworn items within 14 days of delivery. To
-                  initiate a return, please contact our support team with your
-                  order number. Refunds are issued to the original payment method
+                  We accept returns on unworn items within 30 days of delivery. To
+                  initiate a return, please email hello@withusworld.com for a return label
+                  with your order number. Refunds are issued to the original payment method
                   once the item is received and inspected.
                 </p>
               </Copy>
