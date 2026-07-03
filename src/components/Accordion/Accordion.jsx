@@ -5,9 +5,9 @@ import "./Accordion.css";
 const Accordion = ({ items }) => {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const toggleAccordion = (index) => {
-    console.log("Toggling accordion index:", index);
-    setOpenIndex(openIndex === index ? null : index);
+  const toggleAccordion = (index, e) => {
+    e.stopPropagation();
+    setOpenIndex((prev) => (prev === index ? null : index));
   };
 
   return (
@@ -19,7 +19,7 @@ const Accordion = ({ items }) => {
             <button
               type="button"
               className="accordion-header"
-              onClick={() => toggleAccordion(index)}
+              onClick={(e) => toggleAccordion(index, e)}
               aria-expanded={isOpen}
             >
               <span className="accordion-title">{item.question}</span>
@@ -28,8 +28,9 @@ const Accordion = ({ items }) => {
             <div
               className="accordion-content"
               style={{
-                maxHeight: isOpen ? "1000px" : "0px",
+                maxHeight: isOpen ? "2000px" : "0px",
                 opacity: isOpen ? 1 : 0,
+                pointerEvents: isOpen ? "auto" : "none",
               }}
             >
               <div className="accordion-content-inner">
