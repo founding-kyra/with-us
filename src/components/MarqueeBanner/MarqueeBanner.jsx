@@ -59,7 +59,7 @@ const MarqueeBanner = () => {
           <img src="/marquee-banner/2 (3).png" alt="" />
           <Annotation 
             mode="light"
-            top="31%" left="48%"
+            top="31%" left="46%"
             lineEndX={-30} lineEndY={-15} horizontalLength={20}
             textAlign="right" textOffsetX={-5}
             title="DOUBLE COLLAR"
