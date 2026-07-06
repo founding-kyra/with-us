@@ -16,6 +16,28 @@
   z-index: -1;
 }
 
+.peel-reveal .peel-reveal-img-container .pr-cover-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  aspect-ratio: 1672 / 941;
+}
+
+@media (min-aspect-ratio: 1672/941) {
+  .peel-reveal .peel-reveal-img-container .pr-cover-wrapper {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 1672/941) {
+  .peel-reveal .peel-reveal-img-container .pr-cover-wrapper {
+    width: auto;
+    height: 100%;
+  }
+}
+
 .peel-reveal .peel-reveal-img-container .pr-img {
   position: absolute;
   top: 0;
