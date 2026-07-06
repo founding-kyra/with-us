@@ -110,7 +110,13 @@ const ShoppingCart = () => {
               </div>
               <button 
                 className="cart-checkout" 
-                onClick={() => checkoutUrl && (window.location.href = checkoutUrl)}
+                onClick={() => {
+                  if (checkoutUrl) {
+                    const url = new URL(checkoutUrl);
+                    url.searchParams.set('return_to', window.location.origin);
+                    window.location.href = url.toString();
+                  }
+                }}
                 disabled={!checkoutUrl}
               >
                 Checkout
