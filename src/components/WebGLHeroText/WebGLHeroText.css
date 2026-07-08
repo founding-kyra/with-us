@@ -1,0 +1,26 @@
+.webgl-hero-text-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0; /* Ensures it sits behind the hero image but above the grid */
+}
+
+.webgl-hero-text-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Force spans inside the hidden h1 to inherit the proper typography */
+.hero-header h1 span {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}

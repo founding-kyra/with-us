@@ -15,6 +15,7 @@ import Annotation from "@/components/Annotation/Annotation";
 
 import Copy from "@/components/Copy/Copy";
 import Product from "@/components/Product/Product";
+import WebGLHeroText from "@/components/WebGLHeroText/WebGLHeroText";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -76,15 +77,9 @@ export default function Index() {
           opacity={0.9}
           delay={isInitialLoad ? 6 : 1.125}
         />
-        <div className="container">
-          <div className="hero-header" ref={heroHeaderRef}>
-            <img
-              src="/logo/logo-withus-spraypaint.gif"
-              alt="You're WithUs"
-              className="hero-spraypaint"
-            />
+          <div className="hero-header-webgl" ref={heroHeaderRef} style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
+            <WebGLHeroText />
           </div>
-        </div>
         <div className="hero-img" ref={heroImgRef}>
           <img src="/home/451079DD-E9EE-45BB-925B-7A58D5D5C1B2.webp" alt="" />
 

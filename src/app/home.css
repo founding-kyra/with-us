@@ -7,7 +7,7 @@
 
 .hero .hero-header {
   position: absolute;
-  top: 5svh;
+  top: 28svh;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -21,13 +21,7 @@
   color: #afa69c;
 }
 
-.hero .hero-header .hero-spraypaint {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
+
 
 .hero .hero-img {
   position: absolute;
