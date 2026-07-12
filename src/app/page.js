@@ -6,7 +6,7 @@ import Link from "next/link";
 import { getProducts } from "@/lib/shopify";
 import Preloader, { isInitialLoad } from "@/components/Preloader/Preloader";
 import DotMatrix from "@/components/DotMatrix/DotMatrix";
-import BrandIcon from "@/components/BrandIcon/BrandIcon";
+
 import MarqueeBanner from "@/components/MarqueeBanner/MarqueeBanner";
 import TextBlock from "@/components/TextBlock/TextBlock";
 import PeelReveal from "@/components/PeelReveal/PeelReveal";
@@ -15,7 +15,7 @@ import Annotation from "@/components/Annotation/Annotation";
 
 import Copy from "@/components/Copy/Copy";
 import Product from "@/components/Product/Product";
-import WebGLHeroText from "@/components/WebGLHeroText/WebGLHeroText";
+
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -77,9 +77,9 @@ export default function Index() {
           opacity={0.9}
           delay={isInitialLoad ? 6 : 1.125}
         />
-          <div className="hero-header-webgl" ref={heroHeaderRef} style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
-            <WebGLHeroText />
-          </div>
+        <div className="hero-logo-bg" ref={heroHeaderRef}>
+          <img src="/logo/logo-with-us-icon-dark.svg" alt="WithUs Logo" />
+        </div>
         <div className="hero-img" ref={heroImgRef}>
           <img src="/home/451079DD-E9EE-45BB-925B-7A58D5D5C1B2.webp" alt="" />
 
@@ -94,7 +94,7 @@ export default function Index() {
               <h3>BUILT FOR THOSE WHO WERE OVERLOOKED OR UNDERESTIMATED</h3>
             </Copy>
             <div className="about-icon">
-              <BrandIcon />
+              <img src="/logo/logo-withus-spraypaint.gif" alt="WithUs Spraypaint Logo" />
             </div>
           </div>
         </div>

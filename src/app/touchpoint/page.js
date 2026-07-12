@@ -72,18 +72,10 @@ export default function Touchpoint() {
             <div className="contact-meta">
               <div className="contact-meta-block">
                 <Copy animateOnScroll={false} delay={0.9}>
-                  <p className="bodyCopy">External Comms Protocol</p>
-                </Copy>
-                <Copy animateOnScroll={false} delay={1}>
-                  <h4>hello@withus.world</h4>
-                </Copy>
-              </div>
-              <div className="contact-meta-block">
-                <Copy animateOnScroll={false} delay={1.1}>
                   <p className="bodyCopy">Dispatch Inquiry System</p>
                 </Copy>
-                <Copy animateOnScroll={false} delay={1.2}>
-                  <h4>hello@withus.world</h4>
+                <Copy animateOnScroll={false} delay={1}>
+                  <h4>hello@withusla.com</h4>
                 </Copy>
               </div>
             </div>

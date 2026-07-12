@@ -9,7 +9,7 @@ const faqData = [
     items: [
       {
         question: "Where's my order?",
-        answer: <p>A shipping confirmation with tracking arrives the moment your order leaves our Los Angeles facility. For any order questions, please email hello@withus.world.</p>
+        answer: <p>A shipping confirmation with tracking arrives the moment your order leaves our Los Angeles facility. For any order questions, please email hello@withusla.com.</p>
       },
       {
         question: "Can I combine items into one shipment?",
@@ -17,7 +17,7 @@ const faqData = [
       },
       {
         question: "Can I change or cancel my order?",
-        answer: <p>Processing runs up to 4 business days, so there is a short window. Orders can be changed or canceled within 1 hour of placement. Please email us immediately at hello@withus.world.</p>
+        answer: <p>Processing runs up to 4 business days, so there is a short window. Orders can be changed or canceled within 1 hour of placement. Please email us immediately at hello@withusla.com.</p>
       }
     ]
   },
@@ -84,7 +84,7 @@ const faqData = [
       },
       {
         question: "How do I start a return?",
-        answer: <p>Please email hello@withus.world with your order number to receive a Return Merchandise Authorization (RMA) and our LA return address.</p>
+        answer: <p>Please email hello@withusla.com with your order number to receive a Return Merchandise Authorization (RMA) and our LA return address.</p>
       },
       {
         question: "Which items are final sale?",
@@ -101,7 +101,7 @@ const faqData = [
     items: [
       {
         question: "How do I reach you?",
-        answer: <p>You can reach us through our <a href="/touchpoint">Contact Us</a> page or by emailing hello@withus.world directly for everything from sizing to shipping.</p>
+        answer: <p>You can reach us through our <a href="/touchpoint">Contact Us</a> page or by emailing hello@withusla.com directly for everything from sizing to shipping.</p>
       }
     ]
   }

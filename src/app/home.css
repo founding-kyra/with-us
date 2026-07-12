@@ -15,10 +15,25 @@
   will-change: transform;
 }
 
-.hero .hero-header h1 {
-  font-size: clamp(5rem, 16vw, 18rem);
-  white-space: nowrap;
-  color: #afa69c;
+.hero .hero-logo-bg {
+  position: absolute;
+  top: 15svh;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 90%;
+  height: 60svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: transform;
+}
+
+.hero .hero-logo-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.7;
 }
 
 
@@ -75,14 +90,16 @@
 }
 
 .about .about-copy .about-icon {
-  width: 25rem;
-  height: 25rem;
+  width: 100%;
+  max-width: 45rem;
+  height: auto;
+  margin-top: 2rem;
 }
 
-.about .about-copy .about-icon svg {
+.about .about-copy .about-icon img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 .featured-products {
@@ -182,8 +199,9 @@
   }
 
   .about .about-copy .about-icon {
-    height: 10rem;
-    width: auto;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
   }
 }
 
