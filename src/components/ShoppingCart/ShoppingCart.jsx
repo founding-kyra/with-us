@@ -5,19 +5,17 @@ import { useState, useEffect } from "react";
 import { useCartStore, useCartCount, useCartSubtotal } from "@/store/cartStore";
 
 const ShoppingCart = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const isCartOpen = useCartStore((state) => state.isCartOpen);
+  const toggleCart = useCartStore((state) => state.toggleCart);
+  const closeCart = useCartStore((state) => state.closeCart);
   const cartItems = useCartStore((state) => state.cartItems);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const cartCount = useCartCount();
   const subtotal = useCartSubtotal();
   const checkoutUrl = useCartStore((state) => state.checkoutUrl);
 
-  const toggleCart = () => {
-    setIsOpen(!isOpen);
-  };
-
   useEffect(() => {
-    if (isOpen) {
+    if (isCartOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -25,7 +23,7 @@ const ShoppingCart = () => {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isOpen]);
+  }, [isCartOpen]);
 
   return (
     <div className="shopping-cart-container">
@@ -35,7 +33,7 @@ const ShoppingCart = () => {
       </button>
 
       <div
-        className={`cart-sidebar ${isOpen ? "open" : ""}`}
+        className={`cart-sidebar ${isCartOpen ? "open" : ""}`}
         onWheel={(e) => {
           const target = e.currentTarget;
           const cartItems = target.querySelector(".cart-items");
@@ -53,7 +51,7 @@ const ShoppingCart = () => {
         <div className="cart-sidebar-content">
           <div className="cart-header">
             <h2>Bag</h2>
-            <button className="cart-close" onClick={toggleCart}>
+            <button className="cart-close" onClick={closeCart}>
               Close
             </button>
           </div>

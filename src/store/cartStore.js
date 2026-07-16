@@ -5,6 +5,11 @@ export const useCartStore = create((set, get) => ({
   cartId: null,
   checkoutUrl: null,
   cartItems: [],
+  isCartOpen: false,
+
+  openCart: () => set({ isCartOpen: true }),
+  closeCart: () => set({ isCartOpen: false }),
+  toggleCart: () => set((state) => ({ isCartOpen: !state.isCartOpen })),
 
   addToCart: async (product) => {
     let { cartId } = get();
@@ -31,11 +36,11 @@ export const useCartStore = create((set, get) => ({
           }
           return item;
         });
-        return { cartItems: updatedItems };
+        return { cartItems: updatedItems, isCartOpen: true };
       }
 
       const newItem = { ...product, quantity: 1 };
-      return { cartItems: [...state.cartItems, newItem] };
+      return { cartItems: [...state.cartItems, newItem], isCartOpen: true };
     });
 
     // Add to Shopify cart if variant ID is present
