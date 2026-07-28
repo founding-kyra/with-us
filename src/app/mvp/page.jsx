@@ -301,8 +301,7 @@ export default function MVPPage() {
                   <div className="f full">
                     <label>Size <b className="req">*</b></label>
                     <div className="chips">
-                      <label className="chip"><input type="radio" name="size" value="XS" required /><span>XS</span></label>
-                      <label className="chip"><input type="radio" name="size" value="S" /><span>S</span></label>
+                      <label className="chip"><input type="radio" name="size" value="S" required /><span>S</span></label>
                       <label className="chip"><input type="radio" name="size" value="M" /><span>M</span></label>
                       <label className="chip"><input type="radio" name="size" value="L" /><span>L</span></label>
                       <label className="chip"><input type="radio" name="size" value="XL" /><span>XL</span></label>
