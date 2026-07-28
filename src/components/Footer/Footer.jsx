@@ -33,7 +33,11 @@ const Footer = () => {
                 >
                   Instagram
                 </a>
-
+              </div>
+              <div className="footer-affiliate-cta" style={{ marginTop: '1.5rem' }}>
+                <Link href="/mvp" className="footer-affiliate-btn">
+                  Become an Affiliate
+                </Link>
               </div>
             </div>
 

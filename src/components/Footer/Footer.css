@@ -98,3 +98,22 @@ footer .footer-row:nth-child(2) .footer-copyright p:nth-child(2) {
     margin-top: -40svh;
   }
 }
+
+footer .footer-affiliate-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.25rem;
+  border: 1px solid currentColor;
+  color: inherit;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+footer .footer-affiliate-btn:hover {
+  background-color: var(--base-500, #000); /* Fallback to black if no var */
+  color: var(--base-100, #fff);
+  border-color: var(--base-500, #000);
+}

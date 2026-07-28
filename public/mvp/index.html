@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MVPs — With Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400;75..125,500;75..125,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E0E0D;
+  --chalk:#EFEEEA;
+  --mid:#8A8880;
+  --line:#C9C7C0;
+  --line-dark:#2E2E2C;
+  --shell:56rem;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--chalk);color:var(--ink);
+  font-family:'Archivo',system-ui,sans-serif;
+  font-size:16px;line-height:1.55;
+  font-variation-settings:'wdth' 100;
+}
+
+/* ---------- utility type ---------- */
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;text-transform:uppercase;letter-spacing:.14em;font-size:.62rem}
+.wide{font-variation-settings:'wdth' 118;font-weight:700;text-transform:uppercase;letter-spacing:-.01em;line-height:.92}
+
+/* ---------- progress rail ---------- */
+.rail{position:sticky;top:0;z-index:20;background:var(--chalk);border-bottom:1px solid var(--line)}
+.rail-in{max-width:var(--shell);margin:0 auto;padding:.7rem 1.5rem;display:flex;align-items:center;gap:1rem}
+.rail .mono{color:var(--mid);white-space:nowrap}
+.bar{flex:1;height:2px;background:var(--line);position:relative}
+.bar span{position:absolute;inset:0 auto 0 0;width:0;background:var(--ink);transition:width .35s ease}
+
+/* ---------- hero ---------- */
+header{max-width:var(--shell);margin:0 auto;padding:5rem 1.5rem 3.5rem}
+.eyebrow{color:var(--mid);margin-bottom:2.5rem}
+h1{font-size:clamp(4rem,17vw,10.5rem);margin-bottom:1.5rem}
+.lede{font-size:clamp(1.05rem,2.4vw,1.4rem);max-width:34ch;line-height:1.35;font-weight:500}
+.terms{display:flex;flex-wrap:wrap;gap:0 2.5rem;margin-top:3rem;border-top:1px solid var(--line);padding-top:1.25rem}
+.terms div{padding-right:2.5rem}
+.terms dt{color:var(--mid);margin-bottom:.35rem}
+.terms dd{font-weight:500;font-size:.95rem}
+
+/* ---------- form sections ---------- */
+main{max-width:var(--shell);margin:0 auto;padding:0 1.5rem 6rem}
+section{border-top:1px solid var(--line);padding:3rem 0;display:grid;grid-template-columns:5.5rem 1fr;gap:0 2rem}
+.num{font-variation-settings:'wdth' 62;font-weight:700;font-size:3.25rem;line-height:.8;color:var(--line)}
+section[data-done="1"] .num{color:var(--ink)}
+.head h2{font-size:1.5rem;margin-bottom:.3rem;font-variation-settings:'wdth' 112;font-weight:700;text-transform:uppercase;letter-spacing:-.005em}
+.head p{color:var(--mid);font-size:.9rem;max-width:44ch;margin-bottom:2rem}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.75rem 1.5rem}
+.f{display:flex;flex-direction:column}
+.f.full{grid-column:1/-1}
+label{color:var(--mid);margin-bottom:.5rem;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.14em;font-size:.62rem}
+label .req{color:var(--ink)}
+input,select,textarea{
+  font:inherit;font-size:1rem;color:var(--ink);
+  background:transparent;border:0;border-bottom:1px solid var(--line);
+  padding:.45rem 0;border-radius:0;
+}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(100% - 9px) 55%,calc(100% - 4px) 55%;background-size:5px 5px;background-repeat:no-repeat;padding-right:1.5rem}
+textarea{resize:vertical;min-height:3.5rem;line-height:1.5}
+input:focus,select:focus,textarea:focus{outline:0;border-bottom-color:var(--ink);box-shadow:0 1px 0 0 var(--ink)}
+input::placeholder,textarea::placeholder{color:var(--line)}
+
+/* ---------- size chips ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.chip span{display:block;padding:.5rem 1rem;border:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;cursor:pointer;transition:.15s}
+.chip input:checked+span{background:var(--ink);color:var(--chalk);border-color:var(--ink)}
+.chip input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+
+/* ---------- agreement ---------- */
+.checks{display:flex;flex-direction:column;gap:1rem}
+.check{display:grid;grid-template-columns:1.1rem 1fr;gap:.9rem;align-items:start;cursor:pointer}
+.check input{appearance:none;width:1.1rem;height:1.1rem;border:1px solid var(--ink);margin-top:.2rem;cursor:pointer;flex:none}
+.check input:checked{background:var(--ink);box-shadow:inset 0 0 0 3px var(--chalk)}
+.check input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.check span{font-size:.92rem;line-height:1.45}
+
+/* ---------- submit ---------- */
+.submit{border-top:1px solid var(--line);padding-top:2.5rem;display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem}
+button{
+  font:inherit;font-variation-settings:'wdth' 115;font-weight:700;text-transform:uppercase;
+  letter-spacing:.02em;font-size:1.05rem;
+  background:var(--ink);color:var(--chalk);border:1px solid var(--ink);
+  padding:1.1rem 3rem;cursor:pointer;transition:.18s;
+}
+button:hover{background:transparent;color:var(--ink)}
+button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.fine{color:var(--mid);font-size:.8rem;max-width:30ch}
+
+/* ---------- confirmation card ---------- */
+.done{display:none;max-width:var(--shell);margin:0 auto;padding:5rem 1.5rem 8rem}
+.done.on{display:block}
+.card{background:var(--ink);color:var(--chalk);padding:2.5rem;max-width:26rem}
+.card .mono{color:var(--mid)}
+.card .name{font-size:2.5rem;margin:1.75rem 0 .25rem;font-variation-settings:'wdth' 115;font-weight:700;text-transform:uppercase;line-height:.95}
+.card hr{border:0;border-top:1px solid var(--line-dark);margin:1.75rem 0}
+.card dl{display:grid;grid-template-columns:auto 1fr;gap:.6rem 1.5rem;font-size:.85rem}
+.card dt{color:var(--mid);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.12em;font-size:.6rem;align-self:center}
+.done h2{font-size:clamp(2.5rem,7vw,4.5rem);margin-bottom:1rem}
+.done>p{max-width:38ch;color:var(--mid);margin-bottom:3rem}
+
+@media(max-width:680px){
+  section{grid-template-columns:1fr;gap:1rem}
+  .num{font-size:2.25rem}
+  .grid{grid-template-columns:1fr}
+  header{padding-top:3rem}
+  .terms div{padding-right:1.5rem}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="rail">
+  <div class="rail-in">
+    <span class="mono">MVPs — Application</span>
+    <div class="bar"><span id="fill"></span></div>
+    <span class="mono" id="pct">0%</span>
+  </div>
+</div>
+
+<header>
+  <p class="eyebrow mono">With Us / Los Angeles / Affiliate Program</p>
+  <h1 class="wide">WITH US MVPs</h1>
+  <p class="lede">A small roster of people who rep With Us before anyone else.</p>
+  <dl class="terms">
+    <div><dt class="mono">The kit</dt><dd>One seasonal article, free</dd></div>
+    <div><dt class="mono">Shipping</dt><dd>On us</dd></div>
+    <div><dt class="mono">Your part</dt><dd>Post it, tag us @withus_la</dd></div>
+    <div><dt class="mono">Then</dt><dd>Perks scale with performance</dd></div>
+  </dl>
+</header>
+
+<main id="form">
+
+  <section>
+    <div class="num">01</div>
+    <div class="head">
+      <h2>Who you are</h2>
+      <p>So we know who we're talking to.</p>
+      <div class="grid">
+        <div class="f"><label>First name <b class="req">*</b></label><input name="first" required></div>
+        <div class="f"><label>Last name <b class="req">*</b></label><input name="last" required></div>
+        <div class="f"><label>Email <b class="req">*</b></label><input type="email" name="email" required></div>
+        <div class="f"><label>Phone <b class="req">*</b></label><input type="tel" name="phone" required></div>
+        <div class="f"><label>City <b class="req">*</b></label><input name="city" required></div>
+        <div class="f"><label>State / Region <b class="req">*</b></label><input name="region" required></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="num">02</div>
+    <div class="head">
+      <h2>Where you post</h2>
+      <p>This is what we look at. Handles must be public.</p>
+      <div class="grid">
+        <div class="f"><label>Instagram handle <b class="req">*</b></label><input name="ig" placeholder="@" required></div>
+        <div class="f"><label>TikTok handle</label><input name="tt" placeholder="@"></div>
+        <div class="f"><label>Anywhere else</label><input name="other" placeholder="YouTube, Substack, link"></div>
+        <div class="f"><label>Combined following <b class="req">*</b></label>
+          <select name="reach" required>
+            <option value="">Select</option>
+            <option>Under 1,000</option><option>1,000 – 5,000</option>
+            <option>5,000 – 25,000</option><option>25,000 – 100,000</option>
+            <option>100,000+</option>
+          </select>
+        </div>
+        <div class="f full"><label>What do you post about? <b class="req">*</b></label>
+          <textarea name="niche" rows="2" placeholder="Two sentences is plenty." required></textarea></div>
+        <div class="f full"><label>How would you shoot this kit? <b class="req">*</b></label>
+          <textarea name="idea" rows="2" placeholder="Where, what format, what vibe." required></textarea></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="num">03</div>
+    <div class="head">
+      <h2>Your kit</h2>
+      <p>Pick what you'll actually wear. Sizes run true — if you're between, size up.</p>
+      <div class="grid">
+        <!-- REPLACE these options with live Shopify product names -->
+        <div class="f"><label>First choice <b class="req">*</b></label>
+          <select name="pick1" required>
+            <option value="">Select a piece</option>
+            <option>Mock Vent Tee — Sunset</option><option>Mock Vent Tee — Night Sky</option>
+            <option>Mesh 2-in-1 Shorts</option><option>New Era 59Fifty Fitted Hat</option>
+          </select>
+        </div>
+        <div class="f"><label>Backup, if sold out <b class="req">*</b></label>
+          <select name="pick2" required>
+            <option value="">Select a piece</option>
+            <option>Mock Vent Tee — Sunset</option><option>Mock Vent Tee — Night Sky</option>
+            <option>Mesh 2-in-1 Shorts</option><option>New Era 59Fifty Fitted Hat</option>
+          </select>
+        </div>
+        <div class="f full"><label>Size <b class="req">*</b></label>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="size" value="XS" required><span>XS</span></label>
+            <label class="chip"><input type="radio" name="size" value="S"><span>S</span></label>
+            <label class="chip"><input type="radio" name="size" value="M"><span>M</span></label>
+            <label class="chip"><input type="radio" name="size" value="L"><span>L</span></label>
+            <label class="chip"><input type="radio" name="size" value="XL"><span>XL</span></label>
+            <label class="chip"><input type="radio" name="size" value="2XL"><span>2XL</span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="num">04</div>
+    <div class="head">
+      <h2>Where to send it</h2>
+      <p>We ship it to you directly. Double-check this one — we can't reroute a package once it's out.</p>
+      <div class="grid">
+        <div class="f full"><label>Name on the package <b class="req">*</b></label><input name="ship_name" required></div>
+        <div class="f full"><label>Street address <b class="req">*</b></label><input name="addr1" required></div>
+        <div class="f full"><label>Apartment, unit, floor</label><input name="addr2"></div>
+        <div class="f"><label>City <b class="req">*</b></label><input name="ship_city" required></div>
+        <div class="f"><label>State <b class="req">*</b></label><input name="ship_state" required></div>
+        <div class="f"><label>ZIP <b class="req">*</b></label><input name="zip" required></div>
+        <div class="f"><label>Country <b class="req">*</b></label><input name="country" value="United States" required></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="num">05</div>
+    <div class="head">
+      <h2>The deal</h2>
+      <p>Short, and we hold you to it.</p>
+      <div class="checks">
+        <label class="check"><input type="checkbox" name="a1" required><span>I'll post the fit at least <b>three times</b> in my first 30 days.</span></label>
+        <label class="check"><input type="checkbox" name="a2" required><span>I'll tag <b>@withus_la</b> in every post and story.</span></label>
+        <label class="check"><input type="checkbox" name="a3" required><span>With Us can repost and reuse my content across their channels and ads.</span></label>
+        <label class="check"><input type="checkbox" name="a4" required><span>One free fit per person. Item not for resale.</span></label>
+        <label class="check"><input type="checkbox" name="a5"><span>Send me texts and emails about drops. (Optional)</span></label>
+      </div>
+    </div>
+  </section>
+
+  <div class="submit">
+    <button id="go">Apply to the roster</button>
+    <p class="fine">We review every application by hand. If you're in, you'll hear from us within 5 business days.</p>
+  </div>
+</main>
+
+<div class="done" id="done">
+  <h2 class="wide">You're in review.</h2>
+  <p>We read every one of these. If it's a fit, your article ships within a week of approval — nothing else for you to do.</p>
+  <div class="card">
+    <p class="mono">With Us — MVP Roster</p>
+    <p class="name" id="cardName">—</p>
+    <p class="mono" id="cardHandle">—</p>
+    <hr>
+    <dl>
+      <dt>Status</dt><dd>Pending review</dd>
+      <dt>Kit</dt><dd id="cardKit">—</dd>
+      <dt>Size</dt><dd id="cardSize">—</dd>
+      <dt>Ships to</dt><dd id="cardCity">—</dd>
+    </dl>
+  </div>
+</div>
+
+<script>
+(function(){
+  var main=document.getElementById('form'),
+      fields=main.querySelectorAll('[required]'),
+      fill=document.getElementById('fill'),
+      pct=document.getElementById('pct');
+
+  function done(el){
+    if(el.type==='checkbox')return el.checked;
+    if(el.type==='radio')return !!main.querySelector('[name="'+el.name+'"]:checked');
+    return el.value.trim()!=='';
+  }
+  function tick(){
+    var names={},total=0,filled=0;
+    fields.forEach(function(el){
+      if(el.type==='radio'){ if(names[el.name])return; names[el.name]=1; }
+      total++; if(done(el))filled++;
+    });
+    var p=Math.round(filled/total*100);
+    fill.style.width=p+'%'; pct.textContent=p+'%';
+    main.querySelectorAll('section').forEach(function(s){
+      var req=s.querySelectorAll('[required]'),ok=true;
+      req.forEach(function(el){ if(!done(el))ok=false; });
+      s.dataset.done=(req.length&&ok)?'1':'0';
+    });
+  }
+  main.addEventListener('input',tick);
+  main.addEventListener('change',tick);
+  tick();
+
+  document.getElementById('go').addEventListener('click',function(){
+    var bad=null;
+    fields.forEach(function(el){ if(!bad&&!done(el))bad=el; });
+    if(bad){ bad.focus(); bad.scrollIntoView({block:'center',behavior:'smooth'}); return; }
+    var v=function(n){var e=main.querySelector('[name="'+n+'"]');return e?e.value:''};
+    document.getElementById('cardName').textContent=v('first')+' '+v('last');
+    document.getElementById('cardHandle').textContent=v('ig');
+    document.getElementById('cardKit').textContent=v('pick1');
+    document.getElementById('cardSize').textContent=(main.querySelector('[name=size]:checked')||{}).value||'';
+    document.getElementById('cardCity').textContent=v('ship_city')+', '+v('ship_state');
+    document.querySelector('.rail').style.display='none';
+    document.querySelector('header').style.display='none';
+    main.style.display='none';
+    document.getElementById('done').classList.add('on');
+    window.scrollTo(0,0);
+  });
+})();
+</script>
+</body>
+</html>
