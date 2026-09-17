@@ -3,14 +3,14 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1.15;
   color: white;
   background: #090a0b;
   border-radius: 0.35rem;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    box-shadow 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
 }
 
 .product:hover {
@@ -22,9 +22,7 @@
 .product .product-card-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 40%, rgba(35, 40, 45, 0.6) 0%, rgba(10, 11, 13, 0.95) 75%),
-    url("/home/Codex Image 17 Sept 2026, 11_45_50.png") center/cover no-repeat;
-  mix-blend-mode: color-dodge;
+  background: radial-gradient(circle at 50% 40%, rgba(35, 40, 45, 0.6) 0%, rgba(10, 11, 13, 0.95) 75%);
   opacity: 0.15;
   pointer-events: none;
   z-index: 0;
@@ -126,7 +124,7 @@
   line-height: 1.2;
 }
 
-.product .product-color {
+.product .product-card-color {
   font-size: 0.7rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.6);

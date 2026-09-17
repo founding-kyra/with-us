@@ -111,7 +111,8 @@ const Preloader = () => {
           .to(
             ".preloader-mask",
             {
-              scale: maskScale,
+              scale: 1.5,
+              opacity: 0,
               duration: 1.25,
               ease: "power3.out",
             },

@@ -26,7 +26,12 @@ const Product = ({
   const rawPrice = product.priceRange?.minVariantPrice?.amount || product.price || "100.0";
   const price = Number(rawPrice).toFixed(2);
   const rawImage = product.images?.edges?.[0]?.node?.url || (product.image ? (product.image.startsWith('/') ? product.image : `/products/${product.image}`) : "/product/product_shot_01.webp");
-  const imageUrl = rawImage;
+  
+  let imageUrl = rawImage;
+  if (imageUrl.includes('cdn.shopify.com') && !imageUrl.includes('width=')) {
+    imageUrl += (imageUrl.includes('?') ? '&' : '?') + 'width=800';
+  }
+  
   const variantId = product.variants?.edges?.[0]?.node?.id;
   const handle = product.handle || "unit";
   const href = product.handle ? `/products/${handle}` : "/wardrobe";
@@ -70,7 +75,7 @@ const Product = ({
         <div className="product-info-wrapper">
           <div className="product-text">
             <p className="product-name">{title}</p>
-            <p className="product-color">BLACK</p>
+            <p className="product-card-color">BLACK</p>
             <p className="product-price">${price}</p>
           </div>
           <Link href={href} className="product-action-link" aria-label="View product">

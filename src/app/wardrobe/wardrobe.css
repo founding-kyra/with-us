@@ -96,13 +96,15 @@
 
 .product-list .container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 120vh;
+  margin: 0 auto;
 }
 
 @media (max-width: 1024px) {
   .product-list .container {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

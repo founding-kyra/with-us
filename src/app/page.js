@@ -79,11 +79,8 @@ export default function Index() {
         <div className="hero-bg-img">
           <img src="/home/Codex Image 17 Sept 2026, 05_24_28.jpg" alt="Hero Background" />
         </div>
-        <div className="hero-middle-gif">
-          <img src="/home/3.gif" alt="Hero Background Animation" />
-        </div>
         <div className="hero-img" ref={heroImgRef}>
-          <img src="/home/Codex Image 17 Sept 2026, 12_57_03.png" alt="Hero Model" />
+          <img src="/home/3.gif" alt="Hero Model Animation" />
         </div>
 
       </section>
