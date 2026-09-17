@@ -235,7 +235,7 @@
   left: -10%;
   width: 120%;
   height: 120%;
-  background: url("/home/Codex Image 17 Sept 2026, 11_45_50.png") no-repeat center / cover;
+  background: url("/home/Codex Image 17 Sept 2026, 11_45_50.webp") no-repeat center / cover;
   transform: scaleX(-1) rotate(180deg);
   opacity: 0.07;
   filter: grayscale(75%) contrast(0.85) brightness(1.1);

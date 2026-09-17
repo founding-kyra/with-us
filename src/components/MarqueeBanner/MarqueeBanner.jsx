@@ -48,7 +48,7 @@ const MarqueeBanner = () => {
       </div>
       <div className="banner">
         <div className="banner-bg-img">
-          <img src="/marquee-banner/Codex Image 17 Sept 2026, 04_26_41.png" alt="Banner Background" />
+          <img src="/marquee-banner/Codex Image 17 Sept 2026, 04_26_41.webp" alt="Banner Background" />
         </div>
         <div className="banner-content">
           <Copy type="flicker">
@@ -59,7 +59,7 @@ const MarqueeBanner = () => {
           </Copy>
         </div>
         <div className="banner-img">
-          <img src="/marquee-banner/Codex Image 17 Sept 2026, 04_19_23.png" alt="Product Image" />
+          <img src="/marquee-banner/Codex Image 17 Sept 2026, 04_19_23.webp" alt="Product Image" />
           {/* LEFT UPPER - THICK RIBBING */}
           <Annotation 
             mode="light"

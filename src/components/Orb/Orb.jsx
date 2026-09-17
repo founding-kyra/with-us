@@ -23,7 +23,7 @@ const Orb = ({
     const fetchImages = async () => {
       const data = await getProducts(30);
       const images = data.map(p => p.images?.edges?.[0]?.node?.url).filter(Boolean);
-      setOrbImages(images.length > 0 ? images : ['/products/sunset tee.png', '/products/night sky.png']);
+      setOrbImages(images.length > 0 ? images : ['/products/sunset tee.webp', '/products/night sky.webp']);
       setTimeout(() => setIsReady(true), 0);
     };
     fetchImages();

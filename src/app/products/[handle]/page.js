@@ -176,7 +176,7 @@ export default function Unit({ params }) {
             </div>
           )) || (
             <div className="product-snapshot">
-              <img src="/product/1.jpg" alt="" />
+              <img src="/product/1.webp" alt="" />
             </div>
           )}
           <div className="product-snapshot-minimap">
@@ -186,7 +186,7 @@ export default function Unit({ params }) {
               </div>
             )) || (
               <div className="product-snapshot-minimap-img">
-                <img src="/product/1.jpg" alt="" />
+                <img src="/product/1.webp" alt="" />
               </div>
             )}
           </div>

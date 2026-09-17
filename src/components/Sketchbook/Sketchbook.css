@@ -362,7 +362,7 @@ button{font:inherit}
 .rule{
   display:block;width:min(1080px,86vw);margin:clamp(30px,6vh,64px) auto;
   height:clamp(26px,4vw,46px);
-  background:url(/sketchbook-main/sketchbook/divider.png) center / 100% auto no-repeat;
+  background:url(/sketchbook-main/sketchbook/divider.webp) center / 100% auto no-repeat;
   opacity:.5;
 }
 .rule.short{width:min(420px,52vw);opacity:.4}

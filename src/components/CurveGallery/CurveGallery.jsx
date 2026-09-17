@@ -76,7 +76,7 @@ export default function CurveGallery() {
       // 3. Load Assets
       const textureLoader = new THREE.TextureLoader();
       const textures = Array.from({ length: 15 }, (_, i) => 
-        textureLoader.load(`/curve-gallery/compressed-img/WUS-${i + 1}.jpg`)
+        textureLoader.load(`/curve-gallery/compressed-img/WUS-${i + 1}.webp`)
       );
 
       const files = ['path1', 'path2', 'path3', 'path4', 'path5'];

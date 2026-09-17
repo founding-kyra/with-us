@@ -38,7 +38,7 @@ export default function Index() {
     { id: "3", handle: "mesh-shorts-1", title: "MESH 2-IN-1 SHORTS", price: "130.0", image: "/product/product_shot_03.webp" },
     { id: "4", handle: "new-era-hat", title: "NEW ERA 59FIFTY FITTED HAT", price: "80.0", image: "/product/product_shot_04.webp" },
     { id: "5", handle: "mock-vent-tee-3", title: "MOCK VENT TEE", price: "100.0", image: "/product/product_shot_05.webp" },
-    { id: "6", handle: "mesh-shorts-2", title: "MESH 2-IN-1 SHORTS", price: "130.0", image: "/product/1.jpg" },
+    { id: "6", handle: "mesh-shorts-2", title: "MESH 2-IN-1 SHORTS", price: "130.0", image: "/product/1.webp" },
   ];
 
   useEffect(() => {
@@ -77,10 +77,13 @@ export default function Index() {
 
       <section className="hero" ref={heroSectionRef}>
         <div className="hero-bg-img">
-          <img src="/home/Codex Image 17 Sept 2026, 05_24_28.jpg" alt="Hero Background" />
+          <img src="/home/hero-bg.webp" alt="Hero Background" />
+        </div>
+        <div className="hero-middle-gif">
+          <img src="/home/3.gif" alt="Hero Background Animation" />
         </div>
         <div className="hero-img" ref={heroImgRef}>
-          <img src="/home/3.gif" alt="Hero Model Animation" />
+          <img src="/home/hero-model.webp" alt="Hero Model" />
         </div>
 
       </section>
@@ -97,7 +100,7 @@ export default function Index() {
 
       <section className="featured-products">
         <div className="featured-bg-img">
-          <img src="/home/Codex Image 17 Sept 2026, 11_45_50.png" alt="Smoke Overlay" aria-hidden="true" />
+          <img src="/home/Codex Image 17 Sept 2026, 11_45_50.webp" alt="Smoke Overlay" aria-hidden="true" />
         </div>
         <div className="container">
           <div className="featured-products-header">

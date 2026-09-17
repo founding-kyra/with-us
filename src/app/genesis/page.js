@@ -62,57 +62,57 @@ export default function Genesis() {
         <div className="project-preview-wrapper">
           <div className="preview-col">
             <div className="preview-img">
-              <img src="/Photos 2/WUS-31.jpg" alt="" />
+              <img src="/Photos 2/WUS-31.webp" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/Photos 2/WUS-35.jpg" alt="" />
+              <img src="/Photos 2/WUS-35.webp" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/Photos 2/WUS-41.jpg" alt="" />
+              <img src="/Photos 2/WUS-41.webp" alt="" />
             </div>
           </div>
           <div className="preview-col">
             <div className="preview-img">
-              <img src="/Photos 2/WUS-25.jpg" alt="" />
+              <img src="/Photos 2/WUS-25.webp" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/Photos 2/WUS-16.jpg" alt="" />
+              <img src="/Photos 2/WUS-16.webp" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/Photos 2/WUS-11.jpg" alt="" />
+              <img src="/Photos 2/WUS-11.webp" alt="" />
             </div>
           </div>
           <div className="preview-col main-preview-col">
             <div className="preview-img">
-              <img src="/Photos 2/WUS-10.jpg" alt="" />
+              <img src="/Photos 2/WUS-10.webp" alt="" />
             </div>
             <div className="preview-img main-preview-img">
-              <img src="/Photos 2/Codex Image 17 Sept 2026, 09_09_22.png" alt="" />
+              <img src="/Photos 2/Codex Image 17 Sept 2026, 09_09_22.webp" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/Photos 2/WUS-4.jpg" alt="" />
-            </div>
-          </div>
-          <div className="preview-col">
-            <div className="preview-img">
-              <img src="/Photos 2/WUS-7.jpg" alt="" />
-            </div>
-            <div className="preview-img">
-              <img src="/Photos 2/WUS-27.jpg" alt="" />
-            </div>
-            <div className="preview-img">
-              <img src="/Photos 2/WUS-29.jpg" alt="" />
+              <img src="/Photos 2/WUS-4.webp" alt="" />
             </div>
           </div>
           <div className="preview-col">
             <div className="preview-img">
-              <img src="/Photos 2/WUS-38.jpg" alt="" />
+              <img src="/Photos 2/WUS-7.webp" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/Photos 2/WUS-46.jpg" alt="" />
+              <img src="/Photos 2/WUS-27.webp" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/Photos 2/WUS-8.jpg" alt="" />
+              <img src="/Photos 2/WUS-29.webp" alt="" />
+            </div>
+          </div>
+          <div className="preview-col">
+            <div className="preview-img">
+              <img src="/Photos 2/WUS-38.webp" alt="" />
+            </div>
+            <div className="preview-img">
+              <img src="/Photos 2/WUS-46.webp" alt="" />
+            </div>
+            <div className="preview-img">
+              <img src="/Photos 2/WUS-8.webp" alt="" />
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ export default function Genesis() {
 
       <section className="genesis-hero">
         <div className="gen-hero-img">
-            <img src="/genesis/WUS-23.jpg" alt="" />
+            <img src="/genesis/WUS-23.webp" alt="" />
         </div>
         <div className="container">
           <div className="gen-hero-copy">

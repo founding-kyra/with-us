@@ -82,7 +82,7 @@ export default function Touchpoint() {
           </div>
           <div className="contact-hero-col contact-hero-img-wrapper">
             <div className="contact-hero-img" ref={contactHeroImgRef}>
-              <img src="/contact/sunset tee.png" alt="" />
+              <img src="/contact/sunset tee.webp" alt="" />
             </div>
           </div>
         </div>
@@ -104,7 +104,7 @@ export default function Touchpoint() {
               <h1>Connect to the silent grid</h1>
             </Copy>
             <div className="contact-callout-img">
-              <img src="/contact/1.png" alt="" />
+              <img src="/contact/1.webp" alt="" />
             </div>
           </div>
         </div>

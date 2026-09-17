@@ -23,15 +23,15 @@ export default function Sketchbook() {
 const Q=new URLSearchParams(location.search);
 const DIR='/sketchbook-main/sketchbook/';
 const PAGES=[
-  {file:'marina-bay-sands.png',   title:'Marina Bay Sands',          place:'Bayfront'},
-  {file:'gardens-by-the-bay.png', title:'Gardens by the Bay',        place:'Supertree Grove'},
-  {file:'merlion.png',            title:'The Merlion',               place:'Merlion Park'},
-  {file:'buddha-tooth.png',       title:'Buddha Tooth Relic Temple', place:'Chinatown'},
-  {file:'joo-chiat.png',          title:'Joo Chiat Shophouses',      place:'Katong'},
-  {file:'lau-pa-sat.png',         title:'Lau Pa Sat',                place:'Raffles Quay'},
-  {file:'marina-bay-skyline.png', title:'Marina Bay Skyline',        place:'The Bay'},
-  {file:'singapore-river.png',    title:'Singapore River',           place:'Boat Quay'},
-  {file:'botanic-gardens.png',    title:'Botanic Gardens',           place:'Tanglin'}
+  {file:'marina-bay-sands.webp',   title:'Marina Bay Sands',          place:'Bayfront'},
+  {file:'gardens-by-the-bay.webp', title:'Gardens by the Bay',        place:'Supertree Grove'},
+  {file:'merlion.webp',            title:'The Merlion',               place:'Merlion Park'},
+  {file:'buddha-tooth.webp',       title:'Buddha Tooth Relic Temple', place:'Chinatown'},
+  {file:'joo-chiat.webp',          title:'Joo Chiat Shophouses',      place:'Katong'},
+  {file:'lau-pa-sat.webp',         title:'Lau Pa Sat',                place:'Raffles Quay'},
+  {file:'marina-bay-skyline.webp', title:'Marina Bay Skyline',        place:'The Bay'},
+  {file:'singapore-river.webp',    title:'Singapore River',           place:'Boat Quay'},
+  {file:'botanic-gardens.webp',    title:'Botanic Gardens',           place:'Tanglin'}
 ];
 PAGES.forEach(p=>p.url=DIR+p.file);
 const M=PAGES.length, LAND=6;
@@ -548,8 +548,8 @@ function startIntro(){
   </header>
 
   <section id="sketchbook" className="hero">
-    <img className="botany l" src="sketchbook/botany-left.png" alt="" aria-hidden="true" />
-    <img className="botany r" src="sketchbook/botany-right.png" alt="" aria-hidden="true" />
+    <img className="botany l" src="sketchbook/botany-left.webp" alt="" aria-hidden="true" />
+    <img className="botany r" src="sketchbook/botany-right.webp" alt="" aria-hidden="true" />
 
 
 
@@ -603,7 +603,7 @@ function startIntro(){
       <p className="bio">Meng To is a designer and teacher in Singapore. He founded <a className="bio-link" href="https://designcode.io" target="_blank" rel="noopener">Design+Code</a>, where he teaches designers code and developers design, and builds <a className="bio-link" href="https://aura.build" target="_blank" rel="noopener">Aura</a> and <a className="bio-link" href="https://dreamcut.ai" target="_blank" rel="noopener">DreamCut</a>.</p>
       <p className="bio">This sketchbook is the slower half of that. The city looked at properly, in ink and a little colour: shophouse shutters, hawker tents, the bay at dusk.</p>
     </div>
-    <img className="bloom" src="sketchbook/bloom.png" alt="" aria-hidden="true" />
+    <img className="bloom" src="sketchbook/bloom.webp" alt="" aria-hidden="true" />
   </section>
 
   <div className="rule short" aria-hidden="true"></div>
