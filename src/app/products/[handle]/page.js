@@ -195,7 +195,7 @@ export default function Unit({ params }) {
           <div className="product-meta-container">
             <div className="product-meta-header">
               <h3>{currentProduct?.title || currentProduct?.name}</h3>
-              <h3>${currentProduct?.priceRange?.minVariantPrice?.amount || currentProduct?.price}</h3>
+              <h3>${Number(currentProduct?.priceRange?.minVariantPrice?.amount || currentProduct?.price || 0).toFixed(2)}</h3>
             </div>
             <div className="product-meta-header-divider"></div>
             <div className="product-sizes-container">

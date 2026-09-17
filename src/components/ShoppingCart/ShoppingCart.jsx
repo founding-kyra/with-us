@@ -1,10 +1,12 @@
 "use client";
 import "./ShoppingCart.css";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 import { useCartStore, useCartCount, useCartSubtotal } from "@/store/cartStore";
 
 const ShoppingCart = () => {
+  const pathname = usePathname();
   const isCartOpen = useCartStore((state) => state.isCartOpen);
   const toggleCart = useCartStore((state) => state.toggleCart);
   const closeCart = useCartStore((state) => state.closeCart);
@@ -27,10 +29,12 @@ const ShoppingCart = () => {
 
   return (
     <div className="shopping-cart-container">
-      <button className="cart-button" onClick={toggleCart}>
-        <span className="cart-icon">BAG</span>
-        {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
-      </button>
+      {pathname !== "/lookbook2" && pathname !== "/lookbook" && pathname !== "/lookbook3" && (
+        <button className="cart-button" onClick={toggleCart}>
+          <span className="cart-icon">BAG</span>
+          {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+        </button>
+      )}
 
       <div
         className={`cart-sidebar ${isCartOpen ? "open" : ""}`}
@@ -87,7 +91,7 @@ const ShoppingCart = () => {
                           <span className="cart-item-quantity">{quantity}</span>
                         )}
                       </div>
-                      <p className="cart-item-price">${item.price}</p>
+                      <p className="cart-item-price">${Number(item.price).toFixed(2)}</p>
                       <button
                         className="cart-item-remove"
                         onClick={() => removeFromCart(item.name)}

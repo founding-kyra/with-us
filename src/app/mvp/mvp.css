@@ -56,8 +56,8 @@
 .mvp-page section {border-top:1px solid var(--line);padding:3rem 0;display:grid;grid-template-columns:5.5rem 1fr;gap:0 2rem}
 .mvp-page .num {font-variation-settings:'wdth' 62;font-weight:700;font-size:3.25rem;line-height:.8;color:var(--line)}
 .mvp-page section[data-done="1"] .num {color:var(--ink)}
-.mvp-page .head h2 {font-size:1.5rem;margin-bottom:.3rem;font-variation-settings:'wdth' 112;font-weight:700;text-transform:uppercase;letter-spacing:-.005em}
-.mvp-page .head p {color:var(--mid);font-size:.9rem;max-width:44ch;margin-bottom:2rem}
+.mvp-page .head h2 {font-size:1.5rem;margin-bottom:.8rem;font-variation-settings:'wdth' 112;font-weight:700;text-transform:uppercase;letter-spacing:-.005em}
+.mvp-page .head p {color:var(--mid);font-size:.9rem;max-width:44ch;margin-bottom:2rem;text-transform:uppercase;letter-spacing:.05em}
 
 .mvp-page .grid {display:grid;grid-template-columns:repeat(2,1fr);gap:1.75rem 1.5rem}
 .mvp-page .f {display:flex;flex-direction:column}

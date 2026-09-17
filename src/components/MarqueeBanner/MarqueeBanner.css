@@ -43,17 +43,32 @@
   max-width: 600px;
   max-height: 40rem;
   border-radius: 0.75rem;
-  background-color: var(--base-700);
   overflow: hidden;
+  background-color: var(--base-700);
+}
+
+.marquee-banner .banner .banner-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.marquee-banner .banner .banner-bg-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .marquee-banner .banner .banner-img {
   position: absolute;
-  bottom: -4.5rem;
+  bottom: -1rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 85%;
-  height: 80%;
+  width: 105%;
+  height: 95%;
   z-index: 2;
   pointer-events: none;
 }
@@ -61,16 +76,16 @@
 .marquee-banner .banner .banner-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 10%;
+  object-fit: contain;
+  object-position: bottom center;
 }
 
 .marquee-banner .banner .banner-content {
   position: relative;
-  top: 2.2rem;
+  top: 0;
   z-index: 1;
   width: 100%;
-  padding: 3rem 2rem 2rem 2rem;
+  padding: 1rem 2rem 2rem 2rem;
   color: var(--base-100);
   display: flex;
   flex-direction: column;
@@ -86,9 +101,10 @@
 
 .marquee-banner .banner .banner-logo {
   position: absolute;
-  bottom: 1.5rem;
+  bottom: 0.5rem;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(0.6);
+  transform-origin: bottom center;
   color: var(--base-100);
   z-index: 3;
 }

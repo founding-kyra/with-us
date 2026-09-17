@@ -6,6 +6,9 @@ import BrandIcon from "../BrandIcon/BrandIcon";
 const TextBlock = () => {
   return (
     <section className="text-block">
+      <div className="text-block-bg-img">
+        <img src="/Photos 2/WUS-33.jpg" alt="WITHUS Background" />
+      </div>
       <div className="container">
         <div className="text-block-col">
           <Copy>

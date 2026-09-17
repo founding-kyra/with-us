@@ -48,10 +48,10 @@
 }
 
 .peel-reveal .peel-reveal-img-container .pr-img.mask {
-  -webkit-mask-image: url("/peel-reveal/peel reveal mask aligned.webp");
-  mask-image: url("/peel-reveal/peel reveal mask aligned.webp");
-  -webkit-mask-size: cover;
-  mask-size: cover;
+  -webkit-mask-image: url("/peel-reveal/Codex Image 17 Sept 2026, 05_24_28.png");
+  mask-image: url("/peel-reveal/Codex Image 17 Sept 2026, 05_24_28.png");
+  -webkit-mask-size: contain;
+  mask-size: contain;
   -webkit-mask-position: center;
   mask-position: center;
   z-index: 2;
@@ -72,6 +72,7 @@
 .peel-reveal .peel-reveal-intro-text-container {
   position: absolute;
   top: 50%;
+  left: 0;
   transform: translateY(-50%);
   width: 100%;
   display: flex;

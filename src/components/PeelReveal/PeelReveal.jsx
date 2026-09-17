@@ -53,9 +53,10 @@ const PeelReveal = () => {
           onUpdate: (self) => {
             const progress = self.progress;
 
-            gsap.set(imageContainer, { scale: progress });
-
-            // Border radius peel animation disabled
+            gsap.set(imageContainer, { 
+              scale: progress,
+              borderRadius: `${3 * (1 - progress)}rem` 
+            });
 
             // Mask layer scale animation disabled
 
@@ -111,51 +112,9 @@ const PeelReveal = () => {
 
         <div className="peel-reveal-img-container">
           <div className="pr-cover-wrapper">
-            <div className="pr-img">
-              <img src="/peel-reveal/peel reveal new .webp" alt="Peel reveal" />
+            <div className="pr-img mask">
+              <img src="/peel-reveal/Codex Image 17 Sept 2026, 05_24_28.png" alt="Peel reveal" />
             </div>
-            
-            <Annotation 
-              mode="dark"
-              top="32%" left="42%"
-              lineEndX={-60} lineEndY={-50} horizontalLength={40}
-              textAlign="right" textOffsetX={-10}
-              title="MINERAL WASH"
-              subtitle="GARMENT DYED FOR UNIQUE FADE"
-            />
-            <Annotation 
-              mode="dark"
-              top="50%" left="38%"
-              lineEndX={-50} lineEndY={20} horizontalLength={60}
-              textAlign="right" textOffsetX={-10}
-              title="OVERSIZED FIT"
-              subtitle="DESIGNED FOR DAILY MOVEMENT"
-            />
-            <Annotation 
-              mode="dark"
-              top="75%" left="42%"
-              lineEndX={-40} lineEndY={30} horizontalLength={50}
-              textAlign="right" textOffsetX={-10}
-              title="MID WEIGHT FABRIC"
-              subtitle="SOFT HAND FEEL. BUILT TO LAST."
-            />
-            
-            <Annotation 
-              mode="dark"
-              top="25%" left="54%"
-              lineEndX={60} lineEndY={-60} horizontalLength={40}
-              textAlign="left" textOffsetX={10}
-              title="THICK RIBBING"
-              subtitle="MOCK NECK"
-            />
-            <Annotation 
-              mode="dark"
-              top="80%" left="55%"
-              lineEndX={60} lineEndY={10} horizontalLength={50}
-              textAlign="left" textOffsetX={10}
-              title="RAW HEM"
-              subtitle="DISTRESSED EDGE"
-            />
           </div>
 
           <div className="peel-reveal-header">

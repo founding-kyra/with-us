@@ -1,88 +1,167 @@
 .product {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
-  transform-origin: center center;
-  will-change: transform, opacity;
+  aspect-ratio: 3 / 4;
+  color: white;
+  background: #090a0b;
+  border-radius: 0.35rem;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     box-shadow 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .product:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
 }
 
-.product .product-img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  background-color: var(--base-200);
-  padding: 2.25rem;
-  box-sizing: border-box;
-  border-radius: 0.75rem 0.75rem 0 0;
-  text-decoration: none;
-  position: relative;
-}
-
-.product .product-img::after {
-  content: "";
+/* Subtle dark smoke texture inside card */
+.product .product-card-bg {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0);
-  transition: background 0.38s ease;
+  background: radial-gradient(circle at 50% 40%, rgba(35, 40, 45, 0.6) 0%, rgba(10, 11, 13, 0.95) 75%),
+    url("/home/Codex Image 17 Sept 2026, 11_45_50.png") center/cover no-repeat;
+  mix-blend-mode: color-dodge;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Top Header Badge */
+.product .product-header-badge {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 3;
   pointer-events: none;
 }
 
-.product:hover .product-img::after {
-  background: rgba(0, 0, 0, 0.04);
+.product .product-number {
+  font-family: var(--font-rubik), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}
+
+.product .product-number-line {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Product image */
+.product .product-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  padding: 0;
+  text-decoration: none;
+  z-index: 1;
 }
 
 .product .product-img img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .product:hover .product-img img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
+/* Card bottom info overlay */
 .product .product-info {
-  padding: 0 1rem 1rem 1rem;
-  background-color: var(--base-200);
-  border-radius: 0 0 0.75rem 0.75rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2.5rem 1.25rem 1.25rem 1.25rem;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(10, 11, 13, 0.7) 45%,
+    rgba(8, 9, 10, 0.95) 100%
+  );
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .product .product-info-wrapper {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem;
+  align-items: flex-end;
 }
 
-.product .product-info .add-to-cart-btn {
-  width: 100%;
-  margin-top: 0.5rem;
-  background-color: var(--base-700);
-  color: var(--base-100);
-  padding: 0.75rem;
-  font-size: clamp(0.75rem, 0.9vw, 0.8rem);
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-dm-mono), monospace;
-  font-weight: 500;
+.product .product-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.product .product-name {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ffffff;
   text-transform: uppercase;
-  border-radius: 0.5rem;
-  transition: transform 0.2s ease;
+  letter-spacing: 0.04em;
+  font-family: var(--font-rubik), sans-serif;
+  line-height: 1.2;
 }
 
-.product .product-info .add-to-cart-btn:active {
-  transform: scale(0.95);
+.product .product-color {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.15rem;
+}
+
+.product .product-price {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  margin-top: 0.2rem;
+}
+
+.product .product-action-link {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.1rem;
+}
+
+.product .product-action-link:hover {
+  transform: translateX(3px) translateY(-2px);
+  opacity: 0.8;
+}
+
+.product .product-arrow {
+  color: #ffffff;
 }
 
 

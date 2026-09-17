@@ -16,11 +16,16 @@ export default function MVPPage() {
   useEffect(() => {
     if (submitted) {
       let i = 0;
+      const pauseTicks = 35; // How long to pause at the end (35 * 75ms = ~2.6s)
       setTypedText("");
       const interval = setInterval(() => {
         i++;
-        setTypedText(fullText.slice(0, i));
-        if (i >= fullText.length) clearInterval(interval);
+        if (i <= fullText.length) {
+          setTypedText(fullText.slice(0, i));
+        } else if (i > fullText.length + pauseTicks) {
+          i = 0;
+          setTypedText("");
+        }
       }, 75); // 75ms per character
       return () => clearInterval(interval);
     }
@@ -275,38 +280,27 @@ export default function MVPPage() {
             <section>
               <div className="num">03</div>
               <div className="head">
-                <h2>Your kit</h2>
-                <p>Pick what you&apos;ll actually wear. Sizes run true — if you&apos;re between, size up.</p>
-                <div className="grid">
+                <h2>Your size</h2>
+                <div className="grid" style={{ marginTop: "1.7rem" }}>
                   <div className="f">
-                    <label>First choice <b className="req">*</b></label>
+                    <label>Bottom piece <b className="req">*</b></label>
                     <select name="pick1" required defaultValue="">
-                      <option value="" disabled>Select a piece</option>
-                      <option>Mock Vent Tee — Sunset</option>
-                      <option>Mock Vent Tee — Night Sky</option>
-                      <option>Mesh 2-in-1 Shorts</option>
-                      <option>New Era 59Fifty Fitted Hat</option>
+                      <option value="" disabled>Select size</option>
+                      <option>S</option>
+                      <option>M</option>
+                      <option>L</option>
+                      <option>XL</option>
                     </select>
                   </div>
                   <div className="f">
-                    <label>Backup, if sold out <b className="req">*</b></label>
+                    <label>Top piece <b className="req">*</b></label>
                     <select name="pick2" required defaultValue="">
-                      <option value="" disabled>Select a piece</option>
-                      <option>Mock Vent Tee — Sunset</option>
-                      <option>Mock Vent Tee — Night Sky</option>
-                      <option>Mesh 2-in-1 Shorts</option>
-                      <option>New Era 59Fifty Fitted Hat</option>
+                      <option value="" disabled>Select size</option>
+                      <option>S</option>
+                      <option>M</option>
+                      <option>L</option>
+                      <option>XL</option>
                     </select>
-                  </div>
-                  <div className="f full">
-                    <label>Size <b className="req">*</b></label>
-                    <div className="chips">
-                      <label className="chip"><input type="radio" name="size" value="S" required /><span>S</span></label>
-                      <label className="chip"><input type="radio" name="size" value="M" /><span>M</span></label>
-                      <label className="chip"><input type="radio" name="size" value="L" /><span>L</span></label>
-                      <label className="chip"><input type="radio" name="size" value="XL" /><span>XL</span></label>
-                      <label className="chip"><input type="radio" name="size" value="2XL" /><span>2XL</span></label>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -392,10 +386,10 @@ export default function MVPPage() {
             <dl>
               <dt>Status</dt>
               <dd>Pending review</dd>
-              <dt>Kit</dt>
+              <dt>Bottom Size</dt>
               <dd>{formData.pick1 || "—"}</dd>
-              <dt>Size</dt>
-              <dd>{formData.size || "—"}</dd>
+              <dt>Top Size</dt>
+              <dd>{formData.pick2 || "—"}</dd>
               <dt>Ships to</dt>
               <dd>{formData.ship_city ? `${formData.ship_city}, ${formData.ship_state}` : "—"}</dd>
             </dl>

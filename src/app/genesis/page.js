@@ -62,57 +62,57 @@ export default function Genesis() {
         <div className="project-preview-wrapper">
           <div className="preview-col">
             <div className="preview-img">
-              <img src="/spotlight%20new/3.webp" alt="" />
+              <img src="/Photos 2/WUS-31.jpg" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/spotlight%20new/6.webp" alt="" />
+              <img src="/Photos 2/WUS-35.jpg" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/spotlight%20new/9.webp" alt="" />
+              <img src="/Photos 2/WUS-41.jpg" alt="" />
             </div>
           </div>
           <div className="preview-col">
             <div className="preview-img">
-              <img src="/spotlight%20new/1.webp" alt="" />
+              <img src="/Photos 2/WUS-25.jpg" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/spotlight%20new/4.webp" alt="" />
+              <img src="/Photos 2/WUS-16.jpg" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/spotlight%20new/7.webp" alt="" />
+              <img src="/Photos 2/WUS-11.jpg" alt="" />
             </div>
           </div>
           <div className="preview-col main-preview-col">
             <div className="preview-img">
-              <img src="/spotlight%20new/2.webp" alt="" />
+              <img src="/Photos 2/WUS-10.jpg" alt="" />
             </div>
             <div className="preview-img main-preview-img">
-              <img src="/spotlight%20new/5.webp" alt="" />
+              <img src="/Photos 2/Codex Image 17 Sept 2026, 09_09_22.png" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/spotlight%20new/8.webp" alt="" />
-            </div>
-          </div>
-          <div className="preview-col">
-            <div className="preview-img">
-              <img src="/spotlight%20new/3.webp" alt="" />
-            </div>
-            <div className="preview-img">
-              <img src="/spotlight%20new/6.webp" alt="" />
-            </div>
-            <div className="preview-img">
-              <img src="/spotlight%20new/9.webp" alt="" />
+              <img src="/Photos 2/WUS-4.jpg" alt="" />
             </div>
           </div>
           <div className="preview-col">
             <div className="preview-img">
-              <img src="/spotlight%20new/1.webp" alt="" />
+              <img src="/Photos 2/WUS-7.jpg" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/spotlight%20new/4.webp" alt="" />
+              <img src="/Photos 2/WUS-27.jpg" alt="" />
             </div>
             <div className="preview-img">
-              <img src="/spotlight%20new/7.webp" alt="" />
+              <img src="/Photos 2/WUS-29.jpg" alt="" />
+            </div>
+          </div>
+          <div className="preview-col">
+            <div className="preview-img">
+              <img src="/Photos 2/WUS-38.jpg" alt="" />
+            </div>
+            <div className="preview-img">
+              <img src="/Photos 2/WUS-46.jpg" alt="" />
+            </div>
+            <div className="preview-img">
+              <img src="/Photos 2/WUS-8.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ export default function Genesis() {
 
       <section className="genesis-hero">
         <div className="gen-hero-img">
-            <img src="/genesis/With Us · Black shirt black studio background.png" alt="" />
+            <img src="/genesis/WUS-23.jpg" alt="" />
         </div>
         <div className="container">
           <div className="gen-hero-copy">
@@ -130,16 +130,9 @@ export default function Genesis() {
               <p>Minimal by necessity.</p>
             </Copy>
           </div>
+
           <div className="gen-hero-copy">
-            <Copy animateOnScroll={false} delay={0.8} type="flicker">
-              <p>We design future forms,</p>
-              <p>Built for the now.</p>
-            </Copy>
-          </div>
-          <div className="gen-hero-copy">
-            <Copy animateOnScroll={false} delay={0.7}>
-              <h1>The Genesis behind what you wear</h1>
-            </Copy>
+
             <div className="gen-hero-meta">
               <div className="gen-hero-meta-block">
                 <Copy animateOnScroll={false} delay={0.9} type="flicker">
@@ -155,31 +148,51 @@ export default function Genesis() {
       </section>
 
       <section className="genesis-about">
-        <div className="container">
-          <div className="genesis-about-logo">
-            <BrandIcon fill="#2b2b2b" />
+        <div className="genesis-screen">
+          <div className="container">
+            <div className="genesis-about-logo">
+              <BrandIcon fill="#efefef" />
+            </div>
+            <div className="genesis-about-copy">
+              <Copy>
+                <h2>MADE IN LOS</h2>
+                <h2>ANGELES</h2>
+              </Copy>
+              <Copy delay={0.2}>
+                <h4>WE BUILD LOCALLY. THE</h4>
+                <h4>CRAFT STAYS CLOSE, THE</h4>
+                <h4>STANDARDS STAY HIGH,</h4>
+                <h4>AND THE PEOPLE BEHIND</h4>
+                <h4>THE PRODUCT ARE PART</h4>
+                <h4>OF THE COLLECTIVE.</h4>
+              </Copy>
+            </div>
           </div>
-          <div className="genesis-about-copy">
-            <Copy>
-              <h2>
-                MADE IN LOS ANGELES
-              </h2>
-            </Copy>
-            <Copy>
-              <h4 delay={0.2}>
-                We build locally. The craft stays close, the standards stay high, and the people behind the product are part of the collective.
-              </h4>
-            </Copy>
-            <Copy>
-              <h4 delay={0.4}>
-                Every piece is produced close to home, allowing us to stay connected to the process, protect the quality, and support the community that helped shape the brand from day one.
-              </h4>
-            </Copy>
-            <Copy>
-              <h4 delay={0.6}>
-                We believe great products come from great relationships. That’s why we focus on people, craftsmanship, and doing things the right way.
-              </h4>
-            </Copy>
+        </div>
+        <div className="genesis-screen">
+          <div className="container">
+            <div className="genesis-about-copy">
+              <Copy delay={0.4}>
+                <h4>EVERY PIECE IS</h4>
+                <h4>PRODUCED CLOSE TO</h4>
+                <h4>HOME, ALLOWING US TO</h4>
+                <h4>STAY CONNECTED TO THE</h4>
+                <h4>PROCESS, PROTECT THE</h4>
+                <h4>QUALITY, AND SUPPORT</h4>
+                <h4>THE COMMUNITY THAT</h4>
+                <h4>HELPED SHAPE THE</h4>
+                <h4>BRAND FROM DAY ONE.</h4>
+              </Copy>
+              <Copy delay={0.6}>
+                <h4>WE BELIEVE GREAT</h4>
+                <h4>PRODUCTS COME FROM</h4>
+                <h4>GREAT RELATIONSHIPS.</h4>
+                <h4>THAT&apos;S WHY WE FOCUS ON</h4>
+                <h4>PEOPLE, CRAFTSMANSHIP, AND</h4>
+                <h4>DOING THINGS THE RIGHT</h4>
+                <h4>WAY.</h4>
+              </Copy>
+            </div>
           </div>
         </div>
       </section>

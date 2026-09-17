@@ -1,0 +1,77 @@
+.curve-gallery-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.curve-gallery-container #canvas-container {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh;
+  z-index: 0;
+}
+
+.curve-gallery-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.curve-gallery-container .scroll-toggle {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  padding: 0.65rem 1.4rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  color: #2a2a28;
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.curve-gallery-container .scroll-toggle:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.curve-gallery-container .scroll-toggle.active {
+  background: #2a2a28;
+  color: #f0ede8;
+  border-color: #2a2a28;
+}
+
+.curve-gallery-container .btns-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(6px);
+  border-radius: 6px;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  gap: 8px;
+  z-index: 10;
+}
+
+.curve-gallery-container .path-btn {
+  padding: 6px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #4f4f4f;
+  font-weight: 200;
+  background: none;
+  border: none;
+}
+
+.curve-gallery-container .path-btn.active {
+  color: #000000;
+  font-weight: 400;
+}

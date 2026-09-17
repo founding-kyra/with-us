@@ -340,6 +340,12 @@ const Menu = () => {
                 <Link href="/lookbook" onClick={handleLinkClick}>
                   Lookbook
                 </Link>
+                <Link href="/lookbook2" onClick={handleLinkClick}>
+                  Lookbook2
+                </Link>
+                <Link href="/lookbook3" onClick={handleLinkClick}>
+                  Lookbook3
+                </Link>
                 <Link href="/touchpoint" onClick={handleLinkClick}>
                   Contact Us
                 </Link>

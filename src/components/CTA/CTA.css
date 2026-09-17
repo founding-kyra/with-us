@@ -34,7 +34,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  margin-top: -4rem;
+  margin-top: 2rem;
   z-index: -1;
   border-radius: 0.75rem;
 }
@@ -55,6 +55,11 @@
   overflow: hidden;
   border-radius: 0.75rem;
   height: 20rem;
+}
+
+.cta .container .cta-col:nth-child(1) .cta-side-img img,
+.cta .container .cta-col:nth-child(3) .cta-side-img img {
+  object-position: top;
 }
 
 .cta .container .cta-col:nth-child(3) {

@@ -47,6 +47,9 @@ const MarqueeBanner = () => {
         </div>
       </div>
       <div className="banner">
+        <div className="banner-bg-img">
+          <img src="/marquee-banner/Codex Image 17 Sept 2026, 04_26_41.png" alt="Banner Background" />
+        </div>
         <div className="banner-content">
           <Copy type="flicker">
             <p>[ Frame Shift ]</p>
@@ -56,35 +59,39 @@ const MarqueeBanner = () => {
           </Copy>
         </div>
         <div className="banner-img">
-          <img src="/marquee-banner/2 (3).png" alt="" />
+          <img src="/marquee-banner/Codex Image 17 Sept 2026, 04_19_23.png" alt="Product Image" />
+          {/* LEFT UPPER - THICK RIBBING */}
           <Annotation 
             mode="light"
-            top="31%" left="50%"
-            lineEndX={-30} lineEndY={-15} horizontalLength={20}
+            top="36%" left="52%"
+            lineEndX={-80} lineEndY={-15} horizontalLength={40}
             textAlign="right" textOffsetX={-5}
             title="THICK RIBBING"
             subtitle="MOCK NECK"
           />
+          {/* LEFT MID - MINERAL WASH */}
           <Annotation 
             mode="light"
-            top="50%" left="43%"
-            lineEndX={-45} lineEndY={10} horizontalLength={25}
+            top="60%" left="30%"
+            lineEndX={-30} lineEndY={0} horizontalLength={30}
             textAlign="right" textOffsetX={-5}
             title="MINERAL WASH"
             subtitle="GARMENT DYED"
           />
+          {/* RIGHT UPPER - W LOGO */}
           <Annotation 
             mode="light"
-            top="48%" left="67%"
-            lineEndX={35} lineEndY={-10} horizontalLength={20}
+            top="50%" left="55%"
+            lineEndX={105} lineEndY={-20} horizontalLength={20}
             textAlign="left" textOffsetX={5}
             title="W LOGO"
             subtitle="VENTILATION HOLES"
           />
+          {/* RIGHT LOWER - MID WEIGHT FABRIC */}
           <Annotation 
             mode="light"
-            top="72%" left="68%"
-            lineEndX={35} lineEndY={15} horizontalLength={20}
+            top="75%" left="58%"
+            lineEndX={100} lineEndY={20} horizontalLength={20}
             textAlign="left" textOffsetX={5}
             title="MID WEIGHT FABRIC"
             subtitle="OVERSIZED FIT"

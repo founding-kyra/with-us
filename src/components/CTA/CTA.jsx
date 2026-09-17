@@ -38,7 +38,7 @@ const CTA = () => {
             y: `${leftTranslateY}rem`,
           });
 
-          const rightTranslateY = -progress * 30;
+          const rightTranslateY = 10 - progress * 30;
           gsap.set(rightImage, {
             y: `${rightTranslateY}rem`,
           });
@@ -60,7 +60,7 @@ const CTA = () => {
       <div className="container">
         <div className="cta-col">
           <div className="cta-side-img">
-            <img src="/cta/ 1 .webp" alt="" />
+            <img src="/cta/WUS-44.jpg" alt="" />
           </div>
           <div className="cta-col-copy">
             <Copy>
@@ -77,12 +77,12 @@ const CTA = () => {
             </Copy>
           </div>
           <div className="cta-main-img">
-            <img src="/cta/2.webp" alt="" />
+            <img src="/cta/WUS-20.jpg" alt="" />
           </div>
         </div>
         <div className="cta-col">
           <div className="cta-side-img">
-            <img src="/cta/3.webp" alt="" />
+            <img src="/cta/WUS-49.jpg" alt="" />
           </div>
         </div>
       </div>

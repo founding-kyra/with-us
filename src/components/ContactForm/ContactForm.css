@@ -1,7 +1,7 @@
 .contact-form {
   position: relative;
   width: 100%;
-  height: calc(45svh + 80svh);
+  height: 100svh;
   overflow-x: hidden;
   background-color: var(--base-100);
 }
@@ -9,40 +9,66 @@
 .contact-form .contact-parallax-image-wrapper {
   position: relative;
   width: 100%;
-  height: 80svh;
+  height: 100svh;
   overflow: hidden;
-  background-color: var(--base-200);
+  background-color: var(--base-100);
 }
 
 .contact-form .contact-parallax-image-wrapper h1 {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 48%;
+  left: 40%;
+  width: 100%;
+  text-align: center;
+  font-size: 13vw;
   transform: translate(-50%, -50%);
-  transform: scale(5);
-  color: var(--base-400);
+  white-space: nowrap;
+  color: #ffffff;
+  opacity: 0.95;
+  z-index: 1;
 }
 
 .contact-form .contact-parallax-image-wrapper img {
-  position: relative;
+  position: absolute;
+}
+
+.contact-form .contact-parallax-image-wrapper .cf-bg-img {
+  z-index: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center;
 }
+
+.contact-form .contact-parallax-image-wrapper .cf-fg-img {
+  z-index: 2;
+  bottom: 8%;
+  top: auto;
+  left: 10%;
+  width: 75%;
+  height: 95%;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+/* Foreground/Background styles have been merged into the img rules above */
 
 .contact-form .contact-form-container {
   position: absolute;
-  top: 40svh;
-  right: 8rem;
-  width: 35%;
-  height: 80svh;
-  max-height: 900px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 4%;
+  width: 24%;
+  min-width: 350px;
+  height: 60svh;
+  max-height: 750px;
   background-color: var(--base-700);
   color: var(--base-100);
   border-radius: 0.75rem;
   z-index: 2;
-  padding: 4rem 3rem;
+  padding: 3.5rem 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -54,6 +80,10 @@
   text-align: center;
 }
 
+.contact-form .cf-copy {
+  margin-top: 1.5rem;
+}
+
 .contact-form .cf-copy p {
   color: var(--base-400);
   width: 80%;
@@ -63,6 +93,7 @@
 
 .contact-form .cf-input {
   width: 100%;
+  margin-top: 1.5rem;
 }
 
 .contact-form .cf-input input {
@@ -93,6 +124,7 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
+  margin-top: 1.5rem;
   margin-bottom: 2rem;
 }
 

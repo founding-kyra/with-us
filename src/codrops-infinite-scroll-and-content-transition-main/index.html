@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Infinite Scroll Gallery with Page Transitions using GSAP</title>
+  <link rel="stylesheet" href="https://use.typekit.net/hrf4hvy.css">
+  <link rel="stylesheet" type="text/css" href="src/style.css">
+  <link rel="icon" type="image/svg+xml" href="https://tympanus.net/favicon/favicon.svg">
+  <link rel="shortcut icon" href="https://tympanus.net/favicon/favicon.ico">
+  <script>document.documentElement.className = 'js';</script>
+  <script src="//tympanus.net/codrops/adpacks/analytics.js"></script>
+</head>
+
+<body class="loading">
+  <main>
+    <header class="frame">
+      <h1 class="frame__title">WITHUS - Lookbook 3</h1>
+      
+      
+    </header>
+    <div class="gallery">
+      <figure class="gallery__slide" style="--stagger: -24vw; --img-w: 20vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-1.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Core Collection</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: 14vw; --img-w: 10vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-2.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Urban Silhouette</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: -18vw; --img-w: 23vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-3.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Essential Forms</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: 22vw; --img-w: 18vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-4.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Midnight Drop</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: -26vw; --img-w: 25vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-5.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Elevated Basics</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: 28vw; --img-w: 28vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-6.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Studio Sessions</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: -20vw; --img-w: 16vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-7.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Movement &amp; Form</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: 8vw; --img-w: 30vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-8.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Raw Textures</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: -12vw; --img-w: 15vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-9.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Oversized Aesthetic</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: 15vw; --img-w: 23vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-10.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Monochrome Vision</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: -24vw; --img-w: 24vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-11.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Layered Complexity</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: 26vw; --img-w: 16vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-12.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Summer Capsule</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: -16vw; --img-w: 34vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-13.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Winter Holds</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: 24vw; --img-w: 13vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-14.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Future Archive</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: -28vw; --img-w: 19vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-15.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Street Uniform</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: 18vw; --img-w: 22vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-16.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Heavyweight Cotton</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: -10vw; --img-w: 27vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-17.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Minimalist Approach</figcaption>
+      </figure>
+      <figure class="gallery__slide" style="--stagger: 20vw; --img-w: 18vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-18.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Utility Design</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: -22vw; --img-w: 19vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-19.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Tailored Comfort</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: 16vw; --img-w: 30vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-20.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>New Standard</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: -18vw; --img-w: 17vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-21.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Off-Duty Look</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: 24vw; --img-w: 12vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-22.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Signature Wash</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: -26vw; --img-w: 23vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-23.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Contrast Stitching</figcaption>
+      </figure>
+
+      <figure class="gallery__slide" style="--stagger: 12vw; --img-w: 26vw;">
+        <div class="gallery__img-wrapper">
+          <img class="gallery__img" src="./assets/WUS-24.jpg" alt="Some image" loading="eager">
+        </div>
+        <figcaption>Final Cut</figcaption>
+      </figure>
+    </div>
+    <div class="content">
+      <div class="content-wrapper">
+        <figure class="content__preview-img">
+          <img alt="">
+        </figure>
+        <div class="content__group-list">
+          <button class="content__back" type="button">← back [ESC]</button>
+          <div class="content__group" data-index="0">
+            <div class="content__title">Core Collection</div>
+            <div class="content__description">Redefining everyday wear with uncompromising quality and relaxed fits designed for modern movement.</div>
+          </div>
+
+          <div class="content__group" data-index="1">
+            <div class="content__title">Urban Silhouette</div>
+            <div class="content__description">A study in proportions. Crafted to deliver effortless style while maintaining structural integrity.</div>
+          </div>
+
+          <div class="content__group" data-index="2">
+            <div class="content__title">Essential Forms</div>
+            <div class="content__description">Building the foundation of your wardrobe through premium fabrics and timeless silhouettes.</div>
+          </div>
+
+          <div class="content__group" data-index="3">
+            <div class="content__title">Midnight Drop</div>
+            <div class="content__description">Exploring the intersection of shadows and street culture in this limited release.</div>
+          </div>
+
+          <div class="content__group" data-index="4">
+            <div class="content__title">Elevated Basics</div>
+            <div class="content__description">We took what you love and refined every detail, creating pieces that speak for themselves.</div>
+          </div>
+
+          <div class="content__group" data-index="5">
+            <div class="content__title">Studio Sessions</div>
+            <div class="content__description">Behind the scenes of our latest campaign, capturing the raw energy of the creative process.</div>
+          </div>
+
+          <div class="content__group" data-index="6">
+            <div class="content__title">Movement &amp; Form</div>
+            <div class="content__description">Designed not just to be worn, but to be lived in. Fabric that breathes and moves with you.</div>
+          </div>
+
+          <div class="content__group" data-index="7">
+            <div class="content__title">Raw Textures</div>
+            <div class="content__description">Embracing the natural imperfections of the material to create something entirely unique.</div>
+          </div>
+
+          <div class="content__group" data-index="8">
+            <div class="content__title">Oversized Aesthetic</div>
+            <div class="content__description">The perfect balance of drape and weight, bringing a new dimension to the oversized look.</div>
+          </div>
+
+          <div class="content__group" data-index="9">
+            <div class="content__title">Monochrome Vision</div>
+            <div class="content__description">A masterclass in subtlety. Finding depth in single-color palettes through varied textures.</div>
+          </div>
+
+          <div class="content__group" data-index="10">
+            <div class="content__title">Layered Complexity</div>
+            <div class="content__description">Complexity hidden in simplicity. Multiple layers working together to create a unified aesthetic.</div>
+          </div>
+
+          <div class="content__group" data-index="11">
+            <div class="content__title">Summer Capsule</div>
+            <div class="content__description">Lightweight, breathable, and cut for the heat. The pieces you'll reach for all season.</div>
+          </div>
+
+          <div class="content__group" data-index="12">
+            <div class="content__title">Winter Holds</div>
+            <div class="content__description">Survival has always been a form of beauty. Built to withstand the elements without sacrificing style.</div>
+          </div>
+
+          <div class="content__group" data-index="13">
+            <div class="content__title">Future Archive</div>
+            <div class="content__description">Creating the vintage of tomorrow. Heavyweight pieces designed to outlast fast fashion trends.</div>
+          </div>
+
+          <div class="content__group" data-index="14">
+            <div class="content__title">Street Uniform</div>
+            <div class="content__description">Your daily uniform, elevated. Taking the guesswork out of looking put-together.</div>
+          </div>
+
+          <div class="content__group" data-index="15">
+            <div class="content__title">Heavyweight Cotton</div>
+            <div class="content__description">Woven from custom-milled heavyweight cotton for a structured drape that holds its shape.</div>
+          </div>
+
+          <div class="content__group" data-index="16">
+            <div class="content__title">Minimalist Approach</div>
+            <div class="content__description">Stripping away the unnecessary to focus purely on cut, fabric, and construction.</div>
+          </div>
+
+          <div class="content__group" data-index="17">
+            <div class="content__title">Utility Design</div>
+            <div class="content__description">Function meets form. Details inspired by workwear, translated for the modern street.</div>
+          </div>
+
+          <div class="content__group" data-index="18">
+            <div class="content__title">Tailored Comfort</div>
+            <div class="content__description">Who says comfort can't look sharp? Relaxed fits engineered with tailored precision.</div>
+          </div>
+
+          <div class="content__group" data-index="19">
+            <div class="content__title">New Standard</div>
+            <div class="content__description">Setting a new benchmark for what premium streetwear should feel like.</div>
+          </div>
+
+          <div class="content__group" data-index="20">
+            <div class="content__title">Off-Duty Look</div>
+            <div class="content__description">The effortless cool of being off-duty, captured in a collection of versatile staples.</div>
+          </div>
+
+          <div class="content__group" data-index="21">
+            <div class="content__title">Signature Wash</div>
+            <div class="content__description">Each piece undergoes our signature wash process for a perfectly lived-in feel from day one.</div>
+          </div>
+
+          <div class="content__group" data-index="22">
+            <div class="content__title">Contrast Stitching</div>
+            <div class="content__description">Highlighting the construction process through bold, contrasting thread work.</div>
+          </div>
+
+          <div class="content__group" data-index="23">
+            <div class="content__title">Final Cut</div>
+            <div class="content__description">The final pieces of the season, representing the culmination of our design journey.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="src/index.js"></script>
+  <script src="https://tympanus.net/codrops/adpacks/cda_sponsor.js"></script>
+
+
+</body></html>
