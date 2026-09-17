@@ -65,6 +65,7 @@ const Menu = () => {
     tl.to(menuOverlayRef.current, {
       duration: 0.75,
       scaleY: 1,
+      pointerEvents: "auto",
       ease: "power4.out",
     });
 
@@ -171,6 +172,7 @@ const Menu = () => {
       {
         duration: 0.5,
         scaleY: 0,
+        pointerEvents: "none",
         ease: "power3.inOut",
       },
       "-=0.1"
@@ -199,6 +201,7 @@ const Menu = () => {
     gsap.set(menuOverlayRef.current, {
       scaleY: 0,
       transformOrigin: "top center",
+      pointerEvents: "none",
     });
 
     const scrambleElements = menuOverlayRef.current.querySelectorAll(

@@ -107,6 +107,7 @@
   gap: 4rem;
   transform: scaleY(0);
   will-change: transform;
+  pointer-events: none;
 }
 
 .menu .menu-overlay-items {
