@@ -7,7 +7,7 @@ const ContactForm = () => {
     <section className="contact-form">
       <div className="contact-parallax-image-wrapper">
         <img src="/contact-form/Codex Image 17 Sept 2026, 07_50_33.webp" alt="" className="cf-bg-img" />
-        <img src="/contact-form/Codex Image 17 Sept 2026, 06_02_33.webp" alt="" className="cf-fg-img" />
+        <img src="/contact-form/Codex Image 18 Sept 2026, 23_38_00.png" alt="" className="cf-fg-img" />
       </div>
       <div className="contact-form-container">
         <div className="cf-header">

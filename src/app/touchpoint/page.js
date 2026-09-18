@@ -1,110 +1,72 @@
 "use client";
 import "./touchpoint.css";
-import { useRef, useEffect } from "react";
-
 import Copy from "@/components/Copy/Copy";
 import BrandIcon from "@/components/BrandIcon/BrandIcon";
-
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { FiMail, FiMessageSquare, FiArrowRight } from "react-icons/fi";
 
 export default function Touchpoint() {
-  const calloutRef = useRef(null);
-  const contactHeroImgRef = useRef(null);
-
-  useGSAP(() => {
-    if (!contactHeroImgRef.current) return;
-
-    gsap.set(contactHeroImgRef.current, { y: 600 });
-    gsap.to(contactHeroImgRef.current, {
-      y: 0,
-      duration: 0.75,
-      ease: "power3.out",
-      delay: 0.75,
-    });
-  });
-
-  useEffect(() => {
-    const container = calloutRef.current;
-    if (!container) return;
-
-    const timer = setTimeout(() => {
-      const image = container.querySelector(".contact-callout-img");
-
-      const st = ScrollTrigger.create({
-        trigger: container,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1,
-        onUpdate: (self) => {
-          const progress = self.progress;
-
-          const translateY = -progress * 20;
-          gsap.set(image, {
-            y: `${translateY}rem`,
-          });
-        },
-      });
-
-      return () => {
-        st.kill();
-      };
-    }, 500);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
   return (
     <>
       <section className="contact-hero">
+        <div className="contact-bg-wrapper">
+          <img src="/contact/architectural-bg.jpg" alt="Minimal Architecture" className="contact-bg-img" />
+          <div className="contact-bg-gradient"></div>
+        </div>
         <div className="container">
           <div className="contact-hero-col contact-hero-copy">
             <div className="contact-header">
               <Copy animateOnScroll={false} delay={0.75}>
-                <h3>Outbound access is limited, proceed with intent.</h3>
+                <h3>
+                  OUTBOUND<br />
+                  ACCESS IS<br />
+                  LIMITED,<br />
+                  PROCEED<br />
+                  WITH INTENT.
+                </h3>
               </Copy>
             </div>
-            <div className="contact-meta">
-              <div className="contact-meta-block">
-                <Copy animateOnScroll={false} delay={0.9}>
-                  <p className="bodyCopy">Dispatch Inquiry System</p>
-                </Copy>
-                <Copy animateOnScroll={false} delay={1}>
-                  <h4>hello@withusla.com</h4>
-                </Copy>
+            
+            <div className="contact-lower">
+              <div className="contact-meta">
+                <div className="contact-meta-divider"></div>
+                <div className="contact-inquiry-label">
+                  <Copy animateOnScroll={false} delay={0.9}>
+                    <p className="bodyCopy contact-label">Dispatch Inquiry System</p>
+                  </Copy>
+                </div>
+                
+                <div className="contact-cta-cards">
+                  <Copy animateOnScroll={false} delay={1}>
+                    <a href="mailto:hello@withusla.com" className="cta-card">
+                      <div className="cta-icon-wrapper">
+                        <FiMail size={20} strokeWidth={1.5} />
+                      </div>
+                      <div className="cta-text-wrapper">
+                        <span className="cta-sub">EMAIL US</span>
+                        <span className="cta-main">HELLO@WITHUSLA.COM</span>
+                      </div>
+                      <FiArrowRight size={22} strokeWidth={1.5} className="cta-arrow" />
+                    </a>
+                  </Copy>
+                  
+                  <Copy animateOnScroll={false} delay={1.1}>
+                    <a href="/contact" className="cta-card">
+                      <div className="cta-icon-wrapper">
+                        <FiMessageSquare size={20} strokeWidth={1.5} />
+                      </div>
+                      <div className="cta-text-wrapper">
+                        <span className="cta-sub">SEND A MESSAGE</span>
+                        <span className="cta-main">CONTACT FORM</span>
+                      </div>
+                      <FiArrowRight size={22} strokeWidth={1.5} className="cta-arrow" />
+                    </a>
+                  </Copy>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="contact-hero-col contact-hero-img-wrapper">
-            <div className="contact-hero-img" ref={contactHeroImgRef}>
-              <img src="/contact/sunset tee.webp" alt="" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="contact-callout" ref={calloutRef}>
-        <div className="container">
-          <div className="contact-callout-header">
-            <div className="contact-callout-logo">
-              <BrandIcon />
-            </div>
-            <Copy type="flicker">
-              <p>
-                Get early signals, private releases, and occasional noise worth
-                hearing. You'll know when it matters.
-              </p>
-            </Copy>
-            <Copy>
-              <h1>Connect to the silent grid</h1>
-            </Copy>
-            <div className="contact-callout-img">
-              <img src="/contact/1.webp" alt="" />
+              
+              <div className="contact-badge-wrapper">
+                <BrandIcon />
+              </div>
             </div>
           </div>
         </div>

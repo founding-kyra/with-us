@@ -24,6 +24,8 @@ export default function Unit({ params }) {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [specImageUrl, setSpecImageUrl] = useState(null);
   const [shippingImageUrl, setShippingImageUrl] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("S");
+  const [quantity, setQuantity] = useState(1);
   const heroScrollTriggerRef = useRef(null);
 
 
@@ -82,88 +84,98 @@ export default function Unit({ params }) {
   }, []);
 
   useGSAP(() => {
-    const snapshots = document.querySelectorAll(".product-snapshot");
-    const minimapImages = document.querySelectorAll(
-      ".product-snapshot-minimap-img"
-    );
-    const totalImages = snapshots.length;
+    let mm = gsap.matchMedia();
 
-    // Guard: don't run if images haven't loaded yet
-    if (totalImages === 0) return;
+    mm.add("(min-width: 1025px)", () => {
+      const snapshots = document.querySelectorAll(".product-snapshot");
+      const minimapImages = document.querySelectorAll(
+        ".product-snapshot-minimap-img"
+      );
+      const totalImages = snapshots.length;
 
-    // Kill only the hero ScrollTrigger to avoid duplicates, preserving Copy component triggers
-    if (heroScrollTriggerRef.current) {
-      heroScrollTriggerRef.current.kill();
-      heroScrollTriggerRef.current = null;
-    }
+      // Guard: don't run if images haven't loaded yet
+      if (totalImages === 0) return;
 
-    gsap.set(snapshots[0], { y: "0%", scale: 1 });
-    gsap.set(minimapImages[0], { scale: 1.25 });
-    for (let i = 1; i < totalImages; i++) {
-      gsap.set(snapshots[i], { y: "100%", scale: 1 });
-      gsap.set(minimapImages[i], { scale: 1 });
-    }
+      // Kill only the hero ScrollTrigger to avoid duplicates, preserving Copy component triggers
+      if (heroScrollTriggerRef.current) {
+        heroScrollTriggerRef.current.kill();
+        heroScrollTriggerRef.current = null;
+      }
 
-    heroScrollTriggerRef.current = ScrollTrigger.create({
-      trigger: heroRef.current,
-      start: "top top",
-      end: `+=${window.innerHeight * 5}`,
-      pin: true,
-      pinSpacing: true,
-      scrub: 1,
-      onUpdate: (self) => {
-        const progress = self.progress;
+      gsap.set(snapshots[0], { y: "0%", scale: 1 });
+      gsap.set(minimapImages[0], { scale: 1.25 });
+      for (let i = 1; i < totalImages; i++) {
+        gsap.set(snapshots[i], { y: "100%", scale: 1 });
+        gsap.set(minimapImages[i], { scale: 1 });
+      }
 
-        let currentActiveIndex = 0;
+      heroScrollTriggerRef.current = ScrollTrigger.create({
+        trigger: heroRef.current,
+        start: "top top",
+        end: `+=${window.innerHeight * 5}`,
+        pin: true,
+        pinSpacing: true,
+        scrub: 1,
+        onUpdate: (self) => {
+          const progress = self.progress;
 
-        for (let i = 1; i < totalImages; i++) {
-          const imageStart = (i - 1) / (totalImages - 1);
-          const imageEnd = i / (totalImages - 1);
+          let currentActiveIndex = 0;
 
-          let localProgress = (progress - imageStart) / (imageEnd - imageStart);
-          localProgress = Math.max(0, Math.min(1, localProgress));
+          for (let i = 1; i < totalImages; i++) {
+            const imageStart = (i - 1) / (totalImages - 1);
+            const imageEnd = i / (totalImages - 1);
 
-          const yValue = 100 - localProgress * 100;
-          gsap.set(snapshots[i], { y: `${yValue}%` });
+            let localProgress = (progress - imageStart) / (imageEnd - imageStart);
+            localProgress = Math.max(0, Math.min(1, localProgress));
 
-          const scaleValue = 1 + localProgress * 0.5;
-          gsap.set(snapshots[i - 1], { scale: scaleValue });
+            const yValue = 100 - localProgress * 100;
+            gsap.set(snapshots[i], { y: `${yValue}%` });
 
-          if (localProgress >= 0.5) {
-            currentActiveIndex = i;
+            const scaleValue = 1 + localProgress * 0.5;
+            gsap.set(snapshots[i - 1], { scale: scaleValue });
+
+            if (localProgress >= 0.5) {
+              currentActiveIndex = i;
+            }
           }
-        }
 
-        if (currentActiveIndex !== activeMinimapIndex.current) {
-          gsap.to(minimapImages[currentActiveIndex], {
-            scale: 1.25,
-            duration: 0.3,
-            ease: "power2.out",
-          });
-
-          for (let i = 0; i < currentActiveIndex; i++) {
-            gsap.to(minimapImages[i], {
-              scale: 0,
+          if (currentActiveIndex !== activeMinimapIndex.current) {
+            gsap.to(minimapImages[currentActiveIndex], {
+              scale: 1.25,
               duration: 0.3,
               ease: "power2.out",
             });
-          }
 
-          for (let i = currentActiveIndex + 1; i < totalImages; i++) {
-            gsap.to(minimapImages[i], {
-              scale: 1,
-              duration: 0.3,
-              ease: "power2.out",
-            });
-          }
+            for (let i = 0; i < currentActiveIndex; i++) {
+              gsap.to(minimapImages[i], {
+                scale: 0,
+                duration: 0.3,
+                ease: "power2.out",
+              });
+            }
 
-          activeMinimapIndex.current = currentActiveIndex;
+            for (let i = currentActiveIndex + 1; i < totalImages; i++) {
+              gsap.to(minimapImages[i], {
+                scale: 1,
+                duration: 0.3,
+                ease: "power2.out",
+              });
+            }
+
+            activeMinimapIndex.current = currentActiveIndex;
+          }
+        },
+      });
+
+      window.scrollTo(0, 0);
+      ScrollTrigger.refresh();
+      
+      return () => {
+        if (heroScrollTriggerRef.current) {
+          heroScrollTriggerRef.current.kill();
         }
-      },
+      };
     });
-
-    window.scrollTo(0, 0);
-    ScrollTrigger.refresh();
   }, [currentProduct]);
 
   return (
@@ -174,39 +186,65 @@ export default function Unit({ params }) {
             <div className="product-snapshot" key={index}>
               <img src={edge.node.url} alt="" />
             </div>
-          )) || (
-            <div className="product-snapshot">
-              <img src="/product/1.webp" alt="" />
-            </div>
-          )}
+          ))}
           <div className="product-snapshot-minimap">
             {currentProduct?.images?.edges.slice(0, 4).map((edge, index) => (
               <div className="product-snapshot-minimap-img" key={`mini-${index}`}>
                 <img src={edge.node.url} alt="" />
               </div>
-            )) || (
-              <div className="product-snapshot-minimap-img">
-                <img src="/product/1.webp" alt="" />
-              </div>
-            )}
+            ))}
           </div>
         </div>
         <div className="product-hero-col product-meta">
           <div className="product-meta-container">
+            <div className="product-meta-divider"></div>
+            
             <div className="product-meta-header">
-              <h3>{currentProduct?.title || currentProduct?.name}</h3>
-              <h3>${Number(currentProduct?.priceRange?.minVariantPrice?.amount || currentProduct?.price || 0).toFixed(2)}</h3>
+              <h3>{currentProduct?.title || currentProduct?.name || "NIGHT SKY MOCK SWEATSHIRT"}</h3>
+              <div className="product-meta-header-vert-divider"></div>
+              <h3 className="product-price">${Number(currentProduct?.priceRange?.minVariantPrice?.amount || currentProduct?.price || 180).toFixed(2).replace(/\.00$/, '')}</h3>
             </div>
-            <div className="product-meta-header-divider"></div>
+            
+            <div className="product-meta-divider"></div>
+            
             <div className="product-sizes-container">
-              <p className="md">Form Size</p>
-              <div className="product-sizes">
-                <p className="md selected">[ S ]</p>
-                <p className="md">[ M ]</p>
-                <p className="md">[ L ]</p>
-                <p className="md">[ XL ]</p>
+              <p className="form-label">FORM SIZE</p>
+              <div className="product-sizes-boxes">
+                {["S", "M", "L", "XL"].map((size) => (
+                  <button 
+                    key={size}
+                    className={`size-box ${selectedSize === size ? "selected" : ""}`}
+                    onClick={() => setSelectedSize(size)}
+                  >
+                    {size}
+                  </button>
+                ))}
               </div>
             </div>
+
+            <div className="product-meta-divider"></div>
+
+            <div className="product-quantity-container">
+              <p className="form-label">QUANTITY</p>
+              <div className="quantity-selector">
+                <button 
+                  className="qty-btn" 
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                >
+                  −
+                </button>
+                <div className="qty-value">{quantity}</div>
+                <button 
+                  className="qty-btn" 
+                  onClick={() => setQuantity(quantity + 1)}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+
+            <div className="product-meta-divider"></div>
+
             <div className="product-meta-buttons">
               <button
                 className="primary"
@@ -215,7 +253,8 @@ export default function Unit({ params }) {
                   name: currentProduct?.title,
                   price: currentProduct?.priceRange?.minVariantPrice?.amount,
                   image: currentProduct?.images?.edges?.[0]?.node?.url,
-                  variantId: currentProduct?.variants?.edges?.[0]?.node?.id
+                  variantId: currentProduct?.variants?.edges?.[0]?.node?.id,
+                  quantity: quantity
                 })}
               >
                 Add To Bag
@@ -272,7 +311,7 @@ export default function Unit({ params }) {
               </Copy>
               <Copy>
                 <p className="bodyCopy lg">
-                  We accept returns on unworn items within 30 days of delivery. To initiate a return, please email hello@withusworld.com for a return label with your order number. Refunds are issued to the original payment method once the item is received and inspected.
+                  We accept returns on unworn items within 30 days of delivery. To initiate a return, please email <a href="mailto:hello@withusla.com" style={{textDecoration: 'underline'}}>hello@withusla.com</a> for a return label with your order number. Refunds are issued to the original payment method once the item is received and inspected.
                 </p>
               </Copy>
             </div>

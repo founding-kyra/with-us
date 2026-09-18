@@ -9,32 +9,58 @@
   z-index: 50;
 }
 
-.shopping-cart-container .cart-button {
+.shopping-cart-container .cart-button-wrapper {
   position: absolute;
   bottom: 2rem;
   right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: all;
+  z-index: 50;
+}
+
+.shopping-cart-container .cart-button {
   background-color: var(--base-700);
   color: var(--base-100);
   border: none;
   width: max-content;
-  padding: 0 1.5rem;
-  height: 3.5rem;
+  padding: 0 1rem;
+  height: 2.75rem;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.75rem;
-  pointer-events: all;
+  gap: 0.5rem;
+  border-radius: 999px;
   font-family: var(--font-dm-mono), monospace;
   font-weight: 500;
-  font-size: clamp(0.85rem, 1vw, 0.85rem);
+  font-size: clamp(0.75rem, 1vw, 0.75rem);
   text-transform: uppercase;
-  border-radius: 0.75rem;
   transition: transform 0.2s ease;
 }
 
 .shopping-cart-container .cart-button:active {
   transform: scale(0.95);
+}
+
+.shopping-cart-container .cart-dismiss {
+  background-color: var(--base-300);
+  color: var(--base-700);
+  border: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+  transition: background-color 0.2s ease;
+}
+
+.shopping-cart-container .cart-dismiss:hover {
+  background-color: var(--base-400);
 }
 
 .shopping-cart-container .cart-icon {
@@ -57,10 +83,10 @@
 
 .shopping-cart-container .cart-sidebar {
   position: absolute;
-  top: 2rem;
+  top: 7.5rem;
   right: 2rem;
   width: 30%;
-  height: calc(100svh - 4rem);
+  height: calc(100svh - 9.5rem);
   background-color: var(--base-700);
   color: var(--base-100);
   transform: translateX(calc(100% + 4rem));
@@ -272,15 +298,22 @@
     right: 2rem;
   }
 
+  .shopping-cart-container .cart-button-wrapper {
+    bottom: 10.5rem;
+    top: auto;
+    right: 1.25rem;
+  }
+
   .shopping-cart-container .cart-button {
-    bottom: 1rem;
-    right: 1rem;
+    height: 3rem;
+    padding: 0 1.25rem;
+    font-size: 0.75rem;
   }
 
   .shopping-cart-container .cart-sidebar {
-    top: 1rem;
+    top: 6.5rem;
     right: 1rem;
-    height: calc(100svh - 2rem);
+    height: calc(100svh - 7.5rem);
   }
 
   .shopping-cart-container .cart-sidebar-content {

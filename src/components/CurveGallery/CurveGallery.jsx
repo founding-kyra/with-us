@@ -184,7 +184,7 @@ export default function CurveGallery() {
       };
 
       window._curveGalleryOnClick = (event) => {
-        if (event.target.tagName === 'BUTTON') return;
+        if (event.target.tagName !== 'CANVAS') return;
 
         raycaster.setFromCamera(mouse, camera);
         const intersects = raycaster.intersectObjects(planes);

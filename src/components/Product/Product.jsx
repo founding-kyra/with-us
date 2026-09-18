@@ -24,7 +24,7 @@ const Product = ({
 
   const title = product.title || product.name || "WITHUS PIECE";
   const rawPrice = product.priceRange?.minVariantPrice?.amount || product.price || "100.0";
-  const price = Number(rawPrice).toFixed(2);
+  const price = Number(rawPrice).toFixed(2).replace(/\.00$/, '');
   const rawImage = product.images?.edges?.[0]?.node?.url || (product.image ? (product.image.startsWith('/') ? product.image : `/products/${product.image}`) : "/product/product_shot_01.webp");
   
   let imageUrl = rawImage;

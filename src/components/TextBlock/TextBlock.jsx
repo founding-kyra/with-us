@@ -13,7 +13,7 @@ const TextBlock = () => {
         <div className="text-block-col">
           <Copy>
             <h3>
-              WITHUS creates garments built around proportion, texture, and restraint.
+              WITHUS creates garments built around textures, silhouettes, and mobility.
             </h3>
           </Copy>
           <div className="text-block-logo">

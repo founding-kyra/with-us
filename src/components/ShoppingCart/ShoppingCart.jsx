@@ -16,6 +16,14 @@ const ShoppingCart = () => {
   const subtotal = useCartSubtotal();
   const checkoutUrl = useCartStore((state) => state.checkoutUrl);
 
+  const [isFloatingCartHidden, setIsFloatingCartHidden] = useState(false);
+
+  useEffect(() => {
+    if (cartCount > 0) {
+      setIsFloatingCartHidden(false);
+    }
+  }, [cartCount]);
+
   useEffect(() => {
     if (isCartOpen) {
       document.body.style.overflow = "hidden";
@@ -29,11 +37,25 @@ const ShoppingCart = () => {
 
   return (
     <div className="shopping-cart-container">
-      {pathname !== "/lookbook2" && pathname !== "/lookbook" && pathname !== "/lookbook3" && (
-        <button className="cart-button" onClick={toggleCart}>
-          <span className="cart-icon">BAG</span>
-          {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
-        </button>
+      {pathname !== "/lookbook2" && pathname !== "/lookbook" && pathname !== "/lookbook3" && !pathname.startsWith("/products/") && cartCount > 0 && !isFloatingCartHidden && !isCartOpen && (
+        <div className="cart-button-wrapper">
+          <button className="cart-button" onClick={toggleCart}>
+            <span className="cart-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+            </span>
+            <span className="cart-count">{cartCount}</span>
+          </button>
+          <button className="cart-dismiss" onClick={(e) => {
+            e.stopPropagation();
+            setIsFloatingCartHidden(true);
+          }}>
+            ✕
+          </button>
+        </div>
       )}
 
       <div
@@ -91,7 +113,7 @@ const ShoppingCart = () => {
                           <span className="cart-item-quantity">{quantity}</span>
                         )}
                       </div>
-                      <p className="cart-item-price">${Number(item.price).toFixed(2)}</p>
+                      <p className="cart-item-price">${Number(item.price).toFixed(2).replace(/\.00$/, '')}</p>
                       <button
                         className="cart-item-remove"
                         onClick={() => removeFromCart(item.name)}
@@ -108,7 +130,7 @@ const ShoppingCart = () => {
             <div className="cart-footer">
               <div className="cart-summary-row">
                 <span>Total</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>${subtotal.toFixed(2).replace(/\.00$/, '')}</span>
               </div>
               <button 
                 className="cart-checkout" 

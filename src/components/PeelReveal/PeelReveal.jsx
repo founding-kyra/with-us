@@ -113,7 +113,7 @@ const PeelReveal = () => {
         <div className="peel-reveal-img-container">
           <div className="pr-cover-wrapper">
             <div className="pr-img mask">
-              <img src="/peel-reveal/Codex Image 17 Sept 2026, 05_24_28.webp" alt="Peel reveal" />
+              <img src="/peel-reveal/Codex Image 18 Sept 2026, 23_17_14.png" alt="Peel reveal" />
             </div>
           </div>
 

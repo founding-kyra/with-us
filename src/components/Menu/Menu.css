@@ -27,7 +27,7 @@
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 0.75rem;
-  z-index: 2;
+  z-index: 999;
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
@@ -126,6 +126,12 @@
   gap: 2rem;
 }
 
+.menu .menu-main-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .menu .menu-overlay-col-sm .menu-main-link {
   display: flex;
   align-items: center;
@@ -158,6 +164,7 @@
 
 .menu .menu-sub-links a {
   position: relative;
+  z-index: 10;
   display: block;
   color: var(--base-100);
   padding: 1rem 0;
@@ -174,6 +181,9 @@
 }
 
 .menu .menu-overlay-footer a {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
   color: var(--base-100);
 }
 
