@@ -163,3 +163,110 @@
 }
 
 
+
+/* Neon Card Hover Interaction */
+
+/* Sibling Dimming (Applied to any container holding products) */
+*:has(> .product:hover) > .product:not(:hover) {
+  opacity: 0.4;
+  filter: grayscale(80%) brightness(0.6);
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+/* Base product transition */
+.product {
+  transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease, filter 0.4s ease;
+}
+
+/* Neon Accents on Hover */
+.product:hover .product-number {
+  color: #ccff00;
+  transition: color 0.3s ease;
+}
+
+.product:hover .product-number-line {
+  background-color: #ccff00;
+  transition: background-color 0.3s ease;
+}
+
+.product:hover .product-img img {
+  filter: contrast(1.1) brightness(1.05);
+}
+
+/* Targeting Reticle */
+.product-reticle {
+  position: absolute;
+  width: 160px;
+  height: 200px;
+  pointer-events: none;
+  /* Centered on the mouse via style tags in React */
+  transform: translate(-50%, -50%) scale(0.7);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+  z-index: 10;
+}
+
+.product:hover .product-reticle {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.reticle-bracket {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #ccff00;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(204, 255, 0, 0.3);
+}
+
+.reticle-bracket.top-left {
+  top: 0; left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+.reticle-bracket.top-right {
+  top: 0; right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+.reticle-bracket.bottom-left {
+  bottom: 0; left: 0;
+  border-right: none;
+  border-top: none;
+}
+.reticle-bracket.bottom-right {
+  bottom: 0; right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* Slight bracket animation */
+.product:hover .reticle-bracket.top-left { transform: translate(-4px, -4px); }
+.product:hover .reticle-bracket.top-right { transform: translate(4px, -4px); }
+.product:hover .reticle-bracket.bottom-left { transform: translate(-4px, 4px); }
+.product:hover .reticle-bracket.bottom-right { transform: translate(4px, 4px); }
+
+.reticle-banner {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ccff00;
+  color: #000;
+  font-family: var(--font-dm-mono), monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.15s, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s; 
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
+}
+
+.product:hover .reticle-banner {
+  opacity: 1;
+  transform: translate(-50%, -8px);
+}

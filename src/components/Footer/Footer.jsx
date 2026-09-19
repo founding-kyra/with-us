@@ -18,7 +18,6 @@ const Footer = () => {
                 <Link href="/genesis">Genesis</Link>
                 <Link href="/touchpoint">Contact Us</Link>
                 <Link href="/client-services">Client Services</Link>
-                <Link href="/lookbook">Lookbook</Link>
               </div>
             </div>
             <div className="footer-col">

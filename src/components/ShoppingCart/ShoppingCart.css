@@ -83,16 +83,20 @@
 
 .shopping-cart-container .cart-sidebar {
   position: absolute;
-  top: 7.5rem;
+  bottom: 2rem;
   right: 2rem;
-  width: 30%;
-  height: calc(100svh - 9.5rem);
+  width: 22%;
+  min-width: 320px;
+  max-width: 400px;
+  height: max-content;
+  max-height: 65svh;
   background-color: var(--base-700);
   color: var(--base-100);
-  transform: translateX(calc(100% + 4rem));
-  transition: transform 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  clip-path: circle(0% at 100% 100%);
+  transition: clip-path 0.6s cubic-bezier(0.7, 0, 0.3, 1), opacity 0.4s ease;
   border-radius: 0.75rem;
-  pointer-events: all;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -100,7 +104,9 @@
 }
 
 .shopping-cart-container .cart-sidebar.open {
-  transform: translateX(0);
+  opacity: 1;
+  pointer-events: all;
+  clip-path: circle(150% at 100% 100%);
 }
 
 .shopping-cart-container .cart-sidebar-content {

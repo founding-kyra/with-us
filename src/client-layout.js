@@ -60,7 +60,7 @@ export default function ClientLayout({ children, footer }) {
     <ReactLenis root options={scrollSettings}>
       <div className="page" ref={pageRef}>
         {children}
-        {pathname !== "/lookbook" && pathname !== "/lookbook2" && pathname !== "/lookbook3" && footer}
+        {pathname !== "/lookbook" && pathname !== "/lookbook2" && pathname !== "/lookbook3" && pathname !== "/mvp" && pathname !== "/order-confirmation" && footer}
       </div>
     </ReactLenis>
   );

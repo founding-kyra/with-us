@@ -2,6 +2,7 @@
 import "./Product.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, useRef } from "react";
 
 import { useCartStore } from "@/store/cartStore";
 
@@ -15,6 +16,17 @@ const Product = ({
 }) => {
   const addToCart = useCartStore((state) => state.addToCart);
   const pathname = usePathname();
+
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    setMousePos({ x, y });
+  };
 
   const handleImageClick = () => {
     if (pathname.includes("/products/")) {
@@ -53,9 +65,14 @@ const Product = ({
   return (
     <div
       className={`product ${className}`}
-      ref={innerRef}
+      ref={(el) => {
+        cardRef.current = el;
+        if (typeof innerRef === 'function') innerRef(el);
+        else if (innerRef) innerRef.current = el;
+      }}
       style={style}
       data-image={imageUrl}
+      onMouseMove={handleMouseMove}
     >
       <div className="product-card-bg"></div>
 
@@ -68,6 +85,15 @@ const Product = ({
       {/* Image Link */}
       <Link href={href} className="product-img" onClick={handleImageClick}>
         <img src={imageUrl} alt={title} />
+        
+        {/* Neon Reticle */}
+        <div className="product-reticle" style={{ left: mousePos.x, top: mousePos.y }}>
+          <div className="reticle-bracket top-left"></div>
+          <div className="reticle-bracket top-right"></div>
+          <div className="reticle-bracket bottom-left"></div>
+          <div className="reticle-bracket bottom-right"></div>
+          <div className="reticle-banner">{title}</div>
+        </div>
       </Link>
 
       {/* Card Info Overlay */}

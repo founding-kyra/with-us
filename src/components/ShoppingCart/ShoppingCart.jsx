@@ -1,6 +1,6 @@
 "use client";
 import "./ShoppingCart.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 import { useCartStore, useCartCount, useCartSubtotal } from "@/store/cartStore";
@@ -8,21 +8,68 @@ import { useCartStore, useCartCount, useCartSubtotal } from "@/store/cartStore";
 const ShoppingCart = () => {
   const pathname = usePathname();
   const isCartOpen = useCartStore((state) => state.isCartOpen);
-  const toggleCart = useCartStore((state) => state.toggleCart);
-  const closeCart = useCartStore((state) => state.closeCart);
+  const storeToggleCart = useCartStore((state) => state.toggleCart);
+  const storeCloseCart = useCartStore((state) => state.closeCart);
+
+  const toggleCart = () => {
+    if (document.startViewTransition) {
+      document.startViewTransition(() => storeToggleCart());
+    } else {
+      storeToggleCart();
+    }
+  };
+
+  const closeCart = () => {
+    if (document.startViewTransition) {
+      document.startViewTransition(() => storeCloseCart());
+    } else {
+      storeCloseCart();
+    }
+  };
   const cartItems = useCartStore((state) => state.cartItems);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const cartCount = useCartCount();
   const subtotal = useCartSubtotal();
   const checkoutUrl = useCartStore((state) => state.checkoutUrl);
 
-  const [isFloatingCartHidden, setIsFloatingCartHidden] = useState(false);
+  const dragRef = useRef(null);
+  const positionRef = useRef({ x: 0, y: 0 });
+  const startPosRef = useRef({ x: 0, y: 0 });
+  const isDraggingRef = useRef(false);
 
-  useEffect(() => {
-    if (cartCount > 0) {
-      setIsFloatingCartHidden(false);
+  const handlePointerDown = (e) => {
+    isDraggingRef.current = false;
+    startPosRef.current = { 
+      x: e.clientX - positionRef.current.x, 
+      y: e.clientY - positionRef.current.y 
+    };
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e) => {
+    if (!e.currentTarget.hasPointerCapture(e.pointerId)) return;
+    
+    const newX = e.clientX - startPosRef.current.x;
+    const newY = e.clientY - startPosRef.current.y;
+    
+    if (Math.abs(newX - positionRef.current.x) > 3 || Math.abs(newY - positionRef.current.y) > 3) {
+      isDraggingRef.current = true;
     }
-  }, [cartCount]);
+    
+    positionRef.current = { x: newX, y: newY };
+    
+    if (dragRef.current) {
+      dragRef.current.style.transform = `translate(${newX}px, ${newY}px)`;
+    }
+  };
+
+  const handlePointerUp = (e) => {
+    e.currentTarget.releasePointerCapture(e.pointerId);
+    if (!isDraggingRef.current) {
+      toggleCart();
+    }
+    isDraggingRef.current = false; // Reset
+  };
 
   useEffect(() => {
     if (isCartOpen) {
@@ -37,9 +84,17 @@ const ShoppingCart = () => {
 
   return (
     <div className="shopping-cart-container">
-      {pathname !== "/lookbook2" && pathname !== "/lookbook" && pathname !== "/lookbook3" && !pathname.startsWith("/products/") && cartCount > 0 && !isFloatingCartHidden && !isCartOpen && (
-        <div className="cart-button-wrapper">
-          <button className="cart-button" onClick={toggleCart}>
+      {pathname !== "/lookbook2" && pathname !== "/lookbook" && pathname !== "/lookbook3" && cartCount > 0 && !isCartOpen && (
+        <div 
+          className="cart-button-wrapper" 
+          ref={dragRef}
+          style={{ transform: `translate(${positionRef.current.x}px, ${positionRef.current.y}px)`, touchAction: 'none' }}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
+        >
+          <button className="cart-button">
             <span className="cart-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
@@ -48,12 +103,6 @@ const ShoppingCart = () => {
               </svg>
             </span>
             <span className="cart-count">{cartCount}</span>
-          </button>
-          <button className="cart-dismiss" onClick={(e) => {
-            e.stopPropagation();
-            setIsFloatingCartHidden(true);
-          }}>
-            ✕
           </button>
         </div>
       )}

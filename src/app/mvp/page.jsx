@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Link from 'next/link';
 import "./mvp.css";
+import "../order-confirmation/order-confirmation.css"; // Added to style the cinematic thank you page
 
 export default function MVPPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -371,28 +373,95 @@ export default function MVPPage() {
       )}
 
       {submitted && (
-        <div className="done on" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", minHeight: "60vh", justifyContent: "center", paddingTop: "8rem" }}>
-          <h1 className="wide" style={{ fontSize: "clamp(3rem, 8vw, 6rem)", marginBottom: "1rem" }}>THANK YOU</h1>
-          <h2 className="wide" style={{ color: "var(--mid)", marginBottom: "1.5rem" }}>
-            {typedText}<span className="blink-cursor">|</span>
-          </h2>
-          <p style={{ maxWidth: "42ch", marginBottom: "3rem" }}>We read every one of these. If it&apos;s a fit, your article ships within a week of approval — nothing else for you to do.</p>
-          
-          <div className="card" style={{ textAlign: "left", width: "100%" }}>
-            <p className="mono">With Us — MVP Roster</p>
-            <p className="name">{formData.first} {formData.last}</p>
-            <p className="mono">{formData.ig || "—"}</p>
-            <hr />
-            <dl>
-              <dt>Status</dt>
-              <dd>Pending review</dd>
-              <dt>Bottom Size</dt>
-              <dd>{formData.pick1 || "—"}</dd>
-              <dt>Top Size</dt>
-              <dd>{formData.pick2 || "—"}</dd>
-              <dt>Ships to</dt>
-              <dd>{formData.ship_city ? `${formData.ship_city}, ${formData.ship_state}` : "—"}</dd>
-            </dl>
+        <div className="order-confirmation-page">
+          <div className="order-confirmation-screen">
+            <div className="confirmation-content-wrapper">
+              <div className="order-received-badge">
+                <span className="mono">APPLICATION RECEIVED</span>
+                <span className="marker-line" />
+              </div>
+
+              <div className="confirmation-heading-group">
+                <h1 className="editorial-main-title">
+                  <span className="title-row-1">Thank You.</span>
+                  <span className="title-row-2">
+                    You're in review.
+                  </span>
+                </h1>
+                <p className="confirmation-description">
+                  We read every one of these. If it's a fit, your article ships within a week of approval — nothing else for you to do.
+                </p>
+              </div>
+
+              {/* Elevated Roster Card with Soft Realistic Multi-Layer Shadows */}
+              <div className="roster-card-container">
+                <div className="roster-card">
+                  {/* Left Data Column */}
+                  <div className="card-data-col">
+                    <div className="card-header-row">
+                      <span className="mono card-sublabel">WITH US — MVP ROSTER</span>
+                      <span className="mono card-id-tag">#01</span>
+                    </div>
+
+                    <div className="card-digits-row">
+                      <span className="card-serial-number" style={{ fontSize: '1.4rem' }}>
+                        {formData.first} {formData.last}
+                      </span>
+                    </div>
+
+                    <div className="card-divider-line" />
+
+                    <div className="card-details-grid">
+                      <div className="detail-item">
+                        <span className="detail-label mono">STATUS</span>
+                        <span className="detail-value status-val">
+                          <span className="status-amber-dot" /> PENDING REVIEW
+                        </span>
+                      </div>
+                      <div className="detail-item">
+                        <span className="detail-label mono">IG</span>
+                        <span className="detail-value mono">{formData.ig || "—"}</span>
+                      </div>
+                      <div className="detail-item">
+                        <span className="detail-label mono">BOTTOM SIZE</span>
+                        <span className="detail-value mono">{formData.pick1 || "—"}</span>
+                      </div>
+                      <div className="detail-item">
+                        <span className="detail-label mono">TOP SIZE</span>
+                        <span className="detail-value mono">{formData.pick2 || "—"}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Packaging Photography Column */}
+                  <div className="card-photo-col">
+                    <div className="card-brand-quote mono">
+                      <span>MORE</span>
+                      <span>THAN</span>
+                      <span>A BRAND.</span>
+                    </div>
+                    <div className="card-photo-wrapper">
+                      <img 
+                        src="/logo/Codex Image 19 Sept 2026, 06_08_00.png" 
+                        alt="With Us Logo Box" 
+                        className="card-box-image"
+                      />
+                      <div className="card-photo-edge-vignette" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="confirmation-action-buttons">
+                <Link href="/" className="btn-action-pill btn-secondary-outline">
+                  RETURN HOME
+                </Link>
+                <Link href="/wardrobe" className="btn-action-pill btn-primary-solid">
+                  EXPLORE WARDROBE <span className="arrow">→</span>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       )}
