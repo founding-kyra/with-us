@@ -101,7 +101,6 @@ const Product = ({
         <div className="product-info-wrapper">
           <div className="product-text">
             <p className="product-name">{title}</p>
-            <p className="product-card-color">BLACK</p>
             <p className="product-price">${price}</p>
           </div>
           <Link href={href} className="product-action-link" aria-label="View product">
