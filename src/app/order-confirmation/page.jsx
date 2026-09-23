@@ -16,22 +16,8 @@ async function getOrderDetails(orderId) {
   const SHOPIFY_STORE_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
 
   if (!SHOPIFY_ADMIN_ACCESS_TOKEN || !SHOPIFY_STORE_DOMAIN) {
-    console.warn("SHOPIFY_ADMIN_ACCESS_TOKEN is missing. Returning mock order data.");
-    return {
-      name: "WU24 0871",
-      displayFinancialStatus: "PAID",
-      displayFulfillmentStatus: "PREPARING",
-      lineItems: {
-        edges: [
-          {
-            node: {
-              title: "Mock Item",
-              quantity: 1
-            }
-          }
-        ]
-      }
-    };
+    console.error("SHOPIFY_ADMIN_ACCESS_TOKEN is missing. Cannot fetch order.");
+    return null;
   }
 
   const query = `
@@ -85,11 +71,27 @@ export default async function OrderConfirmationPage(props) {
   const orderId = searchParams?.order_id || searchParams?.order;
   const order = await getOrderDetails(orderId);
 
-  // If no order is found or no ID provided, we can either show an error state or mock data.or or a generic success
-  const displayOrderName = order?.name || "CONFIRMED";
-  const displayStatus = "CONFIRMED"; // As per reference: ORDER STATUS CONFIRMED
-  const paymentStatus = order?.displayFinancialStatus || "PAID";
-  const fulfillmentStatus = order?.displayFulfillmentStatus || "PREPARING";
+  // If no order is found or no ID provided, do not show fake information.
+  if (!order) {
+    return (
+      <div className="order-confirmation-page">
+        <div className="order-confirmation-screen" style={{display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', flexDirection: 'column'}}>
+          <h1 className="editorial-main-title">Order Status Unavailable</h1>
+          <p className="confirmation-description" style={{marginTop: '20px'}}>
+            We could not retrieve your order details at this time. Please check your email for the confirmation receipt.
+          </p>
+          <Link href="/" className="btn-action-pill btn-pill-outline-light" style={{marginTop: '40px'}}>
+            RETURN HOME
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const displayOrderName = order.name;
+  const displayStatus = "CONFIRMED"; 
+  const paymentStatus = order.displayFinancialStatus;
+  const fulfillmentStatus = order.displayFulfillmentStatus;
 
   return (
     <div className="order-confirmation-page">

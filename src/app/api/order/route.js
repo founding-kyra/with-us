@@ -46,23 +46,8 @@ export async function GET(request) {
   const SHOPIFY_STORE_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
 
   if (!SHOPIFY_ADMIN_ACCESS_TOKEN || !SHOPIFY_STORE_DOMAIN) {
-    // Return a mock response if no admin token is available (for development/preview)
-    console.warn("SHOPIFY_ADMIN_ACCESS_TOKEN is missing. Returning mock order data.");
-    return NextResponse.json({
-      name: "WU24 0871",
-      displayFinancialStatus: "PAID",
-      displayFulfillmentStatus: "PREPARING",
-      lineItems: {
-        edges: [
-          {
-            node: {
-              title: "Mock Item",
-              quantity: 1
-            }
-          }
-        ]
-      }
-    });
+    console.error("SHOPIFY_ADMIN_ACCESS_TOKEN is missing. Cannot fetch order.");
+    return NextResponse.json({ error: 'Server misconfiguration' }, { status: 500 });
   }
 
   const query = `

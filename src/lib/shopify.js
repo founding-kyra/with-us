@@ -139,13 +139,146 @@ export async function addToCart(cartId, lines) {
               }
             }
           }
+          estimatedCost {
+            subtotalAmount {
+              amount
+              currencyCode
+            }
+          }
+        }
+        userErrors {
+          field
+          message
         }
       }
     }
   `;
   
   const data = await shopifyFetch({ query, variables: { cartId, lines } });
-  return data?.cartLinesAdd?.cart;
+  return {
+    cart: data?.cartLinesAdd?.cart,
+    userErrors: data?.cartLinesAdd?.userErrors || []
+  };
+}
+
+export async function updateCartLines(cartId, lines) {
+  const query = `
+    mutation cartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+      cartLinesUpdate(cartId: $cartId, lines: $lines) {
+        cart {
+          id
+          checkoutUrl
+          lines(first: 10) {
+            edges {
+              node {
+                id
+                quantity
+                merchandise {
+                  ... on ProductVariant {
+                    id
+                    title
+                    price {
+                      amount
+                    }
+                    product {
+                      title
+                      images(first: 1) {
+                        edges {
+                          node {
+                            url
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          estimatedCost {
+            subtotalAmount {
+              amount
+              currencyCode
+            }
+          }
+        }
+        userErrors {
+          field
+          message
+        }
+      }
+    }
+  `;
+  const data = await shopifyFetch({ query, variables: { cartId, lines } });
+  
+  if (data?.cartLinesUpdate?.userErrors?.length > 0) {
+    console.error('Shopify Cart Update Errors:', data.cartLinesUpdate.userErrors);
+  }
+  
+  return {
+    cart: data?.cartLinesUpdate?.cart,
+    userErrors: data?.cartLinesUpdate?.userErrors || []
+  };
+}
+
+export async function removeCartLines(cartId, lineIds) {
+  const query = `
+    mutation cartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
+      cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+        cart {
+          id
+          checkoutUrl
+          lines(first: 10) {
+            edges {
+              node {
+                id
+                quantity
+                merchandise {
+                  ... on ProductVariant {
+                    id
+                    title
+                    price {
+                      amount
+                    }
+                    product {
+                      title
+                      images(first: 1) {
+                        edges {
+                          node {
+                            url
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          estimatedCost {
+            subtotalAmount {
+              amount
+              currencyCode
+            }
+          }
+        }
+        userErrors {
+          field
+          message
+        }
+      }
+    }
+  `;
+  const data = await shopifyFetch({ query, variables: { cartId, lineIds } });
+  
+  if (data?.cartLinesRemove?.userErrors?.length > 0) {
+    console.error('Shopify Cart Remove Errors:', data.cartLinesRemove.userErrors);
+  }
+  
+  return {
+    cart: data?.cartLinesRemove?.cart,
+    userErrors: data?.cartLinesRemove?.userErrors || []
+  };
 }
 
 export async function getCart(cartId) {
@@ -179,6 +312,12 @@ export async function getCart(cartId) {
                 }
               }
             }
+          }
+        }
+        estimatedCost {
+          subtotalAmount {
+            amount
+            currencyCode
           }
         }
       }

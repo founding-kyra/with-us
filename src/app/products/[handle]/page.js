@@ -30,9 +30,17 @@ export default function Unit({ params }) {
 
 
   const [isAdded, setIsAdded] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
   const addToCart = useCartStore((state) => state.addToCart);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    setIsAdding(true);
+
     // Match the selected size with the variant title (e.g. "S", "M", "L", "XL")
     const selectedVariant = currentProduct?.variants?.edges?.find(
       (edge) => 
@@ -46,7 +54,7 @@ export default function Unit({ params }) {
     
     const variantId = selectedVariant?.node?.id || currentProduct?.variants?.edges?.[0]?.node?.id;
 
-    addToCart({
+    await addToCart({
       ...currentProduct,
       name: currentProduct?.title,
       price: currentProduct?.priceRange?.minVariantPrice?.amount,
@@ -55,10 +63,52 @@ export default function Unit({ params }) {
       quantity: quantity,
       size: selectedSize
     });
+    
+    setIsAdding(false);
     setIsAdded(true);
     setTimeout(() => {
       setIsAdded(false);
     }, 2000); 
+  };
+
+  const [isBuying, setIsBuying] = useState(false);
+
+  const handleBuyNow = async (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    setIsBuying(true);
+
+    const selectedVariant = currentProduct?.variants?.edges?.find(
+      (edge) => 
+        edge.node.title === selectedSize || 
+        edge.node.title.includes(selectedSize) ||
+        (selectedSize === "S" && edge.node.title.toLowerCase().includes("small")) ||
+        (selectedSize === "M" && edge.node.title.toLowerCase().includes("medium")) ||
+        (selectedSize === "L" && edge.node.title.toLowerCase().includes("large")) ||
+        (selectedSize === "XL" && edge.node.title.toLowerCase().includes("x-large"))
+    );
+    
+    const variantId = selectedVariant?.node?.id || currentProduct?.variants?.edges?.[0]?.node?.id;
+
+    await addToCart({
+      ...currentProduct,
+      name: currentProduct?.title,
+      price: currentProduct?.priceRange?.minVariantPrice?.amount,
+      image: currentProduct?.images?.edges?.[0]?.node?.url,
+      variantId: variantId,
+      quantity: quantity,
+      size: selectedSize
+    });
+    
+    const checkoutUrl = useCartStore.getState().checkoutUrl;
+    if (checkoutUrl) {
+      window.location.href = checkoutUrl;
+    } else {
+      setIsBuying(false);
+    }
   };
 
   const pathname = usePathname();
@@ -67,6 +117,16 @@ export default function Unit({ params }) {
     const fetchData = async () => {
       const product = await getProduct(handle);
       setCurrentProduct(product);
+      
+      // Auto-select the first available variant
+      if (product?.variants?.edges?.length > 0) {
+        const firstAvailable = product.variants.edges.find(e => e.node.availableForSale);
+        if (firstAvailable) {
+          setSelectedSize(firstAvailable.node.title);
+        } else {
+          setSelectedSize(product.variants.edges[0].node.title);
+        }
+      }
 
       console.log('[DEBUG] product:', product);
       console.log('[DEBUG] product.title:', product?.title);
@@ -241,15 +301,29 @@ export default function Unit({ params }) {
             <div className="product-sizes-container">
               <p className="form-label">FORM SIZE</p>
               <div className="product-sizes-boxes">
-                {["S", "M", "L", "XL"].map((size) => (
-                  <button 
-                    key={size}
-                    className={`size-box ${selectedSize === size ? "selected" : ""}`}
-                    onClick={() => setSelectedSize(size)}
-                  >
-                    {size}
-                  </button>
-                ))}
+                {currentProduct?.variants?.edges ? (
+                  currentProduct.variants.edges.map(({ node }) => (
+                    <button 
+                      key={node.id}
+                      className={`size-box ${selectedSize === node.title ? "selected" : ""}`}
+                      onClick={() => setSelectedSize(node.title)}
+                      disabled={!node.availableForSale}
+                      style={{ opacity: node.availableForSale ? 1 : 0.3 }}
+                    >
+                      {node.title}
+                    </button>
+                  ))
+                ) : (
+                  ["S", "M", "L", "XL"].map((size) => (
+                    <button 
+                      key={size}
+                      className={`size-box ${selectedSize === size ? "selected" : ""}`}
+                      onClick={() => setSelectedSize(size)}
+                    >
+                      {size}
+                    </button>
+                  ))
+                )}
               </div>
             </div>
 
@@ -280,6 +354,8 @@ export default function Unit({ params }) {
               <button
                 className={`primary cart-anim-button ${isAdded ? "clicked" : ""}`}
                 onClick={handleAddToCart}
+                disabled={isAdding}
+                style={{ opacity: isAdding ? 0.7 : 1 }}
               >
                 <span style={{ visibility: 'hidden' }}>Add To Bag</span>
                 <span className="btn-txt add-to-cart">Add To Bag</span>
@@ -299,7 +375,14 @@ export default function Unit({ params }) {
                   </svg>
                 </i>
               </button>
-              <button className="secondary">Save Item</button>
+              <button 
+                className="secondary"
+                onClick={handleBuyNow}
+                disabled={isBuying}
+                style={{ opacity: isBuying ? 0.7 : 1 }}
+              >
+                {isBuying ? "Proceeding..." : "Checkout"}
+              </button>
             </div>
           </div>
         </div>

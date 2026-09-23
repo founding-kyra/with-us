@@ -26,11 +26,18 @@ const ShoppingCart = () => {
       storeCloseCart();
     }
   };
-  const cartItems = useCartStore((state) => state.cartItems);
+  const cart = useCartStore((state) => state.cart);
+  const cartItems = cart?.lines?.edges || [];
   const removeFromCart = useCartStore((state) => state.removeFromCart);
+  const updateQuantity = useCartStore((state) => state.updateQuantity);
   const cartCount = useCartCount();
   const subtotal = useCartSubtotal();
   const checkoutUrl = useCartStore((state) => state.checkoutUrl);
+  const initCart = useCartStore((state) => state.initCart);
+
+  useEffect(() => {
+    initCart();
+  }, [initCart]);
 
   const dragRef = useRef(null);
   const positionRef = useRef({ x: 0, y: 0 });
@@ -145,27 +152,33 @@ const ShoppingCart = () => {
               </div>
             ) : (
               cartItems.map((item, index) => {
-                const imageSrc = item.image || `/products/product_${index + 1}.webp`;
-                const quantity = Number(item.quantity) || 1;
+                const node = item.node;
+                const variant = node.merchandise;
+                const product = variant.product;
+                const imageSrc = product.images?.edges?.[0]?.node?.url || `/products/product_${index + 1}.webp`;
+                const quantity = node.quantity || 1;
+                
                 return (
-                  <div key={`${item.name}-${index}`} className="cart-item">
+                  <div key={node.id} className="cart-item">
                     <div className="cart-item-image">
                       <img
                         src={imageSrc}
-                        alt={item.name}
+                        alt={product.title}
                       />
                     </div>
                     <div className="cart-item-details">
                       <div className="cart-item-name-row">
-                        <p className="cart-item-name">{item.name}</p>
+                        <p className="cart-item-name">{product.title}</p>
                         {quantity > 1 && (
                           <span className="cart-item-quantity">{quantity}</span>
                         )}
                       </div>
-                      <p className="cart-item-price">${Number(item.price).toFixed(2).replace(/\.00$/, '')}</p>
+                      <p className="cart-item-name" style={{opacity: 0.6, fontSize: '0.8rem', marginTop: '-4px', marginBottom: '4px'}}>{variant.title}</p>
+                      
+                      <p className="cart-item-price">${Number(variant.price.amount).toFixed(2).replace(/\.00$/, '')}</p>
                       <button
                         className="cart-item-remove"
-                        onClick={() => removeFromCart(item.name)}
+                        onClick={() => removeFromCart(node.id)}
                       >
                         Remove
                       </button>
