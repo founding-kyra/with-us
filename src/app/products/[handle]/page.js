@@ -33,13 +33,27 @@ export default function Unit({ params }) {
   const addToCart = useCartStore((state) => state.addToCart);
 
   const handleAddToCart = () => {
+    // Match the selected size with the variant title (e.g. "S", "M", "L", "XL")
+    const selectedVariant = currentProduct?.variants?.edges?.find(
+      (edge) => 
+        edge.node.title === selectedSize || 
+        edge.node.title.includes(selectedSize) ||
+        (selectedSize === "S" && edge.node.title.toLowerCase().includes("small")) ||
+        (selectedSize === "M" && edge.node.title.toLowerCase().includes("medium")) ||
+        (selectedSize === "L" && edge.node.title.toLowerCase().includes("large")) ||
+        (selectedSize === "XL" && edge.node.title.toLowerCase().includes("x-large"))
+    );
+    
+    const variantId = selectedVariant?.node?.id || currentProduct?.variants?.edges?.[0]?.node?.id;
+
     addToCart({
       ...currentProduct,
       name: currentProduct?.title,
       price: currentProduct?.priceRange?.minVariantPrice?.amount,
       image: currentProduct?.images?.edges?.[0]?.node?.url,
-      variantId: currentProduct?.variants?.edges?.[0]?.node?.id,
-      quantity: quantity
+      variantId: variantId,
+      quantity: quantity,
+      size: selectedSize
     });
     setIsAdded(true);
     setTimeout(() => {
