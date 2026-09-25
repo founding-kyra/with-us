@@ -376,11 +376,12 @@
   }
 
   .product-snapshot-minimap {
-    flex-direction: row;
+    flex-direction: column;
     bottom: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 1rem;
+    transform: none;
     gap: 0.5rem;
+    z-index: 10;
   }
 
   .product-snapshot-minimap-img {
