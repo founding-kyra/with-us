@@ -27,6 +27,18 @@ export default function Unit({ params }) {
   const [selectedSize, setSelectedSize] = useState("S");
   const [quantity, setQuantity] = useState(1);
   const heroScrollTriggerRef = useRef(null);
+  
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
+  const openLightbox = (index) => {
+    setLightboxIndex(index);
+    setIsLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+  };
 
 
   const [isAdded, setIsAdded] = useState(false);
@@ -288,7 +300,12 @@ export default function Unit({ params }) {
         <div className="product-hero-col product-snapshots">
           <div className="snapshots-scroll-container" ref={scrollContainerRef}>
             {currentProduct?.images?.edges.slice(0, 4).map((edge, index) => (
-              <div className="product-snapshot" key={index}>
+              <div 
+                className="product-snapshot" 
+                key={index}
+                onClick={() => openLightbox(index)}
+                style={{ cursor: 'zoom-in' }}
+              >
                 <img 
                   src={edge.node.url} 
                   alt="" 
@@ -487,6 +504,32 @@ export default function Unit({ params }) {
           </div>
         </div>
       </section>
+
+      {isLightboxOpen && (
+        <div className="product-lightbox" onClick={closeLightbox}>
+          <button className="product-lightbox-close" onClick={closeLightbox}>✕</button>
+          
+          <button 
+            className="product-lightbox-prev" 
+            onClick={(e) => { e.stopPropagation(); setLightboxIndex(Math.max(0, lightboxIndex - 1)); }}
+            style={{ display: lightboxIndex === 0 ? 'none' : 'block' }}
+          >
+            ←
+          </button>
+          
+          <div className="product-lightbox-image-container" onClick={(e) => e.stopPropagation()}>
+             <img src={currentProduct?.images?.edges[lightboxIndex]?.node?.url} alt="" />
+          </div>
+
+          <button 
+            className="product-lightbox-next" 
+            onClick={(e) => { e.stopPropagation(); setLightboxIndex(Math.min(currentProduct?.images?.edges.slice(0, 4).length - 1, lightboxIndex + 1)); }}
+            style={{ display: lightboxIndex === currentProduct?.images?.edges.slice(0, 4).length - 1 ? 'none' : 'block' }}
+          >
+            →
+          </button>
+        </div>
+      )}
     </>
   );
 }
