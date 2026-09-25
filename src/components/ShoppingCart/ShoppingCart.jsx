@@ -49,6 +49,8 @@ const ShoppingCart = () => {
   };
 
   const handlePointerDown = (e) => {
+    // Only allow drag on desktop (mouse), not on touch devices
+    if (e.pointerType === 'touch') return;
     isDraggingRef.current = false;
     startPosRef.current = { 
       x: e.clientX - positionRef.current.x, 
