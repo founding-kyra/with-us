@@ -41,56 +41,65 @@ const ShoppingCart = () => {
 
   const dragRef = useRef(null);
   const positionRef = useRef({ x: 0, y: 0 });
+  const startTouchRef = useRef({ x: 0, y: 0 });
   const startPosRef = useRef({ x: 0, y: 0 });
   const isDraggingRef = useRef(false);
 
-  const preventScroll = (e) => {
-    e.preventDefault();
-  };
+  // Store handlers as refs so we can remove them correctly
+  const touchStartHandlerRef = useRef(null);
+  const touchMoveHandlerRef = useRef(null);
+  const touchEndHandlerRef = useRef(null);
 
-  const handlePointerDown = (e) => {
-    // Only allow drag on desktop (mouse), not on touch devices
-    if (e.pointerType === 'touch') return;
-    isDraggingRef.current = false;
-    startPosRef.current = { 
-      x: e.clientX - positionRef.current.x, 
-      y: e.clientY - positionRef.current.y 
-    };
-    e.currentTarget.setPointerCapture(e.pointerId);
-    document.body.style.overflow = "hidden";
-    document.body.style.touchAction = "none";
-    window.addEventListener('touchmove', preventScroll, { passive: false });
-  };
-
-  const handlePointerMove = (e) => {
-    if (!e.currentTarget.hasPointerCapture(e.pointerId)) return;
-    
-    const newX = e.clientX - startPosRef.current.x;
-    const newY = e.clientY - startPosRef.current.y;
-    
-    if (Math.abs(newX - positionRef.current.x) > 3 || Math.abs(newY - positionRef.current.y) > 3) {
-      isDraggingRef.current = true;
-    }
-    
-    positionRef.current = { x: newX, y: newY };
-    
+  const setupDragRef = useCallback((element) => {
+    // Cleanup old listeners
     if (dragRef.current) {
-      dragRef.current.style.transform = `translate(${newX}px, ${newY}px)`;
+      if (touchStartHandlerRef.current) dragRef.current.removeEventListener('touchstart', touchStartHandlerRef.current);
+      if (touchMoveHandlerRef.current) dragRef.current.removeEventListener('touchmove', touchMoveHandlerRef.current);
+      if (touchEndHandlerRef.current) dragRef.current.removeEventListener('touchend', touchEndHandlerRef.current);
     }
-  };
 
-  const handlePointerUp = (e) => {
-    e.currentTarget.releasePointerCapture(e.pointerId);
-    if (!isDraggingRef.current) {
-      toggleCart();
+    dragRef.current = element;
+
+    if (element) {
+      touchStartHandlerRef.current = (e) => {
+        const touch = e.touches[0];
+        isDraggingRef.current = false;
+        startTouchRef.current = { x: touch.clientX, y: touch.clientY };
+        startPosRef.current = { x: positionRef.current.x, y: positionRef.current.y };
+      };
+
+      touchMoveHandlerRef.current = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const touch = e.touches[0];
+        const dx = touch.clientX - startTouchRef.current.x;
+        const dy = touch.clientY - startTouchRef.current.y;
+
+        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+          isDraggingRef.current = true;
+        }
+
+        const newX = startPosRef.current.x + dx;
+        const newY = startPosRef.current.y + dy;
+        positionRef.current = { x: newX, y: newY };
+
+        if (dragRef.current) {
+          dragRef.current.style.transform = `translate(${newX}px, ${newY}px)`;
+        }
+      };
+
+      touchEndHandlerRef.current = (e) => {
+        if (!isDraggingRef.current) {
+          toggleCart();
+        }
+        isDraggingRef.current = false;
+      };
+
+      element.addEventListener('touchstart', touchStartHandlerRef.current, { passive: true });
+      element.addEventListener('touchmove', touchMoveHandlerRef.current, { passive: false });
+      element.addEventListener('touchend', touchEndHandlerRef.current, { passive: true });
     }
-    isDraggingRef.current = false; // Reset
-    document.body.style.touchAction = "";
-    if (!useCartStore.getState().isCartOpen) {
-      document.body.style.overflow = "";
-    }
-    window.removeEventListener('touchmove', preventScroll);
-  };
+  }, []);
 
   useEffect(() => {
     if (isCartOpen) {
@@ -100,23 +109,8 @@ const ShoppingCart = () => {
     }
     return () => {
       document.body.style.overflow = "";
-      window.removeEventListener('touchmove', preventScroll);
     };
   }, [isCartOpen]);
-
-  const preventScroll = (e) => {
-    e.preventDefault();
-  };
-
-  const setupDragRef = useCallback((element) => {
-    if (dragRef.current) {
-      dragRef.current.removeEventListener('touchmove', preventScroll);
-    }
-    dragRef.current = element;
-    if (element) {
-      element.addEventListener('touchmove', preventScroll, { passive: false });
-    }
-  }, []);
 
   return (
     <div className="shopping-cart-container">
@@ -124,11 +118,7 @@ const ShoppingCart = () => {
         <div 
           className="cart-button-wrapper" 
           ref={setupDragRef}
-          style={{ transform: `translate(${positionRef.current.x}px, ${positionRef.current.y}px)`, touchAction: 'none' }}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-          onPointerCancel={handlePointerUp}
+          style={{ transform: `translate(${positionRef.current.x}px, ${positionRef.current.y}px)` }}
         >
           <button className="cart-button">
             <span className="cart-icon">

@@ -314,11 +314,6 @@
     bottom: 10.5rem;
     top: auto;
     right: 1.25rem;
-    touch-action: auto !important;
-  }
-
-  .shopping-cart-container .cart-button-wrapper * {
-    touch-action: auto !important;
   }
 
   .shopping-cart-container .cart-button {
