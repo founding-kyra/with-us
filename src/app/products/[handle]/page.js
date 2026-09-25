@@ -269,11 +269,24 @@ export default function Unit({ params }) {
     });
   }, [currentProduct]);
 
+  const scrollContainerRef = useRef(null);
+
+  const scrollToImage = (index) => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const width = container.clientWidth;
+      container.scrollTo({
+        left: width * index,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <>
       <section className="product-hero" ref={heroRef}>
         <div className="product-hero-col product-snapshots">
-          <div className="snapshots-scroll-container">
+          <div className="snapshots-scroll-container" ref={scrollContainerRef}>
             {currentProduct?.images?.edges.slice(0, 4).map((edge, index) => (
               <div className="product-snapshot" key={index}>
                 <img 
@@ -288,7 +301,12 @@ export default function Unit({ params }) {
           </div>
           <div className="product-snapshot-minimap">
             {currentProduct?.images?.edges.slice(0, 4).map((edge, index) => (
-              <div className="product-snapshot-minimap-img" key={`mini-${index}`}>
+              <div 
+                className="product-snapshot-minimap-img" 
+                key={`mini-${index}`}
+                onClick={() => scrollToImage(index)}
+                style={{ cursor: 'pointer' }}
+              >
                 <img src={edge.node.url} alt="" />
               </div>
             ))}

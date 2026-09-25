@@ -384,16 +384,20 @@
   }
 
   .product-snapshot-minimap-img {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--base-500);
-    border: none;
+    width: 3rem;
+    height: 4rem;
+    border-radius: 0.25rem;
+    background-color: transparent;
+    border: 1px solid var(--base-300);
     transform: none !important;
+    overflow: hidden;
   }
 
   .product-snapshot-minimap-img img {
-    display: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .product-details {
