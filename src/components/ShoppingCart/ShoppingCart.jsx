@@ -44,6 +44,10 @@ const ShoppingCart = () => {
   const startPosRef = useRef({ x: 0, y: 0 });
   const isDraggingRef = useRef(false);
 
+  const preventScroll = (e) => {
+    e.preventDefault();
+  };
+
   const handlePointerDown = (e) => {
     isDraggingRef.current = false;
     startPosRef.current = { 
@@ -53,6 +57,7 @@ const ShoppingCart = () => {
     e.currentTarget.setPointerCapture(e.pointerId);
     document.body.style.overflow = "hidden";
     document.body.style.touchAction = "none";
+    window.addEventListener('touchmove', preventScroll, { passive: false });
   };
 
   const handlePointerMove = (e) => {
@@ -82,6 +87,7 @@ const ShoppingCart = () => {
     if (!useCartStore.getState().isCartOpen) {
       document.body.style.overflow = "";
     }
+    window.removeEventListener('touchmove', preventScroll);
   };
 
   useEffect(() => {
@@ -92,29 +98,16 @@ const ShoppingCart = () => {
     }
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener('touchmove', preventScroll);
     };
   }, [isCartOpen]);
-
-  const preventScroll = (e) => {
-    e.preventDefault();
-  };
-
-  const setupDragRef = (element) => {
-    if (dragRef.current) {
-      dragRef.current.removeEventListener('touchmove', preventScroll);
-    }
-    dragRef.current = element;
-    if (element) {
-      element.addEventListener('touchmove', preventScroll, { passive: false });
-    }
-  };
 
   return (
     <div className="shopping-cart-container">
       {pathname !== "/lookbook2" && pathname !== "/lookbook" && pathname !== "/lookbook3" && cartCount > 0 && !isCartOpen && (
         <div 
           className="cart-button-wrapper" 
-          ref={setupDragRef}
+          ref={dragRef}
           style={{ transform: `translate(${positionRef.current.x}px, ${positionRef.current.y}px)`, touchAction: 'none' }}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}

@@ -18,6 +18,12 @@
   gap: 0.5rem;
   pointer-events: all;
   z-index: 50;
+  touch-action: none !important;
+  -webkit-touch-callout: none !important;
+}
+
+.shopping-cart-container .cart-button-wrapper * {
+  touch-action: none !important;
 }
 
 .shopping-cart-container .cart-button {
