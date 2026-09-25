@@ -95,12 +95,26 @@ const ShoppingCart = () => {
     };
   }, [isCartOpen]);
 
+  const preventScroll = (e) => {
+    e.preventDefault();
+  };
+
+  const setupDragRef = (element) => {
+    if (dragRef.current) {
+      dragRef.current.removeEventListener('touchmove', preventScroll);
+    }
+    dragRef.current = element;
+    if (element) {
+      element.addEventListener('touchmove', preventScroll, { passive: false });
+    }
+  };
+
   return (
     <div className="shopping-cart-container">
       {pathname !== "/lookbook2" && pathname !== "/lookbook" && pathname !== "/lookbook3" && cartCount > 0 && !isCartOpen && (
         <div 
           className="cart-button-wrapper" 
-          ref={dragRef}
+          ref={setupDragRef}
           style={{ transform: `translate(${positionRef.current.x}px, ${positionRef.current.y}px)`, touchAction: 'none' }}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
