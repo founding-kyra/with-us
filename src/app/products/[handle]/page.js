@@ -275,7 +275,14 @@ export default function Unit({ params }) {
         <div className="product-hero-col product-snapshots">
           {currentProduct?.images?.edges.slice(0, 4).map((edge, index) => (
             <div className="product-snapshot" key={index}>
-              <img src={edge.node.url} alt="" />
+              <img 
+                src={edge.node.url} 
+                alt="" 
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "auto"}
+                draggable="false"
+                onDragStart={(e) => e.preventDefault()}
+              />
             </div>
           ))}
           <div className="product-snapshot-minimap">
