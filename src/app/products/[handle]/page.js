@@ -273,17 +273,19 @@ export default function Unit({ params }) {
     <>
       <section className="product-hero" ref={heroRef}>
         <div className="product-hero-col product-snapshots">
-          {currentProduct?.images?.edges.slice(0, 4).map((edge, index) => (
-            <div className="product-snapshot" key={index}>
-              <img 
-                src={edge.node.url} 
-                alt="" 
-                loading={index === 0 ? "eager" : "lazy"}
-                fetchPriority={index === 0 ? "high" : "auto"}
-                draggable="false"
-              />
-            </div>
-          ))}
+          <div className="snapshots-scroll-container">
+            {currentProduct?.images?.edges.slice(0, 4).map((edge, index) => (
+              <div className="product-snapshot" key={index}>
+                <img 
+                  src={edge.node.url} 
+                  alt="" 
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : "auto"}
+                  draggable="false"
+                />
+              </div>
+            ))}
+          </div>
           <div className="product-snapshot-minimap">
             {currentProduct?.images?.edges.slice(0, 4).map((edge, index) => (
               <div className="product-snapshot-minimap-img" key={`mini-${index}`}>
