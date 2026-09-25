@@ -51,6 +51,8 @@ const ShoppingCart = () => {
       y: e.clientY - positionRef.current.y 
     };
     e.currentTarget.setPointerCapture(e.pointerId);
+    document.body.style.overflow = "hidden";
+    document.body.style.touchAction = "none";
   };
 
   const handlePointerMove = (e) => {
@@ -76,6 +78,10 @@ const ShoppingCart = () => {
       toggleCart();
     }
     isDraggingRef.current = false; // Reset
+    document.body.style.touchAction = "";
+    if (!useCartStore.getState().isCartOpen) {
+      document.body.style.overflow = "";
+    }
   };
 
   useEffect(() => {
