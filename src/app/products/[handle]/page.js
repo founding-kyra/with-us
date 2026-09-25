@@ -281,7 +281,6 @@ export default function Unit({ params }) {
                 loading={index === 0 ? "eager" : "lazy"}
                 fetchPriority={index === 0 ? "high" : "auto"}
                 draggable="false"
-                onDragStart={(e) => e.preventDefault()}
               />
             </div>
           ))}
