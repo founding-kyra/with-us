@@ -44,6 +44,7 @@ const ShoppingCart = () => {
   const startTouchRef = useRef({ x: 0, y: 0 });
   const startPosRef = useRef({ x: 0, y: 0 });
   const isDraggingRef = useRef(false);
+  const hasTouchedRef = useRef(false);
 
   // Store handlers as refs so we can remove them correctly
   const touchStartHandlerRef = useRef(null);
@@ -64,6 +65,7 @@ const ShoppingCart = () => {
       touchStartHandlerRef.current = (e) => {
         const touch = e.touches[0];
         isDraggingRef.current = false;
+        hasTouchedRef.current = true;
         startTouchRef.current = { x: touch.clientX, y: touch.clientY };
         startPosRef.current = { x: positionRef.current.x, y: positionRef.current.y };
       };
@@ -93,6 +95,9 @@ const ShoppingCart = () => {
           toggleCart();
         }
         isDraggingRef.current = false;
+        setTimeout(() => {
+          hasTouchedRef.current = false;
+        }, 300);
       };
 
       element.addEventListener('touchstart', touchStartHandlerRef.current, { passive: true });
@@ -120,7 +125,12 @@ const ShoppingCart = () => {
           ref={setupDragRef}
           style={{ transform: `translate(${positionRef.current.x}px, ${positionRef.current.y}px)` }}
         >
-          <button className="cart-button">
+          <button className="cart-button" onClick={(e) => {
+            if (hasTouchedRef.current) return;
+            if (!isDraggingRef.current) {
+              toggleCart();
+            }
+          }}>
             <span className="cart-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
