@@ -198,19 +198,30 @@ const ShoppingCart = () => {
                     <div className="cart-item-details">
                       <div className="cart-item-name-row">
                         <p className="cart-item-name">{product.title}</p>
-                        {quantity > 1 && (
-                          <span className="cart-item-quantity">{quantity}</span>
-                        )}
                       </div>
                       <p className="cart-item-name" style={{opacity: 0.6, fontSize: '0.8rem', marginTop: '-4px', marginBottom: '4px'}}>{variant.title}</p>
                       
                       <p className="cart-item-price">${Number(variant.price.amount).toFixed(2).replace(/\.00$/, '')}</p>
-                      <button
-                        className="cart-item-remove"
-                        onClick={() => removeFromCart(node.id)}
-                      >
-                        Remove
-                      </button>
+                      <div className="cart-item-actions">
+                        <div className="cart-item-quantity-controls">
+                          <button 
+                            onClick={() => updateQuantity(node.id, quantity - 1)}
+                            disabled={quantity <= 1}
+                          >
+                            -
+                          </button>
+                          <span>{quantity}</span>
+                          <button onClick={() => updateQuantity(node.id, quantity + 1)}>
+                            +
+                          </button>
+                        </div>
+                        <button
+                          className="cart-item-remove"
+                          onClick={() => removeFromCart(node.id)}
+                        >
+                          Remove
+                        </button>
+                      </div>
                     </div>
                   </div>
                 );
