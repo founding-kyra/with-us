@@ -261,9 +261,9 @@
 
 .shopping-cart-container .cart-item-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-top: 0.5rem;
 }
 
