@@ -249,7 +249,7 @@ export async function POST(req) {
           body: JSON.stringify({
             from: "With Us Notifications <notifications@withusla.com>",
             // Recipient is hardcoded — not derived from client input
-            to: ["company@withusla.com"],
+            to: ["hello@withusla.com"],
             subject: "New Affiliate Collaboration Request",
             html: htmlBody,
           }),
