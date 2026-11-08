@@ -58,8 +58,12 @@ export default function Genesis() {
         const mm = gsap.matchMedia();
 
         mm.add(
-          "(min-width: 900px) and (min-height: 550px)",
-          () => {
+          {
+            isDesktop: "(min-width: 900px)",
+            isMobile: "(max-width: 899px)",
+          },
+          (context) => {
+            const { isMobile } = context.conditions;
             stage.classList.add("process-motion");
             const rows = gsap.utils.toArray(
               stage.querySelectorAll(".process-item")
@@ -67,13 +71,16 @@ export default function Genesis() {
             const counter = stage.querySelector(".process-counter");
             const orbit = stage.querySelector(".process-orbit");
             const getActiveY = (idx) => {
-              // Section 2 has multi-line bullets; lift it higher (-60px) so it doesn't sit too low
-              if (idx === 1) return -60;
+              if (idx === 1) return isMobile ? -30 : -60;
               return 0;
             };
 
             const getGap = (activeIdx) => {
-              // Section 2 has dense bullet points; use a generous 130px+ gap so Section 3 never disturbs it
+              if (isMobile) {
+                return activeIdx === 1
+                  ? Math.max(window.innerHeight * 0.12, 80)
+                  : Math.max(window.innerHeight * 0.08, 60);
+              }
               if (activeIdx === 1) {
                 return Math.max(window.innerHeight * 0.16, 130);
               }
@@ -97,7 +104,7 @@ export default function Genesis() {
                 return activeCenter + activeH / 2 + gap + targetH / 2;
               }
               // Further upcoming items sit deeper below
-              return activeCenter + activeH / 2 + gap + targetH / 2 + (targetIdx - (activeIdx + 1)) * 220;
+              return activeCenter + activeH / 2 + gap + targetH / 2 + (targetIdx - (activeIdx + 1)) * (isMobile ? 140 : 220);
             };
 
             const getOpacity = (targetIdx, activeIdx) => {
@@ -123,12 +130,15 @@ export default function Genesis() {
             });
 
             let activeStepFormatted = "01";
+            const scrollDistance = isMobile
+              ? window.innerHeight * 3.0
+              : window.innerHeight * 3.8;
 
             const sequence = gsap.timeline({
               scrollTrigger: {
                 trigger: stage,
                 start: "top top",
-                end: () => "+=" + window.innerHeight * 3.8,
+                end: () => "+=" + scrollDistance,
                 pin: true,
                 anticipatePin: 1,
                 scrub: 1.1,
@@ -211,7 +221,7 @@ export default function Genesis() {
                 scrollTrigger: {
                   trigger: stage,
                   start: "top top",
-                  end: () => "+=" + window.innerHeight * 3.8,
+                  end: () => "+=" + scrollDistance,
                   scrub: 1,
                 },
               });
