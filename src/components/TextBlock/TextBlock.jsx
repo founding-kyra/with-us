@@ -7,7 +7,7 @@ const TextBlock = () => {
   return (
     <section className="text-block">
       <div className="text-block-bg-img">
-        <img src="/Photos 2/WUS-33.webp" alt="WITHUS Background" />
+        <img src="/Photos 2/WUS-33.webp" alt="WITHUS Background" loading="lazy" decoding="async" />
       </div>
       <div className="container">
         <div className="text-block-col">
