@@ -263,34 +263,6 @@
   padding: 6rem 2rem;
 }
 
-.genesis-process-theatre .ring-outer {
-  transform-origin: 100px 100px;
-  animation: genesis-orbit-spin 12s linear infinite;
-}
-
-.genesis-process-theatre .ring-inner {
-  transform-origin: 100px 100px;
-  animation: genesis-orbit-reverse 18s linear infinite;
-}
-
-@keyframes genesis-orbit-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes genesis-orbit-reverse {
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .genesis-process-theatre .ring-outer,
-  .genesis-process-theatre .ring-inner {
-    animation: none;
-  }
-}
 
 .genesis-process-theatre .process-orbit,
 .genesis-process-theatre .process-counter {
