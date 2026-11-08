@@ -65,7 +65,7 @@ export default function Genesis() {
               stage.querySelectorAll(".process-item")
             );
             const counter = stage.querySelector(".process-counter");
-            const logoMover = stage.querySelector(".process-logo-mover");
+            const orbit = stage.querySelector(".process-orbit");
             const getActiveY = (idx) => {
               // Section 2 has multi-line bullets; lift it higher (-60px) so it doesn't sit too low
               if (idx === 1) return -60;
@@ -154,19 +154,6 @@ export default function Genesis() {
                           overwrite: true,
                         }
                       );
-                      if (logoMover) {
-                        gsap.fromTo(
-                          logoMover,
-                          { scale: 1.12 },
-                          {
-                            scale: 1,
-                            duration: 0.45,
-                            ease: "back.out(1.8)",
-                            transformOrigin: "center center",
-                            overwrite: "auto",
-                          }
-                        );
-                      }
                     }
                   }
                 },
@@ -216,24 +203,18 @@ export default function Genesis() {
 
             sequence.to({}, { duration: 0.4 });
 
-            if (logoMover) {
-              // Contained within the precision circle: glides smoothly vertically & tilts gently as you scroll
-              gsap.fromTo(
-                logoMover,
-                { y: -8, rotation: -8 },
-                {
-                  y: 8,
-                  rotation: 8,
-                  ease: "none",
-                  transformOrigin: "center center",
-                  scrollTrigger: {
-                    trigger: stage,
-                    start: "top top",
-                    end: () => "+=" + window.innerHeight * 3.8,
-                    scrub: 1.2,
-                  },
-                }
-              );
+            if (orbit) {
+              gsap.to(orbit, {
+                rotation: 360,
+                ease: "none",
+                transformOrigin: "center center",
+                scrollTrigger: {
+                  trigger: stage,
+                  start: "top top",
+                  end: () => "+=" + window.innerHeight * 3.8,
+                  scrub: 1,
+                },
+              });
             }
 
             return () => {
@@ -348,65 +329,50 @@ export default function Genesis() {
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
             >
-              {/* Cool static outer precision circle (does not rotate) */}
-              <circle
-                cx="100"
-                cy="100"
-                r="90"
-                stroke="rgba(255, 255, 255, 0.22)"
-                strokeWidth="1"
-              />
+              {/* Outer orbit ring */}
+              <g className="ring-outer">
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="88"
+                  stroke="rgba(245, 244, 247, 0.4)"
+                  strokeWidth="1"
+                  strokeDasharray="500 50"
+                />
+                <circle cx="100" cy="12" r="3.5" fill="rgba(245, 244, 247, 0.85)" />
+              </g>
 
-              {/* Minimalist cardinal tick marks at North, South, East, West */}
-              <line x1="100" y1="5" x2="100" y2="13" stroke="rgba(255, 255, 255, 0.8)" strokeWidth="1.5" strokeLinecap="round" />
-              <line x1="100" y1="187" x2="100" y2="195" stroke="rgba(255, 255, 255, 0.8)" strokeWidth="1.5" strokeLinecap="round" />
-              <line x1="5" y1="100" x2="13" y2="100" stroke="rgba(255, 255, 255, 0.8)" strokeWidth="1.5" strokeLinecap="round" />
-              <line x1="187" y1="100" x2="195" y2="100" stroke="rgba(255, 255, 255, 0.8)" strokeWidth="1.5" strokeLinecap="round" />
+              {/* Inner orbit ring */}
+              <g className="ring-inner">
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="66"
+                  stroke="rgba(245, 244, 247, 0.26)"
+                  strokeWidth="0.8"
+                  strokeDasharray="370 40"
+                />
+                <circle cx="100" cy="34" r="2.5" fill="rgba(245, 244, 247, 0.65)" />
+              </g>
 
-              {/* Secondary fine-dashed radar arc */}
-              <circle
-                cx="100"
-                cy="100"
-                r="76"
-                stroke="rgba(255, 255, 255, 0.12)"
-                strokeWidth="1"
-                strokeDasharray="4 6"
-              />
-
-              {/* Subtle corner coordinate guide dots */}
-              <circle cx="48" cy="48" r="1.5" fill="rgba(255, 255, 255, 0.5)" />
-              <circle cx="152" cy="48" r="1.5" fill="rgba(255, 255, 255, 0.5)" />
-              <circle cx="48" cy="152" r="1.5" fill="rgba(255, 255, 255, 0.5)" />
-              <circle cx="152" cy="152" r="1.5" fill="rgba(255, 255, 255, 0.5)" />
-
-              {/* Inner ambient lens disc */}
-              <circle
-                cx="100"
-                cy="100"
-                r="64"
-                fill="rgba(255, 255, 255, 0.025)"
-                stroke="rgba(255, 255, 255, 0.18)"
-                strokeWidth="0.75"
-              />
+              {/* Center WITHUS Logo */}
+              <g transform="translate(100, 100)">
+                <svg x="-26" y="-26" width="52" height="52" viewBox="0 0 1000 1000" fill="none">
+                  <path
+                    d="M311.38,745.73c-31.22,17.63-65.97,28.66-100.63,18.31-15.96-4.77-28.26-16.13-34.05-31.89-4.17-11.36-6.82-23.41-6.83-36.02l-.34-278.89c-2.19-41.3,1.07-73.38-42.49-94.23,55.13-14.09,101.57-41.57,136.05-83.9,2.07-.73,4.29-.72,6.86,0l.22,392.88c0,12.67,3.2,25.53,7.95,36.58,7.21,16.79,22.18,27.22,40.05,28.6,27.86,2.16,54.5-5.83,78.12-21.4,2.43,5.14.07,8.26-3.74,11.56-25.38,21.9-51.65,41.73-81.16,58.39Z"
+                    fill="#ffffff"
+                  />
+                  <path
+                    d="M537.25,753.97l-107.65-.02-.25-300.93s-3.49-80.1-7.26-93.4c-5.38-17.95-17.58-27.24-35.86-36.69,55.93-13.67,102.76-41.18,138.39-84.15,2.53-.3,5.63-.24,8.21.24,0,0-11.52,415.76,4.42,514.94Z"
+                    fill="#ffffff"
+                  />
+                  <path
+                    d="M752.67,725.38c-12.13,30.03-50.08,33.15-78.16,24.62-18.64-5.67-35.87-14.67-52.27-25.69-19.72-13.25-39.31-26.94-57.02-45.75,22.17,11.03,41.45,18.55,65.37,17.22,36.72-2.04,45.1-34.57,45.73-66.85l1.7-87.93.7-235.66c.09-31.64,4.12-62.74,38.05-70.95,34.18-8.27,63.32,6.03,92.86,23.09,21.7,14.79,43.88,29.33,63.34,50.05-22.87-11.26-43.1-19.26-67.52-17.19-18.37,1.56-32.37,13.15-38.32,31-4.13,12.4-5.02,25.44-5.16,39.08l-2,205.04-.59,70.08-.59,61.79c-.1,9.92-2.5,19.15-6.1,28.07Z"
+                    fill="#ffffff"
+                  />
+                </svg>
+              </g>
             </svg>
-
-            {/* Dynamic scroll-moving logo centered inside the circle */}
-            <div className="process-logo-mover">
-              <svg width="46" height="46" viewBox="0 0 1000 1000" fill="none">
-                <path
-                  d="M311.38,745.73c-31.22,17.63-65.97,28.66-100.63,18.31-15.96-4.77-28.26-16.13-34.05-31.89-4.17-11.36-6.82-23.41-6.83-36.02l-.34-278.89c-2.19-41.3,1.07-73.38-42.49-94.23,55.13-14.09,101.57-41.57,136.05-83.9,2.07-.73,4.29-.72,6.86,0l.22,392.88c0,12.67,3.2,25.53,7.95,36.58,7.21,16.79,22.18,27.22,40.05,28.6,27.86,2.16,54.5-5.83,78.12-21.4,2.43,5.14.07,8.26-3.74,11.56-25.38,21.9-51.65,41.73-81.16,58.39Z"
-                  fill="#ffffff"
-                />
-                <path
-                  d="M537.25,753.97l-107.65-.02-.25-300.93s-3.49-80.1-7.26-93.4c-5.38-17.95-17.58-27.24-35.86-36.69,55.93-13.67,102.76-41.18,138.39-84.15,2.53-.3,5.63-.24,8.21.24,0,0-11.52,415.76,4.42,514.94Z"
-                  fill="#ffffff"
-                />
-                <path
-                  d="M752.67,725.38c-12.13,30.03-50.08,33.15-78.16,24.62-18.64-5.67-35.87-14.67-52.27-25.69-19.72-13.25-39.31-26.94-57.02-45.75,22.17,11.03,41.45,18.55,65.37,17.22,36.72-2.04,45.1-34.57,45.73-66.85l1.7-87.93.7-235.66c.09-31.64,4.12-62.74,38.05-70.95,34.18-8.27,63.32,6.03,92.86,23.09,21.7,14.79,43.88,29.33,63.34,50.05-22.87-11.26-43.1-19.26-67.52-17.19-18.37,1.56-32.37,13.15-38.32,31-4.13,12.4-5.02,25.44-5.16,39.08l-2,205.04-.59,70.08-.59,61.79c-.1,9.92-2.5,19.15-6.1,28.07Z"
-                  fill="#ffffff"
-                />
-              </svg>
-            </div>
           </div>
 
           <span className="process-counter" aria-hidden="true">

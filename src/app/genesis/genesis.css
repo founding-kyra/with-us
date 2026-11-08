@@ -263,9 +263,33 @@
   padding: 6rem 2rem;
 }
 
-.genesis-process-theatre .process-logo-mover {
+.genesis-process-theatre .ring-outer {
   transform-origin: 100px 100px;
-  will-change: transform;
+  animation: genesis-orbit-spin 12s linear infinite;
+}
+
+.genesis-process-theatre .ring-inner {
+  transform-origin: 100px 100px;
+  animation: genesis-orbit-reverse 18s linear infinite;
+}
+
+@keyframes genesis-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes genesis-orbit-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .genesis-process-theatre .ring-outer,
+  .genesis-process-theatre .ring-inner {
+    animation: none;
+  }
 }
 
 .genesis-process-theatre .process-orbit,
@@ -378,39 +402,20 @@
     display: block;
     position: absolute;
     left: 5%;
-    top: 50%;
-    transform: translateY(-50%) translateZ(0);
+    top: calc(50% - 70px);
     width: 140px;
     height: 140px;
     z-index: 3;
     pointer-events: none;
     backface-visibility: hidden;
-  }
-
-  .genesis-process-theatre.process-motion .process-orbit-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-
-  .genesis-process-theatre.process-motion .process-logo-mover {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 46px;
-    height: 46px;
-    margin-top: -23px;
-    margin-left: -23px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
     transform-origin: center center;
     will-change: transform;
-    backface-visibility: hidden;
+  }
+
+  .genesis-process-theatre.process-motion .process-orbit svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   .genesis-process-theatre.process-motion .process-counter {
