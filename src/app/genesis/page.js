@@ -295,8 +295,25 @@ export default function Genesis() {
         </div>
       </section>
 
-      <div className="genesis-fact-strip" tabIndex={0} aria-label="WITHUS timeline">
-        <p>SINCE 2022 · EST. 2024 · REBUILT 2026 · CREATED IN LOS ANGELES · REWARDING THE WORK</p>
+      <div className="genesis-fact-strip" aria-label="WITHUS timeline">
+        <div className="genesis-fact-track">
+          <div className="genesis-fact-content">
+            <span>SINCE 2022 · EST. 2024 · REBUILT 2026 · CREATED IN LOS ANGELES · REWARDING THE WORK</span>
+            <span className="fact-divider" aria-hidden="true">·</span>
+          </div>
+          <div className="genesis-fact-content" aria-hidden="true">
+            <span>SINCE 2022 · EST. 2024 · REBUILT 2026 · CREATED IN LOS ANGELES · REWARDING THE WORK</span>
+            <span className="fact-divider" aria-hidden="true">·</span>
+          </div>
+          <div className="genesis-fact-content" aria-hidden="true">
+            <span>SINCE 2022 · EST. 2024 · REBUILT 2026 · CREATED IN LOS ANGELES · REWARDING THE WORK</span>
+            <span className="fact-divider" aria-hidden="true">·</span>
+          </div>
+          <div className="genesis-fact-content" aria-hidden="true">
+            <span>SINCE 2022 · EST. 2024 · REBUILT 2026 · CREATED IN LOS ANGELES · REWARDING THE WORK</span>
+            <span className="fact-divider" aria-hidden="true">·</span>
+          </div>
+        </div>
       </div>
 
       <section className="genesis-about">

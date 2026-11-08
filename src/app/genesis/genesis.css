@@ -197,17 +197,63 @@
 /* Approved copy follows the existing full-screen, centered reveal layout. */
 .genesis-fact-strip {
   position: relative;
+  width: 100%;
   background: var(--base-700);
-  padding: 1.5rem;
-  overflow-x: auto;
+  padding: 1.25rem 0;
+  overflow: hidden;
   z-index: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  user-select: none;
 }
-.genesis-fact-strip p {
+
+.genesis-fact-track {
+  display: flex;
   width: max-content;
-  margin: 0 auto;
+  will-change: transform;
+  animation: genesis-fact-ticker 28s linear infinite;
+}
+
+.genesis-fact-strip:hover .genesis-fact-track {
+  animation-play-state: paused;
+}
+
+.genesis-fact-content {
+  display: flex;
+  align-items: center;
   white-space: nowrap;
+  flex-shrink: 0;
+  padding: 0 1.5rem;
+  gap: 1.5rem;
+}
+
+.genesis-fact-content span {
+  font-family: var(--font-rubik), sans-serif;
+  font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
   color: var(--base-200);
-  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.genesis-fact-content .fact-divider {
+  opacity: 0.45;
+  color: var(--base-300);
+}
+
+@keyframes genesis-fact-ticker {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .genesis-fact-track {
+    animation: none;
+  }
 }
 .genesis-screen {
   height: auto;
