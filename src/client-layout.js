@@ -2,7 +2,23 @@
 import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 
-import { ReactLenis } from "lenis/react";
+import { ReactLenis, useLenis } from "lenis/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+function LenisScrollTriggerSync() {
+  useLenis(() => {
+    ScrollTrigger.update();
+  });
+
+  useEffect(() => {
+    gsap.ticker.lagSmoothing(0);
+  }, []);
+
+  return null;
+}
 
 export default function ClientLayout({ children, footer }) {
   const pageRef = useRef();
@@ -58,6 +74,7 @@ export default function ClientLayout({ children, footer }) {
 
   return (
     <ReactLenis root options={scrollSettings}>
+      <LenisScrollTriggerSync />
       <div className="page" ref={pageRef}>
         {children}
         {pathname !== "/lookbook" && pathname !== "/lookbook2" && pathname !== "/lookbook3" && pathname !== "/mvp" && pathname !== "/order-confirmation" && footer}

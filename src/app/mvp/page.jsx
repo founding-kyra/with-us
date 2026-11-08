@@ -180,9 +180,9 @@ export default function MVPPage() {
           </div>
 
           <header>
-            <p className="eyebrow mono">With Us / Los Angeles / Affiliate Program</p>
-            <h1 className="wide">WITH US MVPs</h1>
-            <p className="lede">A small roster of people who rep With Us before anyone else.</p>
+            <p className="eyebrow mono">WITHUS / Los Angeles / Affiliate Program</p>
+            <h1 className="wide">WITHUS MVPs</h1>
+            <p className="lede">A small roster of people who rep WITHUS before anyone else.</p>
             <dl className="terms">
               <div>
                 <dt className="mono">The kit</dt>
@@ -354,7 +354,7 @@ export default function MVPPage() {
                 <div className="checks">
                   <label className="check"><input type="checkbox" name="a1" required /><span>I&apos;ll post the fit at least <b>three times</b> in my first 30 days.</span></label>
                   <label className="check"><input type="checkbox" name="a2" required /><span>I&apos;ll tag <b>@withus_la</b> in every post and story.</span></label>
-                  <label className="check"><input type="checkbox" name="a3" required /><span>With Us can repost and reuse my content across their channels and ads.</span></label>
+                  <label className="check"><input type="checkbox" name="a3" required /><span>WITHUS can repost and reuse my content across their channels and ads.</span></label>
                   <label className="check"><input type="checkbox" name="a4" required /><span>One free fit per person. Item not for resale.</span></label>
                   <label className="check"><input type="checkbox" name="a5" /><span>Send me texts and emails about drops. (Optional)</span></label>
                 </div>
@@ -399,7 +399,7 @@ export default function MVPPage() {
                   {/* Left Data Column */}
                   <div className="card-data-col">
                     <div className="card-header-row">
-                      <span className="mono card-sublabel">WITH US — MVP ROSTER</span>
+                      <span className="mono card-sublabel">WITHUS — MVP ROSTER</span>
                       <span className="mono card-id-tag">#01</span>
                     </div>
 
@@ -443,7 +443,7 @@ export default function MVPPage() {
                     <div className="card-photo-wrapper">
                       <img 
                         src="/logo/Codex Image 19 Sept 2026, 06_08_00.png" 
-                        alt="With Us Logo Box" 
+                        alt="WITHUS Logo Box"
                         className="card-box-image"
                       />
                       <div className="card-photo-edge-vignette" />

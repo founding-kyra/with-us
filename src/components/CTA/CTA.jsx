@@ -73,7 +73,7 @@ const CTA = () => {
         <div className="cta-col">
           <div className="cta-header">
             <Copy>
-              <h3>MADE<br />IN<br />LOS ANGELES</h3>
+              <h3>CREATED<br />IN<br />LOS ANGELES</h3>
             </Copy>
           </div>
           <div className="cta-main-img">
