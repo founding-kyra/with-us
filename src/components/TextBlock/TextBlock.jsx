@@ -21,12 +21,7 @@ const TextBlock = () => {
           </div>
         </div>
         <div className="text-block-col">
-          <div className="text-block-copy">
-            <Copy>
-              {/* Placeholder removed */}
-            </Copy>
-          </div>
-
+          <div className="text-block-copy" />
         </div>
       </div>
     </section>

@@ -83,25 +83,27 @@ export default function Copy({
             allLines.push(...split.lines);
           });
 
-          gsap.set(allLines, { y: "100%" });
+          if (allLines.length > 0) {
+            gsap.set(allLines, { y: "100%" });
 
-          const animation = gsap.to(allLines, {
-            y: "0%",
-            duration: 1,
-            stagger: 0.1,
-            ease: "power4.out",
-            delay: delay,
-            paused: animateOnScroll,
-          });
-
-          if (animateOnScroll) {
-            ScrollTrigger.create({
-              trigger: containerRef.current,
-              start: "top 80%",
-              animation: animation,
-              once: true,
-              refreshPriority: -1,
+            const animation = gsap.to(allLines, {
+              y: "0%",
+              duration: 1,
+              stagger: 0.1,
+              ease: "power4.out",
+              delay: delay,
+              paused: animateOnScroll,
             });
+
+            if (animateOnScroll) {
+              ScrollTrigger.create({
+                trigger: containerRef.current,
+                start: "top 80%",
+                animation: animation,
+                once: true,
+                refreshPriority: -1,
+              });
+            }
           }
         } else if (type === "flicker") {
           const allChars = [];
