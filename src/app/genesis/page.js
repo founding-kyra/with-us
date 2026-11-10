@@ -17,41 +17,6 @@ export default function Genesis() {
 
   useGSAP(
     () => {
-      const projectPreviewWrapper = containerRef.current?.querySelector(
-        ".project-preview-wrapper"
-      );
-      const previewCols = containerRef.current?.querySelectorAll(
-        ".preview-col:not(.main-preview-col)"
-      );
-      const mainPreviewImg = containerRef.current?.querySelector(
-        ".preview-img.main-preview-img img"
-      );
-
-      if (projectPreviewWrapper && previewCols?.length && mainPreviewImg) {
-        ScrollTrigger.create({
-          trigger: ".project-page-whitespace",
-          start: "top bottom",
-          end: "bottom bottom",
-          scrub: 1,
-          onUpdate: (self) => {
-            const previewScreenWidth = window.innerWidth;
-            const previewMaxScale = previewScreenWidth < 900 ? 4 : 2.65;
-
-            const scale = 1 + self.progress * previewMaxScale;
-            const yPreviewColTranslate = self.progress * 300;
-            const mainPreviewImgScale = 2 - self.progress * 0.85;
-
-            projectPreviewWrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
-
-            for (let c = 0; c < previewCols.length; c++) {
-              previewCols[c].style.transform = `translateY(${yPreviewColTranslate}px)`;
-            }
-
-            mainPreviewImg.style.transform = `scale(${mainPreviewImgScale})`;
-          },
-        });
-      }
-
       // Process Theatre Scroll Animation (Recreated from Aro Creativ)
       const stage = containerRef.current?.querySelector(".genesis-process-theatre");
       if (stage) {
@@ -143,6 +108,7 @@ export default function Genesis() {
                 anticipatePin: 1,
                 scrub: 1.1,
                 invalidateOnRefresh: true,
+                refreshPriority: 2,
                 onUpdate: (self) => {
                   if (counter) {
                     const stepNum = Math.min(
@@ -233,6 +199,52 @@ export default function Genesis() {
           }
         );
       }
+
+      // Project Preview Grid Zoom Animation (Whitespace trigger in proper DOM sequence)
+      const projectPreviewWrapper = containerRef.current?.querySelector(
+        ".project-preview-wrapper"
+      );
+      const previewCols = containerRef.current?.querySelectorAll(
+        ".preview-col:not(.main-preview-col)"
+      );
+      const mainPreviewImg = containerRef.current?.querySelector(
+        ".preview-img.main-preview-img img"
+      );
+
+      if (projectPreviewWrapper && previewCols?.length && mainPreviewImg) {
+        ScrollTrigger.create({
+          trigger: ".project-page-whitespace",
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: 1,
+          refreshPriority: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const previewScreenWidth = window.innerWidth;
+            const previewMaxScale = previewScreenWidth < 900 ? 4 : 2.65;
+
+            const scale = 1 + self.progress * previewMaxScale;
+            const yPreviewColTranslate = self.progress * 300;
+            const mainPreviewImgScale = 2 - self.progress * 0.85;
+
+            projectPreviewWrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+
+            for (let c = 0; c < previewCols.length; c++) {
+              previewCols[c].style.transform = `translateY(${yPreviewColTranslate}px)`;
+            }
+
+            mainPreviewImg.style.transform = `scale(${mainPreviewImgScale})`;
+          },
+        });
+      }
+
+      const refreshTimeout = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 250);
+
+      return () => {
+        clearTimeout(refreshTimeout);
+      };
     },
     { scope: containerRef }
   );
@@ -268,7 +280,7 @@ export default function Genesis() {
               <img src="/Photos 2/WUS-10.webp" alt="" loading="lazy" decoding="async" />
             </div>
             <div className="preview-img main-preview-img">
-              <img src="/Photos 2/Codex Image 17 Sept 2026, 09_09_22.webp" alt="" loading="lazy" decoding="async" />
+              <img src="/genesis/back-to-back.png" alt="WITHUS Genesis Preview" loading="lazy" decoding="async" />
             </div>
             <div className="preview-img">
               <img src="/Photos 2/WUS-4.webp" alt="" loading="lazy" decoding="async" />
