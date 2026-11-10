@@ -114,6 +114,8 @@
   width: auto;
   object-fit: contain;
   object-position: bottom;
+  will-change: transform;
+  transform-origin: bottom center;
 }
 
 .about {

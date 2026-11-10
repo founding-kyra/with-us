@@ -77,41 +77,42 @@ export default function Index() {
     if (heroSectionRef.current) {
       if (heroBgRef.current) {
         gsap.to(heroBgRef.current, {
-          yPercent: 20,
+          yPercent: 24,
           ease: "none",
           scrollTrigger: {
             trigger: heroSectionRef.current,
             start: "top top",
             end: "bottom top",
-            scrub: true,
+            scrub: 1,
           },
         });
       }
 
       if (heroGifRef.current) {
         gsap.to(heroGifRef.current, {
-          yPercent: -28,
-          scale: 1.05,
-          opacity: 0.25,
+          yPercent: -35,
+          scale: 1.08,
+          opacity: 0.15,
           ease: "none",
           scrollTrigger: {
             trigger: heroSectionRef.current,
             start: "top top",
             end: "bottom top",
-            scrub: true,
+            scrub: 1,
           },
         });
       }
 
       if (heroModelRef.current) {
         gsap.to(heroModelRef.current, {
-          yPercent: 12,
+          yPercent: -28,
+          scale: 1.05,
           ease: "none",
           scrollTrigger: {
             trigger: heroSectionRef.current,
             start: "top top",
             end: "bottom top",
-            scrub: true,
+            scrub: 1,
           },
         });
       }
@@ -125,7 +126,7 @@ export default function Index() {
           trigger: ".featured-products",
           start: "top bottom",
           end: "bottom top",
-          scrub: true,
+          scrub: 1,
         },
       });
     }
