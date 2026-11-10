@@ -26,7 +26,11 @@ export default function Index() {
   const [loaderAnimating, setLoaderAnimating] = useState(isInitialLoad);
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const heroImgRef = useRef(null);
+  const heroModelRef = useRef(null);
   const heroSectionRef = useRef(null);
+  const heroBgRef = useRef(null);
+  const heroGifRef = useRef(null);
+  const featuredBgRef = useRef(null);
 
   const handlePreloaderComplete = () => {
     setLoaderAnimating(false);
@@ -60,15 +64,71 @@ export default function Index() {
   }, []);
 
   useGSAP(() => {
-    if (!heroImgRef.current) return;
+    if (heroImgRef.current) {
+      gsap.set(heroImgRef.current, { y: 1000 });
+      gsap.to(heroImgRef.current, {
+        y: 0,
+        duration: 0.75,
+        ease: "power3.out",
+        delay: isInitialLoad ? 5.75 : 1,
+      });
+    }
 
-    gsap.set(heroImgRef.current, { y: 1000 });
-    gsap.to(heroImgRef.current, {
-      y: 0,
-      duration: 0.75,
-      ease: "power3.out",
-      delay: isInitialLoad ? 5.75 : 1,
-    });
+    if (heroSectionRef.current) {
+      if (heroBgRef.current) {
+        gsap.to(heroBgRef.current, {
+          yPercent: 20,
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroSectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+
+      if (heroGifRef.current) {
+        gsap.to(heroGifRef.current, {
+          yPercent: -28,
+          scale: 1.05,
+          opacity: 0.25,
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroSectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+
+      if (heroModelRef.current) {
+        gsap.to(heroModelRef.current, {
+          yPercent: 12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroSectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+    }
+
+    if (featuredBgRef.current) {
+      gsap.to(featuredBgRef.current, {
+        yPercent: 20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".featured-products",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
   });
 
   return (
@@ -77,13 +137,13 @@ export default function Index() {
 
       <section className="hero" ref={heroSectionRef}>
         <div className="hero-bg-img">
-          <img src="/home/hero-bg.webp" alt="Hero Background" />
+          <img ref={heroBgRef} src="/home/hero-bg.webp" alt="Hero Background" />
         </div>
-        <div className="hero-middle-gif">
+        <div className="hero-middle-gif" ref={heroGifRef}>
           <img src="/home/3.gif" alt="Hero Background Animation" />
         </div>
         <div className="hero-img" ref={heroImgRef}>
-          <img src="/home/hero-model.webp" alt="Hero Model" />
+          <img ref={heroModelRef} src="/home/hero-model.webp" alt="Hero Model" />
         </div>
 
       </section>
@@ -100,7 +160,7 @@ export default function Index() {
 
       <section className="featured-products">
         <div className="featured-bg-img">
-          <img src="/home/Codex Image 17 Sept 2026, 11_45_50.webp" alt="Smoke Overlay" aria-hidden="true" />
+          <img ref={featuredBgRef} src="/home/Codex Image 17 Sept 2026, 11_45_50.webp" alt="Smoke Overlay" aria-hidden="true" />
         </div>
         <div className="container">
           <div className="featured-products-header">
