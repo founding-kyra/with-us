@@ -105,8 +105,8 @@ export default function Index() {
 
       if (heroModelRef.current) {
         gsap.to(heroModelRef.current, {
-          yPercent: -28,
-          scale: 1.05,
+          yPercent: 10,
+          scale: 1.02,
           ease: "none",
           scrollTrigger: {
             trigger: heroSectionRef.current,
