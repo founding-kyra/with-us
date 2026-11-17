@@ -192,11 +192,11 @@
   }
 
   .genesis-hero {
-    height: 84svh;
+    height: clamp(380px, 56svh, 520px);
   }
 
   .genesis-hero .gen-hero-img img {
-    object-position: 28% 40%;
+    object-position: 50% 35%;
   }
 }
 
