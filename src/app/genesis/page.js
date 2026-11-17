@@ -313,7 +313,7 @@ export default function Genesis() {
 
       <section className="genesis-hero">
         <div className="gen-hero-img">
-            <img src="/genesis/WUS-23.webp" alt="WITHUS Genesis Hero" fetchPriority="high" decoding="async" />
+            <img src="/genesis/WUS-19.webp" alt="WITHUS Genesis Hero" fetchPriority="high" decoding="async" />
         </div>
       </section>
 

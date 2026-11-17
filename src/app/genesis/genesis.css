@@ -4,6 +4,7 @@
   height: 100svh;
   overflow: hidden;
   z-index: 1;
+  background-color: #000;
 }
 
 .genesis-hero .gen-hero-img {
@@ -12,6 +13,13 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.genesis-hero .gen-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
 }
 
 .genesis-hero .container {
@@ -192,11 +200,11 @@
   }
 
   .genesis-hero {
-    height: clamp(380px, 56svh, 520px);
+    height: clamp(500px, 74svh, 660px);
   }
 
   .genesis-hero .gen-hero-img img {
-    object-position: 50% 35%;
+    object-position: center 30%;
   }
 }
 
