@@ -280,7 +280,7 @@ export default function Genesis() {
               <img src="/Photos 2/WUS-10.webp" alt="" loading="lazy" decoding="async" />
             </div>
             <div className="preview-img main-preview-img">
-              <img src="/genesis/back-to-back.png" alt="WITHUS Genesis Preview" loading="lazy" decoding="async" />
+              <img src="/cta/WUS-20.webp" alt="WITHUS Genesis Preview" fetchPriority="high" decoding="async" />
             </div>
             <div className="preview-img">
               <img src="/Photos 2/WUS-4.webp" alt="" loading="lazy" decoding="async" />
@@ -320,19 +320,19 @@ export default function Genesis() {
       <div className="genesis-fact-strip" aria-label="WITHUS timeline">
         <div className="genesis-fact-track">
           <div className="genesis-fact-content">
-            <span>SINCE 2022 · EST. 2024 · REBUILT 2026 · CREATED IN LOS ANGELES · REWARDING THE WORK</span>
+            <span>ESTABLISHED 2022 · REBUILT 2026 · CREATED IN LOS ANGELES · REWARDING THE WORK</span>
             <span className="fact-divider" aria-hidden="true">·</span>
           </div>
           <div className="genesis-fact-content" aria-hidden="true">
-            <span>SINCE 2022 · EST. 2024 · REBUILT 2026 · CREATED IN LOS ANGELES · REWARDING THE WORK</span>
+            <span>ESTABLISHED 2022 · REBUILT 2026 · CREATED IN LOS ANGELES · REWARDING THE WORK</span>
             <span className="fact-divider" aria-hidden="true">·</span>
           </div>
           <div className="genesis-fact-content" aria-hidden="true">
-            <span>SINCE 2022 · EST. 2024 · REBUILT 2026 · CREATED IN LOS ANGELES · REWARDING THE WORK</span>
+            <span>ESTABLISHED 2022 · REBUILT 2026 · CREATED IN LOS ANGELES · REWARDING THE WORK</span>
             <span className="fact-divider" aria-hidden="true">·</span>
           </div>
           <div className="genesis-fact-content" aria-hidden="true">
-            <span>SINCE 2022 · EST. 2024 · REBUILT 2026 · CREATED IN LOS ANGELES · REWARDING THE WORK</span>
+            <span>ESTABLISHED 2022 · REBUILT 2026 · CREATED IN LOS ANGELES · REWARDING THE WORK</span>
             <span className="fact-divider" aria-hidden="true">·</span>
           </div>
         </div>
@@ -345,7 +345,7 @@ export default function Genesis() {
             <div className="genesis-about-copy">
           <Copy><h2>GENESIS</h2></Copy>
           <Copy><p className="genesis-lead">Built for those who were overlooked or underestimated.</p></Copy>
-          <Copy><p>WITHUS began as an idea in Los Angeles in 2022, became a company in 2024, and was rebuilt in 2026 by people who believe in each other. It was never about one person or one idea. It's about respect for anyone who works hard, aims high and refuses to settle, and about helping each other get there. That's why people find their way to WITHUS: they see themselves in who it represents.</p></Copy>
+          <Copy><p>WITHUS began as an idea in Los Angeles in 2022 and was rebuilt in 2026 by people who believe in each other. It was never about one person or one idea. It&apos;s about respect for anyone who works hard, aims high and refuses to settle, and about helping each other get there. That&apos;s why people find their way to WITHUS: they see themselves in who it represents.</p></Copy>
         </div>
           </div>
         </div>
@@ -502,9 +502,10 @@ export default function Genesis() {
                     THE WORK: BACKING YOUNG ATHLETES WHO PUT IN THE HOURS, AND BUILDING A
                     COMMUNITY THAT RISES TO THE STANDARD WE HOLD OURSELVES TO. THAT
                     STARTS WITH WITHUS WAVES, A TRACK CLUB STARTED BY ONE OF OUR OWN FOR
-                    SERIOUS HIGH SCHOOL ATHLETES, ESPECIALLY THOSE AT SCHOOLS WITHOUT A
-                    STRONG PROGRAM. IT&apos;S A TEAM YOU&apos;LL SEE US INVEST IN MORE IN
-                    THE NEAR FUTURE.
+                    SERIOUS HIGH SCHOOL AND COLLEGE ATHLETES—THE TWO BIGGEST COMMUNITIES
+                    WE SERVE—BACKING THEM DIRECTLY THROUGH COACHING, MENTORING, AND
+                    HANDS-ON SUPPORT, ESPECIALLY AT SCHOOLS WITHOUT A STRONG PROGRAM.
+                    IT&apos;S A TEAM YOU&apos;LL SEE US INVEST IN MORE IN THE NEAR FUTURE.
                   </p>
                 </div>
               </div>
