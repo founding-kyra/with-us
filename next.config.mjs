@@ -1,15 +1,15 @@
 const cspHeader = `
   default-src 'self';
   script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://s.ytimg.com https://checkout.shopify.com;
-  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://use.typekit.net;
   img-src 'self' blob: data: https://cdn.shopify.com https://i.ytimg.com https://yt3.ggpht.com;
-  font-src 'self' data: https://fonts.gstatic.com;
+  font-src 'self' data: https://fonts.gstatic.com https://use.typekit.net;
   connect-src 'self' https://5ukvua-fk.myshopify.com https://checkout.shopify.com;
   frame-src 'self' https://www.youtube.com https://checkout.shopify.com;
   object-src 'none';
   base-uri 'self';
   form-action 'self' https://checkout.shopify.com;
-  frame-ancestors 'none';
+  frame-ancestors 'self';
   upgrade-insecure-requests;
 `
 
@@ -29,7 +29,7 @@ const nextConfig = {
           },
           {
             key: 'X-Frame-Options',
-            value: 'DENY',
+            value: 'SAMEORIGIN',
           },
           {
             key: 'Strict-Transport-Security',

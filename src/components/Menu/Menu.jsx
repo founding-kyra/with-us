@@ -341,7 +341,7 @@ const Menu = () => {
             <div className="menu-overlay-sub-col">
               <div className="menu-sub-links">
                 {/* Lookbook 1 and 2 removed per request */}
-                <Link href="/lookbook3" onClick={handleLinkClick}>
+                <Link href="/community" onClick={handleLinkClick}>
                   Community
                 </Link>
                 <Link href="/touchpoint" onClick={handleLinkClick}>
