@@ -55,7 +55,7 @@ const MarqueeBanner = () => {
             <p>[ Frame Shift ]</p>
           </Copy>
           <Copy>
-            <h4>REJECTION BECAME DIRECTION</h4>
+            <h4>FORM WITHOUT COMPROMISE</h4>
           </Copy>
         </div>
         <div className="banner-img">
