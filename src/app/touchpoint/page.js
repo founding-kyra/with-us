@@ -50,13 +50,13 @@ export default function Touchpoint() {
                   </Copy>
                   
                   <Copy animateOnScroll={false} delay={1.1}>
-                    <a href="/contact" className="cta-card">
+                    <a href="mailto:hello@withusla.com?subject=Dispatch%20Inquiry" className="cta-card">
                       <div className="cta-icon-wrapper">
                         <FiMessageSquare size={20} strokeWidth={1.5} />
                       </div>
                       <div className="cta-text-wrapper">
                         <span className="cta-sub">SEND A MESSAGE</span>
-                        <span className="cta-main">CONTACT FORM</span>
+                        <span className="cta-main">START DISPATCH</span>
                       </div>
                       <FiArrowRight size={22} strokeWidth={1.5} className="cta-arrow" />
                     </a>

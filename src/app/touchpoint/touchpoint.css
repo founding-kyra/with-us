@@ -118,6 +118,11 @@
   color: var(--base-700);
 }
 
+.cta-icon-wrapper svg {
+  width: 20px;
+  height: 20px;
+}
+
 .cta-text-wrapper {
   display: flex;
   flex-direction: column;
@@ -143,6 +148,10 @@
 }
 
 .cta-arrow {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  min-height: 22px;
   color: var(--base-700);
   flex-shrink: 0;
   transition: transform 0.3s ease;
@@ -155,6 +164,39 @@
 .contact-badge-wrapper {
   width: 4.5rem;
   height: 4.5rem;
+}
+
+@media (max-width: 999px) {
+  .contact-hero {
+    height: auto;
+    min-height: 100svh;
+    overflow-y: auto;
+  }
+
+  .contact-hero .container {
+    padding: 7rem 1.25rem 3rem 1.25rem;
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .contact-hero .contact-hero-copy {
+    gap: 2.25rem;
+  }
+
+  .contact-header h3 {
+    font-size: clamp(2.25rem, 10vw, 3.25rem);
+    line-height: 0.9;
+  }
+
+  .contact-lower {
+    margin-top: auto;
+    gap: 1.5rem;
+  }
+
+  .contact-badge-wrapper {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
 }
 
 @media (min-width: 1000px) {

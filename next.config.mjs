@@ -14,6 +14,15 @@ const cspHeader = `
 `
 
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/contact',
+        destination: '/touchpoint',
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
     return [
       {
