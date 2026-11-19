@@ -341,8 +341,8 @@ const Menu = () => {
             <div className="menu-overlay-sub-col">
               <div className="menu-sub-links">
                 {/* Lookbook 1 and 2 removed per request */}
-                <Link href="/community" onClick={handleLinkClick}>
-                  Community
+                <Link href="/lookbook3" onClick={handleLinkClick}>
+                  Lookbook
                 </Link>
                 <Link href="/touchpoint" onClick={handleLinkClick}>
                   Contact Us

@@ -21,6 +21,16 @@ const nextConfig = {
         destination: '/touchpoint',
         permanent: false,
       },
+      {
+        source: '/lookbook',
+        destination: '/lookbook3',
+        permanent: false,
+      },
+      {
+        source: '/community',
+        destination: '/lookbook3',
+        permanent: false,
+      },
     ];
   },
   async headers() {
